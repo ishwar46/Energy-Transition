@@ -1,9 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
-
 import { registerUserApi } from "../../apis/Api";
-
 import SuccessDialog from "../../components/SuccessDialog";
 
 const Registrations = () => {
@@ -12,6 +10,8 @@ const Registrations = () => {
   );
 
   // Form States
+  const [title, setTitle] = useState("");
+  const [gender, setGender] = useState("");
   const [institution, setInstitution] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
@@ -26,8 +26,16 @@ const Registrations = () => {
 
   // Basic Client-Side Validation
   const validateForm = () => {
+    if (!title.trim()) {
+      toast.error("Title is required.");
+      return false;
+    }
+    if (!gender) {
+      toast.error("Gender is required.");
+      return false;
+    }
     if (!institution.trim()) {
-      toast.error("Orginzation name is required.");
+      toast.error("Organization name is required.");
       return false;
     }
     if (!firstName.trim()) {
@@ -46,7 +54,6 @@ const Registrations = () => {
       toast.error("Mobile number is required.");
       return false;
     }
-    // Basic email format check
     if (!emailAddress.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       toast.error("Please enter a valid email address.");
       return false;
@@ -57,15 +64,15 @@ const Registrations = () => {
   // Handle Form Submit
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Stop if validation fails
     if (!validateForm()) return;
 
     setLoading(true);
 
     try {
-      // 1) Create FormData to match the backend fields
+      // Create FormData
       const formData = new FormData();
+      formData.append("title", title);
+      formData.append("gender", gender); // single string
       formData.append("nameOfInstitution", institution);
       formData.append("firstName", firstName);
       formData.append("middleName", middleName);
@@ -74,10 +81,12 @@ const Registrations = () => {
       formData.append("emailAddress", emailAddress);
       formData.append("mobileNumber", mobileNumber);
 
-      // 2) **Call the registerUserApi** with the formData
+      // Call API
       await registerUserApi(formData);
 
-      // 3) Clear the form fields on success
+      // Clear fields
+      setTitle("");
+      setGender("");
       setInstitution("");
       setFirstName("");
       setMiddleName("");
@@ -86,10 +95,9 @@ const Registrations = () => {
       setEmailAddress("");
       setMobileNumber("");
 
-      // 4) Show your success dialog
+      // Show success dialog
       setSuccessOpen(true);
     } catch (error) {
-      // Show error toast (or error modal if you prefer)
       console.error("Registration Error:", error);
       toast.error(
         error.response?.data?.message || "Registration failed. Try again."
@@ -106,31 +114,53 @@ const Registrations = () => {
           Registration Form
         </h2>
         <div
-          className="text-1xl font-semibold text-green-800 text-center mb-4"
+          className="text-xl font-semibold text-green-800 text-center mb-4 transition-opacity animate-fadeIn"
           style={{ animation: "fadeIn 2s ease-out" }}
         >
           Welcome to the Energy Transition for Resilient and Low Carbon Economy
           Summit 2025
         </div>
-        <p className="text-gray-600 text-center mb-6">
+        <p className="text-gray-600 text-center mb-4">
           Please fill in your details to register for the event.
         </p>
 
-        {/* Form */}
         <form onSubmit={handleSubmit}>
-          {/* Institution */}
-          <div className="mb-6 text-blue-800">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Organization <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="institution"
-              placeholder="Enter your Organization"
-              value={institution}
-              onChange={(e) => setInstitution(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+          {/* Row 1: Organization + Title */}
+          <div className="grid md:grid-cols-2 gap-4 mb-6 text-blue-800">
+            {/* Organization */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Organization <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="institution"
+                placeholder="Enter your Organization"
+                value={institution}
+                onChange={(e) => setInstitution(e.target.value)}
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              />
+            </div>
+
+            {/* Title */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Title <span className="text-red-500">*</span>
+              </label>
+              <select
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                aria-label="Select your title"
+              >
+                <option value="">-- Select Title --</option>
+                <option value="Mr.">Mr.</option>
+                <option value="Ms.">Ms.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof.">Prof.</option>
+              </select>
+            </div>
           </div>
 
           {/* Name Fields */}
@@ -145,7 +175,7 @@ const Registrations = () => {
                 placeholder="First Name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
             <div>
@@ -158,7 +188,7 @@ const Registrations = () => {
                 placeholder="Middle Name"
                 value={middleName}
                 onChange={(e) => setMiddleName(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
             <div>
@@ -171,24 +201,45 @@ const Registrations = () => {
                 placeholder="Last Name"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
           </div>
 
-          {/* Job Position */}
-          <div className="mb-6 text-blue-800">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Designation <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="jobPosition"
-              placeholder="Designation"
-              value={jobPosition}
-              onChange={(e) => setJobPosition(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+          {/* Row 2: Gender + Designation */}
+          <div className="grid md:grid-cols-2 gap-4 mb-6 text-blue-800">
+            {/* Gender */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Gender <span className="text-red-500">*</span>
+              </label>
+              <select
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                aria-label="Select your gender"
+              >
+                <option value="">-- Select Gender --</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+
+            {/* Designation */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Designation <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="jobPosition"
+                placeholder="Designation"
+                value={jobPosition}
+                onChange={(e) => setJobPosition(e.target.value)}
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              />
+            </div>
           </div>
 
           {/* Mobile Number */}
@@ -202,7 +253,7 @@ const Registrations = () => {
               placeholder="Enter mobile number"
               value={mobileNumber}
               onChange={(e) => setMobileNumber(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             />
           </div>
 
@@ -217,18 +268,25 @@ const Registrations = () => {
               placeholder="Email Address"
               value={emailAddress}
               onChange={(e) => setEmailAddress(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
             />
           </div>
+
+          <p className="text-gray-700 text-sm text-start font-medium mb-6">
+            All fields marked with <span className="text-red-500">*</span> are
+            required.
+          </p>
 
           {/* Submit Button */}
           <div className="text-center">
             <button
               type="submit"
-              className={`w-full md:w-1/2 px-6 py-3 text-white font-bold rounded-lg shadow-md ${
-                loading ? "bg-gray-400" : "bg-blue-800 hover:bg-green-700"
-              }`}
               disabled={loading}
+              className={`w-full md:w-1/2 px-6 py-3 text-white font-bold rounded-lg shadow-md transition-transform ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-800 hover:bg-green-700 hover:scale-105"
+              }`}
             >
               {loading ? "Submitting..." : "Register"}
             </button>
@@ -241,7 +299,7 @@ const Registrations = () => {
         open={successOpen}
         setOpen={setSuccessOpen}
         title="Registration Successful"
-        description="Thank you for registering for the Energy Transition for Resilient and Low Carbon Economy Summit 2025! You will receive a confirmation email shortly with more details. We look forward to your participation."
+        description="Thank you for registering for the Energy Transition for Resilient and Low Carbon Economy Summit 2025! You will receive a confirmation email with more details shortly. We look forward to your participation."
         onConfirm={() => setSuccessOpen(false)}
       />
     </>
