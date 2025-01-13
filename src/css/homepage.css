@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+#animatedText {
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 5xl;
+    font-weight: normal;
+    color: #ffffff;
+}
+
+#animatedSubText {
+    font-family: 'Bubblegum Sans', cursive;
+    font-weight: normal;
+}
+
+#animatedtimedate {
+    font-family: 'Bubblegum Sans', cursive;
+    font-weight: normal;
+}

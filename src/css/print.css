@@ -1,0 +1,42 @@
+@media print {
+    body * {
+        visibility: hidden;
+        /* Hides all content outside the printable area */
+    }
+    .printable-content,
+    .printable-content * {
+        visibility: visible;
+        /* Ensures content in the printable area is visible */
+    }
+    .printable-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        /* Ensures it stretches across the page */
+        margin: 0;
+        padding: 5mm;
+        /* Reduces padding for printed content */
+        font-size: 12px;
+        /* Adjust font size for print */
+    }
+    .no-print {
+        display: none;
+        /* Hides non-printable elements */
+    }
+    .print-only {
+        display: block;
+    }
+    @page {
+        size: auto;
+        /* Auto adjusts the page size */
+        margin: 10mm;
+        /* Adds smaller margin to the page */
+    }
+}
+
+@media screen {
+    .print-only {
+        display: none;
+    }
+}

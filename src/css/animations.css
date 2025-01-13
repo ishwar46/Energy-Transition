@@ -1,0 +1,39 @@
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cardSlideUp1 {
+    animation: slideUp 0.8s ease-out forwards;
+}
+
+.cardSlideUp2 {
+    animation: slideUp 0.8s ease-out forwards;
+    animation-delay: 0.2s;
+    /* slight delay for the second card */
+}
+
+.cardSlideUp3 {
+    animation: slideUp 0.8s ease-out forwards;
+    animation-delay: 0.4s;
+    /* more delay for the third card */
+}
+
+.cardSlideUp {
+    animation: slideUp 0.8s ease-out forwards;
+}

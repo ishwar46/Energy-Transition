@@ -1,0 +1,45 @@
+.live-stream-container {
+    background: linear-gradient(135deg, #3051A0, #3b73b9);
+    padding: 40px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: white;
+    text-align: center;
+}
+
+.conference-title {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.live-from {
+    font-style: italic;
+    color: #fffae0;
+}
+
+.live-stream-frame {
+    height: 60vh;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: black;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.no-stream-msg {
+    color: #ff8c00;
+}
+
+
+/* Media queries for responsiveness */
+
+@media (max-width: 768px) {
+    .live-stream-frame {
+        height: 50vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .live-stream-frame {
+        height: 40vh;
+    }
+}
