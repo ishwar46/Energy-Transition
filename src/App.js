@@ -46,9 +46,9 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />{" "} */}
         <Route path="/register" element={<Registrations />} />{" "}
         <Route path="/login" element={<LoginPage />} />{" "}
-        {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />{" "}
+        {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />{" "} */}
         <Route path="/ishwarrrrr" element={<Queries />} />{" "}
-        <Route path="/changepassword" element={<ChangePassword />} /> {""}{" "} */}
+        {/* <Route path="/changepassword" element={<ChangePassword />} /> {""}{" "} */}
 
         {/* {""} <Route path="/maintenance" element={<UnderMaintenance />} /> {""}{" "}
         <Route path="/notifications" element={<Notifications />} /> {""}{" "} */}
