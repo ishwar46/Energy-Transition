@@ -2,10 +2,8 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 
-// 1) Import your registerUserApi function:
 import { registerUserApi } from "../../apis/Api";
 
-// Import your SuccessDialog
 import SuccessDialog from "../../components/SuccessDialog";
 
 const Registrations = () => {
