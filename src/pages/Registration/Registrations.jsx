@@ -121,12 +121,12 @@ const Registrations = () => {
           {/* Institution */}
           <div className="mb-6 text-blue-800">
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Orginization <span className="text-red-500">*</span>
+              Organization <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
               name="institution"
-              placeholder="Enter your orginization"
+              placeholder="Enter your Organization"
               value={institution}
               onChange={(e) => setInstitution(e.target.value)}
               className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
