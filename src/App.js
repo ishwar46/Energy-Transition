@@ -55,7 +55,7 @@ function App() {
 
         <Route path="/admin" element={<AdminLogin />} />{" "}
         {/* Admin Protected Routes */}{" "}
-        {/* <Route element={<AdminRoutes />}>
+        <Route element={<AdminRoutes />}>
           <Route path="/admindashboard" element={<AdminDashboard />} />{" "}
         </Route>{" "}
         <Route element={<AdminRoutes />}>
@@ -63,7 +63,7 @@ function App() {
         </Route>{" "}
         <Route element={<AdminRoutes />}>
           <Route path="/attendance" element={<ParticipantAttendance />} />{" "}
-        </Route>{" "} */}
+        </Route>{" "}
         {/* User Protected Route */}{" "}
         {/* <Route element={<UserRoutes />}>
           <Route path="/userdashboard" element={<UserDashboardPage />} />{" "}
