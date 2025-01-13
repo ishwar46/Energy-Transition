@@ -2,6 +2,7 @@ import axios from "axios";
 
 // Axios instance configuration
 const Api = axios.create({
+  // baseURL: "http://localhost:5500",
   baseURL: "https://energy-transition-api.onrender.com",
   withCredentials: true,
   headers: {
