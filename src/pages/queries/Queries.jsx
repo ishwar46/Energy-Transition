@@ -23,10 +23,10 @@ const Queries = () => {
     }
   };
 
-  // Use useEffect to fetch data every 2 minutes
+  // Use useEffect to fetch data every 1 minutes
   useEffect(() => {
     fetchSubscribers();
-    const interval = setInterval(fetchSubscribers, 2 * 60 * 1000);
+    const interval = setInterval(fetchSubscribers, 1 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, []);
