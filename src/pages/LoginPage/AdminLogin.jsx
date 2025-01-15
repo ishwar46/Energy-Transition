@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../../assets/images/leologo.png";
+import Logo from "../../assets/images/uranusevents.png";
 import { adminLoginApi } from "../../apis/Api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -65,7 +65,7 @@ const AdminLogin = () => {
           <img
             src={Logo}
             alt="LEO Logo"
-            className="h-16 sm:h-20 mx-auto mb-4 opacity-90"
+            className="h-16 sm:h-20 mx-auto mb-4 opacity-90 rounded-lg"
           />
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
             Welcome Back
