@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
-import { registerUserApi } from "../../apis/Api";
+import { energyRegisterApi } from "../../apis/Api";
 import SuccessDialog from "../../components/SuccessDialog";
 
 const Registrations = () => {
@@ -82,7 +82,7 @@ const Registrations = () => {
       formData.append("mobileNumber", mobileNumber);
 
       // Call API
-      await registerUserApi(formData);
+      await energyRegisterApi(formData);
 
       // Clear fields
       setTitle("");
@@ -282,11 +282,10 @@ const Registrations = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full md:w-1/2 px-6 py-3 text-white font-bold rounded-lg shadow-md transition-transform ${
-                loading
+              className={`w-full md:w-1/2 px-6 py-3 text-white font-bold rounded-lg shadow-md transition-transform ${loading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-blue-800 hover:bg-green-700 hover:scale-105"
-              }`}
+                }`}
             >
               {loading ? "Submitting..." : "Register"}
             </button>
@@ -299,7 +298,7 @@ const Registrations = () => {
         open={successOpen}
         setOpen={setSuccessOpen}
         title="Registration Successful"
-        description="Thank you for registering for the Energy Transition for Resilient and Low Carbon Economy Summit 2025! You will receive a confirmation email with more details shortly. We look forward to your participation."
+        description="Thank you for registering for the Energy Transition for Resilient and Low Carbon Economy Summit 2025!  Now, you can check your email for further detailsand your unique QR code associated with your Regestration. We look forward to your participation."
         onConfirm={() => setSuccessOpen(false)}
       />
     </>
