@@ -11,7 +11,7 @@ import {
   resetUserPasswordApi,
 } from "../../apis/Api";
 import { useReactToPrint } from "react-to-print";
-import logo from "../../assets/images/leologo.png";
+import logo from "../../assets/images/uranuslogo.png";
 import { QRCodeSVG } from "qrcode.react";
 import toast from "react-hot-toast";
 import Pagination from "@mui/material/Pagination";
@@ -281,20 +281,9 @@ const UserTable = () => {
             )
           : "N/A",
         Email: user.personalInformation?.emailAddress || "N/A",
-        "Current Address": user.personalInformation?.currentAddress || "N/A",
-        "Highest Edu Level":
-          user.personalInformation?.highestEducationLevel || "N/A",
-        "Leo Multiple District And Club Name":
-          user.personalInformation?.leoMultipleDistrictAndClubName || "N/A",
-        "Position in District":
-          user.personalInformation?.positionInDistrict || "N/A",
         Status: user.adminVerification?.status || "N/A",
         Occupation: user.personalInformation?.occupation || "N/A",
-        "INTL Occupation Passport Number":
-          user.personalInformation?.intlOccupationPassportNumber || "N/A",
-        "What's App Num": user.personalInformation?.whatsAppNumber || "N/A",
-        "Emergency Contact Num":
-          user.personalInformation?.emergencyContactNum || "N/A",
+        "Phone Number": user.personalInformation?.mobileNumber || "N/A",
         Gender: user.personalInformation?.gender?.male
           ? "Male"
           : user.personalInformation?.gender?.feMale
@@ -309,20 +298,6 @@ const UserTable = () => {
           : user?.personalInformation?.dietaryRequirements?.other
           ? "Other"
           : "N/A",
-        "Why do you need to attend this program? Do you have experienced similar camps ?":
-          user.personalInformation?.whyToAttend || "N/A",
-        "What makes you unique ?":
-          user.personalInformation?.uniqueness || "N/A",
-        "Explain your Achievemnt Till Now ?":
-          user.personalInformation?.achievementsTillNow || "N/A",
-        "Do you have any special skills or qualification that makes you a good candidate for this Youth Camp ?":
-          user.personalInformation?.anySpecialSkillsOrQualifications || "N/A",
-        "Which Social Media does user use ?":
-          user.personalInformation?.socialMediaHandle || "N/A",
-        "Describle your current mental and physical health. Do you have any allergies or long-term sickness ?":
-          user.personalInformation?.currentMentalAndPhysicalHealth || "N/A",
-        "Are there any notable things we should know about you that haven't been covered in this application ?":
-          user.personalInformation?.notableThingsToKnow || "N/A",
       }))
     );
 
@@ -355,7 +330,10 @@ const UserTable = () => {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Users");
 
-    XLSX.writeFile(wb, "International_Youth_Camp_2025.xlsx");
+    XLSX.writeFile(
+      wb,
+      "Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit.xlsx"
+    );
   };
 
   const exportToPDF = () => {
@@ -371,7 +349,7 @@ const UserTable = () => {
     // Title
     doc.setFontSize(12);
     doc.setTextColor(33, 37, 41);
-    const reportTitle = `Internation Youth Camp 2025 PDF`;
+    const reportTitle = `Energy Transition for Resilient and Low Carbon Economy Summit 2025`;
     doc.text(reportTitle, 14, 18);
 
     doc.setLineWidth(0.5);
@@ -386,10 +364,7 @@ const UserTable = () => {
       "SN",
       "Name",
       "Email",
-      "What's App Num",
-      "Occupation",
-      "Current Address",
-      "Highest Edu Level",
+      "Phone Number",
       "Gender",
       "Meal",
     ];
@@ -405,7 +380,7 @@ const UserTable = () => {
         index + 1,
         userName,
         user.personalInformation?.emailAddress || "N/A",
-        user.personalInformation?.whatsAppNumber || "N/A",
+        user.personalInformation?.mobileNumber || "N/A",
         user.personalInformation?.occupation || "N/A",
         // accompanyingPersonInfo,
         user.personalInformation?.currentAddress || "N/A",
@@ -463,7 +438,7 @@ const UserTable = () => {
         doc.internal.pageSize.height - 10
       );
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit",
         14,
         doc.internal.pageSize.height - 10
       );
@@ -474,7 +449,7 @@ const UserTable = () => {
       );
     }
 
-    const fileName = `Internation_Youth_Camp_details_${currentDate.replace(
+    const fileName = `Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit_${currentDate.replace(
       / /g,
       "_"
     )}.pdf`;
@@ -741,7 +716,7 @@ const UserTable = () => {
             {/* Header Row: Title & Logo */}
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-green-700">
-                The International Youth Camp 2025
+                Energy Transition for Resilient and Low Carbon Economy Summit
               </h2>
               <img
                 src={logo}
@@ -783,6 +758,10 @@ const UserTable = () => {
                       {currentUser?.personalInformation?.nationality || "N/A"}
                     </p>
                     <p>
+                      <strong className="font-medium">Gender:</strong>{" "}
+                      {currentUser?.personalInformation?.gender || "N/A"}
+                    </p>
+                    {/* <p>
                       <strong className="font-medium">Date of Birth:</strong>{" "}
                       {currentUser?.personalInformation?.dateOfBirth
                         ? new Date(
@@ -793,37 +772,34 @@ const UserTable = () => {
                             day: "numeric",
                           })
                         : "N/A"}
-                    </p>
-                    <p>
+                    </p> */}
+                    {/* <p>
                       <strong className="font-medium">Current Address:</strong>{" "}
                       {currentUser?.personalInformation?.currentAddress ||
                         "N/A"}
-                    </p>
-                    <p>
+                    </p> */}
+                    {/* <p>
                       <strong className="font-medium">
                         Highest Education Level:
                       </strong>{" "}
                       {currentUser?.personalInformation
                         ?.highestEducationLevel || "N/A"}
-                    </p>
+                    </p> */}
                     <p>
                       <strong className="font-medium">Email Address:</strong>{" "}
                       {currentUser?.personalInformation?.emailAddress || "N/A"}
                     </p>
                     <p>
-                      <strong className="font-medium">
-                        What's App Number:
-                      </strong>{" "}
-                      {currentUser?.personalInformation?.whatsAppNumber ||
-                        "N/A"}
+                      <strong className="font-medium">Mobile Number:</strong>{" "}
+                      {currentUser?.personalInformation?.mobileNumber || "N/A"}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong className="font-medium">
                         Emergency Contact:
                       </strong>{" "}
                       {currentUser?.personalInformation?.emergencyContactNum ||
                         "N/A"}
-                    </p>
+                    </p> */}
 
                     {/* Dietary Preferences */}
                     {(dietaryRequirements?.vegetarian ||

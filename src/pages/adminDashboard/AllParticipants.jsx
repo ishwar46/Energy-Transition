@@ -96,16 +96,25 @@ const getUserDetailsForQR = (currentUser) => {
   ) {
     return "No valid user data available";
   }
-  const details = `Title: ${currentUser.personalInformation.title || "N/A"
-    }\nFull Name: ${currentUser.personalInformation.fullName.firstName || "N/A"
-    } ${currentUser.personalInformation.fullName.middleName || ""} ${currentUser.personalInformation.fullName.lastName || "N/A"
-    }\nNationality: ${currentUser.personalInformation.nationality || "N/A"
-    }\nInstitution: ${currentUser.personalInformation.nameOfInstitution || "N/A"
-    }\nJob Position: ${currentUser.personalInformation.jobPosition || "N/A"
-    }\nOffice Address: ${currentUser.personalInformation.officeAddress || "N/A"
-    }\nEmail Address: ${currentUser.personalInformation.emailAddress || "N/A"
-    }\nPhone Number: ${currentUser.personalInformation.phoneNumber || "N/A"
-    }\nMobile Number: ${currentUser.personalInformation.mobileNumber || "N/A"}`;
+  const details = `Title: ${
+    currentUser.personalInformation.title || "N/A"
+  }\nFull Name: ${
+    currentUser.personalInformation.fullName.firstName || "N/A"
+  } ${currentUser.personalInformation.fullName.middleName || ""} ${
+    currentUser.personalInformation.fullName.lastName || "N/A"
+  }\nNationality: ${
+    currentUser.personalInformation.nationality || "N/A"
+  }\nInstitution: ${
+    currentUser.personalInformation.nameOfInstitution || "N/A"
+  }\nJob Position: ${
+    currentUser.personalInformation.jobPosition || "N/A"
+  }\nOffice Address: ${
+    currentUser.personalInformation.officeAddress || "N/A"
+  }\nEmail Address: ${
+    currentUser.personalInformation.emailAddress || "N/A"
+  }\nPhone Number: ${
+    currentUser.personalInformation.mobileNumber || "N/A"
+  }\nMobile Number: ${currentUser.personalInformation.mobileNumber || "N/A"}`;
   return details;
 };
 
@@ -206,18 +215,15 @@ const AllParticipants = () => {
         "Last Name": user.personalInformation?.fullName?.lastName || "N/A",
         "Date Of Birth": user.personalInformation?.dateOfBirth
           ? new Date(user.personalInformation?.dateOfBirth).toLocaleDateString(
-            "en-US",
-            {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }
-          )
+              "en-US",
+              {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }
+            )
           : "N/A", // Convert to formatted string for immediate visibility
         Email: user.personalInformation?.emailAddress || "N/A",
-        "Current Address": user.personalInformation?.currentAddress || "N/A",
-        "Highest Edu Level":
-          user.personalInformation?.highestEducationLevel || "N/A",
         "Leo Multiple District And Club Name":
           user.personalInformation?.leoMultipleDistrictAndClubName || "N/A",
         "Position in District":
@@ -226,23 +232,23 @@ const AllParticipants = () => {
         Occupation: user.personalInformation?.occupation || "N/A",
         "INTL Occupation Passport Number":
           user.personalInformation?.intlOccupationPassportNumber || "N/A",
-        "What's App Num": user.personalInformation?.whatsAppNumber || "N/A",
+        "Phone Number": user.personalInformation?.mobileNumber || "N/A",
         "Emergency Contact Num":
           user.personalInformation?.emergencyContactNum || "N/A",
         Gender: user.personalInformation?.gender?.male
           ? "Male"
           : user.personalInformation?.gender?.feMale
-            ? "Female"
-            : user.personalInformation?.gender?.others
-              ? "Others"
-              : "N/A",
+          ? "Female"
+          : user.personalInformation?.gender?.others
+          ? "Others"
+          : "N/A",
         Meal: user?.personalInformation?.dietaryRequirements?.vegetarian
           ? "Vegetarian"
           : user?.personalInformation?.dietaryRequirements?.nonveg
-            ? "Nonveg"
-            : user?.personalInformation?.dietaryRequirements?.other
-              ? "Other"
-              : "N/A",
+          ? "Nonveg"
+          : user?.personalInformation?.dietaryRequirements?.other
+          ? "Other"
+          : "N/A",
         "Why do you need to attend this program? Do you have experienced similar camps ?":
           user.personalInformation?.whyToAttend || "N/A",
         "What makes you unique ?":
@@ -289,7 +295,10 @@ const AllParticipants = () => {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Users");
 
-    XLSX.writeFile(wb, "International_Youth_Camp_2025.xlsx");
+    XLSX.writeFile(
+      wb,
+      "Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit.xlsx"
+    );
   };
 
   const exportToPDF = () => {
@@ -305,7 +314,7 @@ const AllParticipants = () => {
     // Title
     doc.setFontSize(12);
     doc.setTextColor(33, 37, 41);
-    const reportTitle = `Internation Youth Camp 2025 PDF`;
+    const reportTitle = `Energy Transition for Resilient and Low Carbon Economy Summit 2025`;
     doc.text(reportTitle, 14, 18);
 
     doc.setLineWidth(0.5);
@@ -320,18 +329,17 @@ const AllParticipants = () => {
       "SN",
       "Name",
       "Email",
-      "What's App Num",
-      "Occupation",
-      "Current Address",
-      "Highest Edu Level",
+      "Phone Number",
       "Gender",
       "Meal",
     ];
 
     const tableRows = filteredUsers.map((user, index) => {
-      const userName = `${user.personalInformation?.title || "N/A"} ${user.personalInformation?.fullName?.firstName || "N/A"
-        } ${user.personalInformation?.fullName?.middleName || ""} ${user.personalInformation?.fullName?.lastName || "N/A"
-        }`;
+      const userName = `${user.personalInformation?.title || "N/A"} ${
+        user.personalInformation?.fullName?.firstName || "N/A"
+      } ${user.personalInformation?.fullName?.middleName || ""} ${
+        user.personalInformation?.fullName?.lastName || "N/A"
+      }`;
 
       return [
         index + 1,
@@ -345,17 +353,17 @@ const AllParticipants = () => {
         user.personalInformation?.gender?.male
           ? "Male"
           : user.personalInformation?.gender?.feMale
-            ? "Female"
-            : user.personalInformation?.gender?.others
-              ? "Others"
-              : "N/A",
+          ? "Female"
+          : user.personalInformation?.gender?.others
+          ? "Others"
+          : "N/A",
         user?.personalInformation?.dietaryRequirements?.vegetarian
           ? "Vegetarian"
           : user?.personalInformation?.dietaryRequirements?.nonveg
-            ? "Nonveg"
-            : user?.personalInformation?.dietaryRequirements?.other
-              ? "Other"
-              : "N/A",
+          ? "Nonveg"
+          : user?.personalInformation?.dietaryRequirements?.other
+          ? "Other"
+          : "N/A",
       ];
     });
 
@@ -406,7 +414,7 @@ const AllParticipants = () => {
       );
     }
 
-    const fileName = `Internation_Youth_Camp_details_${currentDate.replace(
+    const fileName = `Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit_${currentDate.replace(
       / /g,
       "_"
     )}.pdf`;
@@ -487,9 +495,11 @@ const AllParticipants = () => {
       day: "2-digit",
     });
 
-    const userName = `${currentUser.personalInformation?.fullName?.firstName || "N/A"
-      } ${currentUser.personalInformation?.fullName?.middleName || ""} ${currentUser.personalInformation?.fullName?.lastName || "N/A"
-      }`;
+    const userName = `${
+      currentUser.personalInformation?.fullName?.firstName || "N/A"
+    } ${currentUser.personalInformation?.fullName?.middleName || ""} ${
+      currentUser.personalInformation?.fullName?.lastName || "N/A"
+    }`;
 
     // Title
     doc.setFontSize(12);
@@ -514,101 +524,43 @@ const AllParticipants = () => {
     const participantRows = [
       [
         "Full Name",
-        `${currentUser?.personalInformation?.fullName?.firstName || "N/A"} ${currentUser?.personalInformation?.fullName?.middleName || ""
+        `${currentUser?.personalInformation?.fullName?.firstName || "N/A"} ${
+          currentUser?.personalInformation?.fullName?.middleName || ""
         } ${currentUser?.personalInformation?.fullName?.lastName || ""}`,
       ],
       [
         "Date Of Birth",
         currentUser.personalInformation?.dateOfBirth
           ? new Date(
-            currentUser.personalInformation?.dateOfBirth
-          ).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })
+              currentUser.personalInformation?.dateOfBirth
+            ).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
           : "N/A",
       ],
-      [
-        "Current Address",
-        currentUser?.personalInformation?.currentAddress || "N/A",
-      ],
-      [
-        "Highest Edu Level",
-        currentUser?.personalInformation?.highestEducationLevel || "N/A",
-      ],
-      [
-        "Leo Multiple District And Club Name",
-        currentUser?.personalInformation?.leoMultipleDistrictAndClubName ||
-        "N/A",
-      ],
-      [
-        "Position in District",
-        currentUser?.personalInformation?.positionInDistrict || "N/A",
-      ],
       ["Status", currentUser?.adminVerification?.status || "N/A"],
-      ["Occupation", currentUser?.personalInformation?.occupation || "N/A"],
-      [
-        "INTL Occupation Passport Number",
-        currentUser?.personalInformation?.intlOccupationPassportNumber || "N/A",
-      ],
-      [
-        "What's App Num",
-        currentUser?.personalInformation?.whatsAppNumber || "N/A",
-      ],
-      [
-        "Emergency Contact Num",
-        currentUser?.personalInformation?.emergencyContactNum || "N/A",
-      ],
+      ["Phone Number", currentUser?.personalInformation?.mobileNumber || "N/A"],
       [
         "Gender",
         currentUser?.personalInformation?.gender?.male
           ? "Male"
           : currentUser?.personalInformation?.gender?.feMale
-            ? "Female"
-            : currentUser?.personalInformation?.gender?.others
-              ? "Others"
-              : "N/A",
+          ? "Female"
+          : currentUser?.personalInformation?.gender?.others
+          ? "Others"
+          : "N/A",
       ],
       [
         "Meal",
         currentUser?.personalInformation?.dietaryRequirements?.vegetarian
           ? "Vegetarian"
           : currentUser?.personalInformation?.dietaryRequirements?.nonveg
-            ? "Nonveg"
-            : currentUser?.personalInformation?.dietaryRequirements?.other
-              ? "Other"
-              : "N/A",
-      ],
-      [
-        "Why do you need to attend this program? Do you have experienced similar camps ?",
-        currentUser?.personalInformation?.whyToAttend || "N/A",
-      ],
-      [
-        "What makes you unique ?",
-        currentUser?.personalInformation?.uniqueness || "N/A",
-      ],
-      [
-        "Explain your Achievemnt Till Now ?",
-        currentUser?.personalInformation?.achievementsTillNow || "N/A",
-      ],
-      [
-        "Do you have any special skills or qualification that makes you a good candidate for this Youth Camp ?",
-        currentUser?.personalInformation?.anySpecialSkillsOrQualifications ||
-        "N/A",
-      ],
-      [
-        "Which Social Media does user use ?",
-        currentUser?.personalInformation?.socialMediaHandle || "N/A",
-      ],
-      [
-        "Describle your current mental and physical health. Do you have any allergies or long-term sickness ?",
-        currentUser?.personalInformation?.currentMentalAndPhysicalHealth ||
-        "N/A",
-      ],
-      [
-        "Are there any notable things we should know about you that haven't been covered in this application ?",
-        currentUser?.personalInformation?.notableThingsToKnow || "N/A",
+          ? "Nonveg"
+          : currentUser?.personalInformation?.dietaryRequirements?.other
+          ? "Other"
+          : "N/A",
       ],
     ];
 
@@ -637,8 +589,6 @@ const AllParticipants = () => {
       },
     });
 
-
-
     const footerText = `Generated on ${currentDate}`;
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
@@ -649,7 +599,7 @@ const AllParticipants = () => {
       { align: "center" }
     );
 
-    const fileName = `International_Youth_Camp_2025 Details${currentDate.replace(
+    const fileName = `Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit_Details${currentDate.replace(
       / /g,
       "-"
     )}.pdf`;
@@ -724,7 +674,7 @@ const AllParticipants = () => {
                     Email
                   </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    What's App Num
+                    Phone Number
                   </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Occupation
@@ -827,7 +777,8 @@ const AllParticipants = () => {
           <div className="text-gray-800">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold text-green-800">
-                The 36th ACSIC Conference Nepal (Participant Details)
+                Energy Transition for Resilient and Low Carbon Economy Summit
+                (Participant Details)
               </h2>
               <img src={acsisclogo} alt="Logo" className="w-12 h-15" />
             </div>
@@ -845,13 +796,16 @@ const AllParticipants = () => {
                     </p>
                     <p className="text-sm">
                       <strong>Full Name:</strong>{" "}
-                      {`${currentUser?.personalInformation?.fullName?.firstName ||
+                      {`${
+                        currentUser?.personalInformation?.fullName?.firstName ||
                         "N/A"
-                        } ${currentUser?.personalInformation?.fullName
+                      } ${
+                        currentUser?.personalInformation?.fullName
                           ?.middleName || ""
-                        } ${currentUser?.personalInformation?.fullName?.lastName ||
+                      } ${
+                        currentUser?.personalInformation?.fullName?.lastName ||
                         "N/A"
-                        }`}
+                      }`}
                     </p>
                     <p className="text-sm">
                       <strong>Nationality:</strong>{" "}
@@ -861,12 +815,12 @@ const AllParticipants = () => {
                       <strong>Date of Birth:</strong>{" "}
                       {currentUser?.personalInformation?.dateOfBirth
                         ? new Date(
-                          currentUser.personalInformation.dateOfBirth
-                        ).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
+                            currentUser.personalInformation.dateOfBirth
+                          ).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })
                         : "N/A"}
                     </p>
                     <p className="text-sm">
@@ -884,9 +838,8 @@ const AllParticipants = () => {
                       {currentUser?.personalInformation?.emailAddress || "N/A"}
                     </p>
                     <p className="text-sm">
-                      <strong>What's App Number:</strong>{" "}
-                      {currentUser?.personalInformation?.whatsAppNumber ||
-                        "N/A"}
+                      <strong>Phone Number:</strong>{" "}
+                      {currentUser?.personalInformation?.mobileNumber || "N/A"}
                     </p>
                     <p className="text-sm">
                       <strong>Emergency Contact Number:</strong>{" "}
@@ -897,35 +850,35 @@ const AllParticipants = () => {
                       dietaryRequirements?.halal ||
                       dietaryRequirements?.nonveg ||
                       showOther) && (
-                        <p className="text-sm">
-                          <strong>Dietary Preferences:</strong>{" "}
-                          {[
-                            dietaryRequirements?.vegetarian && "Vegetarian",
-                            dietaryRequirements?.halal && "Halal",
-                            dietaryRequirements?.nonveg && "Non-Veg",
-                            showOther && dietaryRequirements?.other,
-                          ]
-                            .filter(Boolean)
-                            .join(", ")}
-                        </p>
-                      )}
+                      <p className="text-sm">
+                        <strong>Dietary Preferences:</strong>{" "}
+                        {[
+                          dietaryRequirements?.vegetarian && "Vegetarian",
+                          dietaryRequirements?.halal && "Halal",
+                          dietaryRequirements?.nonveg && "Non-Veg",
+                          showOther && dietaryRequirements?.other,
+                        ]
+                          .filter(Boolean)
+                          .join(", ")}
+                      </p>
+                    )}
                   </div>
                   <div className="flex flex-col items-center ml-4">
                     {currentUser?.personalInformation?.profilePicture
                       ?.fileName && (
-                        <img
-                          src={`https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
-                          // src={`http://localhost:5000/${currentUser.personalInformation?.profilePicture.fileName}`}
-                          alt="Profile"
-                          className="w-20 h-20 rounded-full cursor-pointer"
-                          onClick={() =>
-                            handleImageClick(
-                              `https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
-                              // `https://api.acsicnepal.com/${currentUser.personalInformation.profilePicture.fileName}`
-                            )
-                          }
-                        />
-                      )}
+                      <img
+                        src={`https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        // src={`http://localhost:5000/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        alt="Profile"
+                        className="w-20 h-20 rounded-full cursor-pointer"
+                        onClick={() =>
+                          handleImageClick(
+                            `https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
+                            // `https://api.acsicnepal.com/${currentUser.personalInformation.profilePicture.fileName}`
+                          )
+                        }
+                      />
+                    )}
                     {currentUser && currentUser.personalInformation && (
                       <div className="mt-4">
                         <QRCodeSVG

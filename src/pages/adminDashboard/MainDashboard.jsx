@@ -9,7 +9,7 @@ import { getAllUsersApi, getAllNotificationsApi } from "../../apis/Api";
 import useDocumentTitle from "../../components/DocTitle";
 
 const MainDashboard = () => {
-  useDocumentTitle("Admin Dashboard - International Youth Camp");
+  useDocumentTitle("Admin Dashboard - Uranus Event Management");
   const [userCount, setUserCount] = useState(0);
   const [pendingUserCount, setPendingUserCount] = useState(0);
   const [notificationCount, setNotificationCount] = useState(0);

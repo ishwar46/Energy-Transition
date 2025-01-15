@@ -27,7 +27,7 @@ import {
 } from "recharts";
 import Pagination from "@mui/material/Pagination";
 import loadingAnimation from "../../assets/animations/loading.json";
-import institutions from "../../data/institution";
+// import institutions from "../../data/institution";
 import nodata from "../../assets/animations/nodata.json";
 import useDocumentTitle from "../../components/DocTitle";
 import toast from "react-hot-toast";
@@ -413,7 +413,7 @@ const ParticipantAttendance = () => {
       <div className="mt-5 p-5 border border-gray-200 rounded-md bg-white shadow-sm">
         {/* Filters and Search UI */}
         <div className="flex space-x-4 mb-4">
-          <div className="flex-1">
+          {/* <div className="flex-1">
             <label className="text-sm font-medium text-gray-700">
               Filter by Institution
             </label>
@@ -430,7 +430,7 @@ const ParticipantAttendance = () => {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <div className="flex-1">
             <label className="text-sm font-medium text-gray-700">
               Filter by Status

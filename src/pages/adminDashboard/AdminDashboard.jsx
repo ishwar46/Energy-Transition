@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/leologo.png";
+import logo from "../../assets/images/uranusevents.png";
 import {
   UserGroupIcon,
   // CurrencyDollarIcon,
@@ -134,7 +134,8 @@ const AdminDashboard = () => {
               </div>
               <div className="flex-1 text-center">
                 <span className="text-white text-xl font-semibold">
-                  The International Youth Camp for 2025
+                  Energy Transition for Resilient and Low Carbon Economy Summit
+                  2025
                 </span>
               </div>
               <div className="flex items-center">
@@ -144,11 +145,15 @@ const AdminDashboard = () => {
                       type="button"
                       className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300"
                     >
-                      <img src={logo} className="h-10 m-1" alt="logo" />
+                      <img
+                        src={logo}
+                        className="h-10 m-1 rounded-full"
+                        alt="logo"
+                      />
                     </button>
-                    <span className="text-white ms-2">{userEmail}</span>{" "}
-                    {/* Display the email here */}
+                    <span className="text-white ms-2">{userEmail}</span>
                   </div>
+
                   {isDropdownOpen && (
                     <div
                       className="absolute lg:hidden md:hidden block left-0 top-0 w-full height-[100vh] p-3 bg-white border border-gray-200 divide-y divide-gray-100 rounded shadow-lg"
