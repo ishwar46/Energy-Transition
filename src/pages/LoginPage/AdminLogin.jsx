@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useDocumentTitle from "../../components/DocTitle";
 
 const AdminLogin = () => {
-  useDocumentTitle("Admin Login - International Youth Camp");
+  useDocumentTitle("Admin Login - Uranus Event Management");
 
   useEffect(() => {
     const logoutSuccessMessage = localStorage.getItem("logoutSuccessMessage");

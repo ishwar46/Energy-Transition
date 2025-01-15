@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/images/leologo.png";
+import Logo from "../../assets/images/uranusevents.png";
 import { userLoginApi } from "../../apis/Api";
 import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-  useDocumentTitle("Member Login - International Youth Camp");
+  useDocumentTitle("Member Login - Uranus Event Management");
   const [firstName, setFirstName] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
