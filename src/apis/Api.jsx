@@ -9,12 +9,18 @@ const Api = axios.create({
     "Content-Type": "application/json",
   },
 });
+
 const config = {
   headers: {
     authorization: `Bearer ${localStorage.getItem("token")}`,
     "Content-Type": "multipart/form-data",
   },
 };
+
+//API Calls For Energy Transition for Resilient and Low Carbon Economy Summit
+export const energyRegisterApi = (formData) => Api.post("/api/energy/register", formData, config);
+
+
 // API calls for queries and users
 export const addSubscriberApi = (data) =>
   Api.post("/api/queries/addQueries", data);
