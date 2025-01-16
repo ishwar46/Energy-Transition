@@ -298,8 +298,8 @@ const Registrations = () => {
       <SuccessDialog
         open={successOpen}
         setOpen={setSuccessOpen}
-        title="Registration Successful"
-        description="Thank you for registration for the Energy Transition for Resilient and Low Carbon Economy Summit 2025!  Now, you can check your email for further details and your unique QR code associated with your Registration. We look forward to your participation."
+        title="Application Received"
+        description="Thank you for submitting your application for the Energy Transition for Resilient and Low Carbon Economy Summit 2025! Our team will review your application, and we will notify you via email with further details. We appreciate your patience and look forward to your participation."
         onConfirm={() => setSuccessOpen(false)}
       />
     </>
