@@ -613,9 +613,9 @@ const UserTable = () => {
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Number
                   </th>
-                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                  {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Occupation
-                  </th>
+                  </th> */}
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Status
                   </th>
@@ -648,11 +648,11 @@ const UserTable = () => {
                       {user.personalInformation?.emailAddress || "N/A"}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
-                      {user.personalInformation?.whatsAppNumber || "N/A"}
+                      {user.personalInformation?.mobileNumber || "N/A"}
                     </td>
-                    <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
+                    {/* <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
                       {user.personalInformation?.occupation || "N/A"}
-                    </td>
+                    </td> */}
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm">
                       <span
                         className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusBadge(
