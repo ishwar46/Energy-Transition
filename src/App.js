@@ -27,6 +27,7 @@ import ChiefGuest from "./pages/ChiefGuest/ChiefGuest.jsx";
 import Queries from "./pages/queries/Queries.jsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivcyPolicyPage.jsx";
 import SessionDetails from "./pages/SessionDetails/SessionDetails.jsx";
+import QuestionsForm from "./components/QuestionForm.jsx";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/register" element={<Registrations />} />{" "}
         <Route path="/login" element={<LoginPage />} />{" "}
         <Route path="/sessions" element={<SessionDetails />} />{" "}
+        <Route path="/questions-form" element={<QuestionsForm />} />{" "}
         {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />{" "} */}
         <Route path="/ishwarrrrr" element={<Queries />} />{" "}
         {/* <Route path="/changepassword" element={<ChangePassword />} /> {""}{" "} */}

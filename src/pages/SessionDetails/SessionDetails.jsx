@@ -134,9 +134,14 @@ const SessionDetails = () => {
               </h3>
               <QRCode
                 className="mx-auto"
-                value={currentSession.title}
+                value={`${
+                  window.location.origin
+                }/questions-form?session=${encodeURIComponent(
+                  currentSession.title
+                )}`}
                 size={200}
               />
+
               <button
                 className="mt-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-800 transition duration-300"
                 onClick={closeQrPopup}
