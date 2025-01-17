@@ -577,7 +577,7 @@ const UserTable = () => {
                 {/* Unified search input */}
                 <input
                   type="text"
-                  placeholder="Search by name, email or What's App Number..."
+                  placeholder="Search by name, email or number..."
                   value={searchFilter}
                   onChange={(e) => setSearchFilter(e.target.value)}
                   className="p-2 border rounded w-full sm:w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
