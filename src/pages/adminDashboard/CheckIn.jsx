@@ -149,7 +149,7 @@ const CheckIn = () => {
       "SN",
       "Name",
       "Institution",
-      "Accompanying Person",
+      // "Accompanying Person",
       "Participant Check-in",
       "Check-in Date",
     ];
