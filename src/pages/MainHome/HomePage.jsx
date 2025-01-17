@@ -5,10 +5,8 @@ import Slider from "react-slick";
 import "../../css/homepage.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import cover1 from "../../assets/images/banner1.jpeg";
-import cover2 from "../../assets/images/img1.png";
-import cover3 from "../../assets/images/img3.png";
-import cover4 from "../../assets/images/banner3.jpeg";
+import cover1 from "../../assets/images/banner1.jpg";
+import cover2 from "../../assets/images/banner1.jpg";
 import Snowfall from "react-snowfall";
 
 const HomePage = () => {
@@ -62,7 +60,7 @@ const HomePage = () => {
         />
 
         <Slider {...sliderSettings} className="relative overflow-hidden">
-          {[cover1, cover2, cover3, cover4].map((image, index) => (
+          {[cover1, cover2].map((image, index) => (
             <div key={index} className="relative h-[calc(100vh-112px)]">
               <img
                 src={image}
@@ -74,17 +72,16 @@ const HomePage = () => {
               {/* Overlay Text */}
               <div className="absolute inset-0 flex flex-col justify-center items-center z-20 text-center text-white px-6">
                 <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-wide">
-                  International Youth Camp 2025
+                  Energy Transition for Resilient and Low Carbon Economy Summit
+                  2025
                 </h1>
                 <p className="mt-4 text-xl md:text-3xl font-light tracking-wider">
                   Organized By:{" "}
                   <span className="font-medium">
-                    Leo District Council 325 L, Nepal
+                    Alternate Energy Promotion Center
                   </span>
                 </p>
-                <p className="mt-3 text-base md:text-lg font-light tracking-wide uppercase">
-                  January 3 - 5, 2025 • Chitwan, Nepal
-                </p>
+
                 {/* Register Button */}
                 <button
                   className="mt-8 bg-gradient-to-r from-[#FF5733] to-[#FF8C00] text-white text-lg font-bold py-3 px-10 rounded-full shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
@@ -92,7 +89,7 @@ const HomePage = () => {
                     window.location.href = "/register";
                   }}
                 >
-                  Apply Now
+                  Register Here
                 </button>
               </div>
             </div>

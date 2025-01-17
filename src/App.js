@@ -32,7 +32,7 @@ function App() {
     <Router>
       <Toaster position="bottom-left" reverseOrder={false} /> <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Registrations />} />{" "}
+        <Route path="/" element={<HomePage />} />{" "}
         {/* <Route path="/homepage" element={<HomePage />} />{" "}
         <Route path="/event" element={<Schedule />} />{" "}
         <Route path="/ceomessage" element={<CeoMessage />} />{" "}

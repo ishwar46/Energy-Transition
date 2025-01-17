@@ -57,10 +57,10 @@ const Footer = () => {
           {/* Column 1: Event Details */}
           <div className="space-y-4">
             <h3 className="text-white text-2xl font-bold">
-              International Youth Camp 2025
+              Energy Transition for Resilient and Low Carbon Economy Summit 2025
             </h3>
-            <p className="text-white font-semibold">3rd to 5th Jan, 2025</p>
-            <p className="text-white font-semibold">Chitwan, Nepal</p>
+            <p className="text-white font-semibold">28th Jan, 2025</p>
+            <p className="text-white font-semibold">Kathmandu, Nepal</p>
             <div className="flex gap-2 items-center text-white">
               <img src={Wasapp} alt="WhatsApp" className="h-8" />
               <div>
@@ -71,12 +71,12 @@ const Footer = () => {
               </div>
             </div>
             <a
-              href="www.uranus-technepal.com"
+              href="https://www.aepc.gov.np/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-4 py-2 px-4 bg-green-700 text-white rounded hover:bg-blue-500 transition-colors"
             >
-              Know more about CROWN THE VISION
+              Know more about Alternate Energy Promotion Center
             </a>
           </div>
 
@@ -117,7 +117,7 @@ const Footer = () => {
         </div>
         <hr className="mt-10 border-gray-400" />
         <div className="text-center text-white mt-5">
-          © Leo 2025 International Youth Camp, All rights reserved. |{" "}
+          © Alternative Energy Promotion Center, All rights reserved. |{" "}
           <a
             href="https://uranus-tech.com/"
             target="_blank"

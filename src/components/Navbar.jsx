@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../assets/images/leologo.png";
-import SecondaryLogo1 from "../assets/images/lionslogo.png";
-import SecondaryLogo2 from "../assets/images/leoclublogo.png";
+import Logo from "../assets/images/logo.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowUpCircleIcon,
@@ -273,20 +271,6 @@ const Navbar = () => {
               )}
             </li>
           </ul>
-        </div>
-
-        {/* Secondary Logos */}
-        <div className="flex items-center space-x-4">
-          <img
-            src={SecondaryLogo1}
-            alt="Secondary Logo 1"
-            className="h-8 md:h-10 lg:h-12"
-          />
-          <img
-            src={SecondaryLogo2}
-            alt="Secondary Logo 2"
-            className="h-8 md:h-10 lg:h-12"
-          />
         </div>
       </div>
     </nav>
