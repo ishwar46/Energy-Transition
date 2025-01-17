@@ -631,7 +631,7 @@ const AllParticipants = () => {
                   <img
                     src={excelIcon}
                     alt="Export to Excel"
-                    className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5"
+                    className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lgx:h-5"
                   />
                 </button>
                 {/* Export to PDF */}
