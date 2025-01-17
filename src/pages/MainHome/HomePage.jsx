@@ -78,7 +78,7 @@ const HomePage = () => {
                 <p className="mt-4 text-xl md:text-3xl font-light tracking-wider">
                   Organized By:{" "}
                   <span className="font-medium">
-                    Alternate Energy Promotion Center
+                    Alternative Energy Promotion Center
                   </span>
                 </p>
 
