@@ -5,7 +5,7 @@ import img2 from "../assets/supporters/world-bank-logo.png";
 import img3 from "../assets/supporters/UKaid.svg.png";
 import img4 from "../assets/supporters/nrep.jpg";
 import img5 from "../assets/supporters/giz.jpg";
-import img6 from "../assets/images/leologo.png";
+import img6 from "../assets/supporters/recon.png";
 import img7 from "../assets/images/leologo.png";
 import img8 from "../assets/images/leologo.png";
 import img9 from "../assets/images/leologo.png";
@@ -35,7 +35,7 @@ const Supporters = () => {
     { id: 3, src: img3, alt: "Supporter 3" },
     { id: 4, src: img4, alt: "Supporter 4" },
     { id: 5, src: img5, alt: "Supporter 5" },
-    { id: 6, src: img1, alt: "Supporter 1" },
+    { id: 6, src: img6, alt: "Supporter 1" },
     { id: 7, src: img2, alt: "Supporter 2" },
     { id: 8, src: img3, alt: "Supporter 3" },
     { id: 9, src: img4, alt: "Supporter 4" },
