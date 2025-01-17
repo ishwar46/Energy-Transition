@@ -184,6 +184,16 @@ const Navbar = () => {
             </li>
             <li>
               <Link
+                to="/sessions"
+                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
+                  "/chiefguest"
+                )} md:bg-transparent md:p-0 hover:text-white`}
+              >
+                Session Details
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/event"
                 className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
                   "/event"
@@ -220,16 +230,6 @@ const Navbar = () => {
                 )} md:bg-transparent md:p-0 hover:text-white`}
               >
                 Gallery
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/chiefguest"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
-                  "/chiefguest"
-                )} md:bg-transparent md:p-0 hover:text-white`}
-              >
-                Chief Guest
               </Link>
             </li>
             <li>
