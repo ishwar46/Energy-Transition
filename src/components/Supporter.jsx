@@ -7,23 +7,24 @@ import img4 from "../assets/supporters/nrep.jpg";
 import img5 from "../assets/supporters/giz.jpg";
 import img6 from "../assets/supporters/recon.png";
 import img7 from "../assets/supporters/adb.png";
-import img8 from "../assets/images/leologo.png";
-import img9 from "../assets/images/leologo.png";
-import img10 from "../assets/images/leologo.png";
-import img11 from "../assets/images/leologo.png";
-import img12 from "../assets/images/leologo.png";
-import img13 from "../assets/images/leologo.png";
-import img14 from "../assets/images/leologo.png";
-import img15 from "../assets/images/leologo.png";
-import img16 from "../assets/images/leologo.png";
-import img17 from "../assets/images/leologo.png";
-import img18 from "../assets/images/leologo.png";
-import img19 from "../assets/images/leologo.png";
-import img20 from "../assets/images/leologo.png";
-import img21 from "../assets/images/leologo.png";
-import img23 from "../assets/images/leologo.png";
-import img24 from "../assets/images/leologo.png";
-import img25 from "../assets/images/leologo.png";
+import img8 from "../assets/supporters/wwf.png";
+import img9 from "../assets/supporters/bank_aus_verantwortung.png";
+import img10 from "../assets/supporters/bfin.png";
+import img11 from "../assets/supporters/clean_cooking_alliance.png";
+import img12 from "../assets/supporters/endev.png";
+import img13 from "../assets/supporters/franke.png";
+import img14 from "../assets/supporters/gggi.png";
+import img15 from "../assets/supporters/green_fund_climate.jpg";
+import img16 from "../assets/supporters/imwi.png";
+import img17 from "../assets/supporters/kathmandu_university.png";
+import img18 from "../assets/supporters/nmb_bank.jpg";
+import img19 from "../assets/supporters/norway.png";
+import img20 from "../assets/supporters/practical_action.png";
+import img21 from "../assets/supporters/renewable_world.png";
+import img22 from "../assets/supporters/snv.jpg";
+import img23 from "../assets/supporters/tribhuwan_university.png";
+import img24 from "../assets/supporters/undp.png";
+import img25 from "../assets/supporters/unicef_for_every_child.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -37,24 +38,24 @@ const Supporters = () => {
     { id: 5, src: img5, alt: "Supporter 5" },
     { id: 6, src: img6, alt: "Supporter 1" },
     { id: 7, src: img7, alt: "Supporter 2" },
-    { id: 8, src: img3, alt: "Supporter 3" },
-    { id: 9, src: img4, alt: "Supporter 4" },
-    { id: 10, src: img5, alt: "Supporter 5" },
-    { id: 11, src: img1, alt: "Supporter 1" },
-    { id: 12, src: img2, alt: "Supporter 2" },
-    { id: 13, src: img3, alt: "Supporter 3" },
-    { id: 14, src: img4, alt: "Supporter 4" },
-    { id: 15, src: img5, alt: "Supporter 5" },
-    { id: 16, src: img1, alt: "Supporter 1" },
-    { id: 17, src: img2, alt: "Supporter 2" },
-    { id: 18, src: img3, alt: "Supporter 3" },
-    { id: 19, src: img4, alt: "Supporter 4" },
-    { id: 20, src: img5, alt: "Supporter 5" },
-    { id: 21, src: img1, alt: "Supporter 1" },
-    { id: 22, src: img2, alt: "Supporter 2" },
-    { id: 23, src: img3, alt: "Supporter 3" },
-    { id: 24, src: img4, alt: "Supporter 4" },
-    { id: 25, src: img5, alt: "Supporter 5" },
+    { id: 8, src: img8, alt: "Supporter 3" },
+    { id: 9, src: img9, alt: "Supporter 4" },
+    { id: 10, src: img10, alt: "Supporter 5" },
+    { id: 11, src: img11, alt: "Supporter 1" },
+    { id: 12, src: img12, alt: "Supporter 2" },
+    { id: 13, src: img13, alt: "Supporter 3" },
+    { id: 14, src: img14, alt: "Supporter 4" },
+    { id: 15, src: img15, alt: "Supporter 5" },
+    { id: 16, src: img16, alt: "Supporter 1" },
+    { id: 17, src: img17, alt: "Supporter 2" },
+    { id: 18, src: img18, alt: "Supporter 3" },
+    { id: 19, src: img19, alt: "Supporter 4" },
+    { id: 20, src: img20, alt: "Supporter 5" },
+    { id: 21, src: img21, alt: "Supporter 1" },
+    { id: 22, src: img22, alt: "Supporter 2" },
+    { id: 23, src: img23, alt: "Supporter 3" },
+    { id: 24, src: img24, alt: "Supporter 4" },
+    { id: 25, src: img25, alt: "Supporter 5" },
   ];
 
   const sliderSettings = {
