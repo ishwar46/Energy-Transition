@@ -613,9 +613,9 @@ const UserTable = () => {
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Number
                   </th>
-                  {/* <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Occupation
-                  </th> */}
+                  <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                    Institution
+                  </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Status
                   </th>
@@ -639,10 +639,7 @@ const UserTable = () => {
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
                       {user.personalInformation?.fullName?.firstName || "N/A"}{" "}
-                      {user.personalInformation?.fullName?.lastName || "N/A"}{" "}
-                      {user.chiefDelegateOrSpeaker?.chiefDelegate && (
-                        <span title="Chief Delegate">⭐</span>
-                      )}
+                      {user.personalInformation?.fullName?.lastName || "N/A"}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
                       {user.personalInformation?.emailAddress || "N/A"}
@@ -650,9 +647,9 @@ const UserTable = () => {
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
                       {user.personalInformation?.mobileNumber || "N/A"}
                     </td>
-                    {/* <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
-                      {user.personalInformation?.occupation || "N/A"}
-                    </td> */}
+                    <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
+                      {user.personalInformation?.nameOfInstitution || "N/A"}
+                    </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm">
                       <span
                         className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusBadge(
