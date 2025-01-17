@@ -6,8 +6,9 @@ import "../../css/homepage.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import cover1 from "../../assets/images/banner1.jpg";
-import cover2 from "../../assets/images/banner1.jpg";
+import cover2 from "../../assets/images/energybanner.png";
 import Snowfall from "react-snowfall";
+import Supporters from "../../components/Supporter";
 
 const HomePage = () => {
   const sliderSettings = {
@@ -24,39 +25,30 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-
       <div className="relative">
         <Snowfall
-          // Positioning & z-index, so it covers the entire screen:
           style={{
             position: "fixed",
             width: "100vw",
             height: "100vh",
             zIndex: 9999,
           }}
-          // Increase the number of snowflakes:
           snowflakeCount={200}
-          // Speed range ([min, max]) so some flakes fall fast, some slow:
           speed={[0.5, 3.0]}
-          // Wind range ([min, max]) so flakes drift sideways:
           wind={[-1.0, 2.0]}
-          // Vary the flake radius:
           radius={[0.5, 2.0]}
-          // Color the flakes:
           color="white"
-          snowflakeFactory={(defaultProps) => {
-            return (
-              <div
-                style={{
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  backgroundColor: "white",
-                  boxShadow: "0 0 3px 1px white",
-                }}
-              />
-            );
-          }}
+          snowflakeFactory={(defaultProps) => (
+            <div
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                backgroundColor: "white",
+                boxShadow: "0 0 3px 1px white",
+              }}
+            />
+          )}
         />
 
         <Slider {...sliderSettings} className="relative overflow-hidden">
@@ -67,9 +59,7 @@ const HomePage = () => {
                 className="object-cover w-full h-full"
                 alt={`slide-${index}`}
               />
-              {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10" />
-              {/* Overlay Text */}
               <div className="absolute inset-0 flex flex-col justify-center items-center z-20 text-center text-white px-6">
                 <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-wide">
                   Energy Transition for Resilient and Low Carbon Economy Summit
@@ -81,8 +71,6 @@ const HomePage = () => {
                     Alternative Energy Promotion Center
                   </span>
                 </p>
-
-                {/* Register Button */}
                 <button
                   className="mt-8 bg-gradient-to-r from-[#FF5733] to-[#FF8C00] text-white text-lg font-bold py-3 px-10 rounded-full shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
                   onClick={() => {
@@ -96,7 +84,7 @@ const HomePage = () => {
           ))}
         </Slider>
       </div>
-
+      <Supporters />
       <div className="bg-[#001942] p-5 w-full">
         <Footer />
       </div>
