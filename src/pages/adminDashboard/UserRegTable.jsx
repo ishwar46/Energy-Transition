@@ -614,7 +614,7 @@ const UserTable = () => {
                     Number
                   </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Institution
+                    Organization
                   </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Status
@@ -790,13 +790,11 @@ const UserTable = () => {
                       <strong className="font-medium">Mobile Number:</strong>{" "}
                       {currentUser?.personalInformation?.mobileNumber || "N/A"}
                     </p>
-                    {/* <p>
-                      <strong className="font-medium">
-                        Emergency Contact:
-                      </strong>{" "}
-                      {currentUser?.personalInformation?.emergencyContactNum ||
+                    <p>
+                      <strong className="font-medium">Organization</strong>{" "}
+                      {currentUser?.personalInformation?.nameOfInstitution ||
                         "N/A"}
-                    </p> */}
+                    </p>
 
                     {/* Dietary Preferences */}
                     {(dietaryRequirements?.vegetarian ||
