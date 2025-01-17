@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 import { energyRegisterApi } from "../../apis/Api";
 import SuccessDialog from "../../components/SuccessDialog";
+import Navbar from "../../components/Navbar";
 
 const Registrations = () => {
   useDocumentTitle(
@@ -109,6 +110,8 @@ const Registrations = () => {
 
   return (
     <>
+      {" "}
+      <Navbar />
       <div className="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-4xl font-bold text-blue-800 text-center mb-8">
           Registration Form
@@ -314,7 +317,6 @@ const Registrations = () => {
           </div>
         </form>
       </div>
-
       {/* Success Dialog */}
       <SuccessDialog
         open={successOpen}
