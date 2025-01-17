@@ -63,50 +63,62 @@ const Supporters = () => {
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "20px",
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 4,
+          centerPadding: "20px",
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 3,
+          centerPadding: "20px",
         },
       },
       {
         breakpoint: 640,
         settings: {
           slidesToShow: 2,
+          centerPadding: "10px",
         },
       },
     ],
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
     arrows: false,
   };
 
   return (
-    <div className="py-16 px-8 bg-gray-50">
-      <h2 className="text-center text-3xl font-bold mb-8 text-gray-800">
-        Our Supporters
-      </h2>
-      <Slider {...sliderSettings}>
-        {supporters.map((supporter) => (
-          <div
-            key={supporter.id}
-            className="flex items-center justify-center p-4"
-          >
-            <img
-              src={supporter.src}
-              alt={supporter.alt}
-              className="object-contain w-full h-20 transition-transform duration-300 transform hover:scale-110"
-            />
-          </div>
-        ))}
-      </Slider>
+    <div className="mt-0 px-2 sm:px-4 py-10">
+      <h1 className="font-semibold text-green-700 text-2xl md:text-3xl text-center mb-2">
+        We are Supported By
+      </h1>
+      <p className="text-center text-gray-600 text-sm md:text-base mb-8">
+        Our supporters include some of the most esteemed organizations.
+      </p>
+      <div className="max-w-full mx-auto">
+        <Slider {...sliderSettings}>
+          {supporters.map((supporter) => (
+            <div
+              key={supporter.id}
+              className="flex items-center justify-center p-2"
+            >
+              <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow p-4 flex items-center justify-center w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32">
+                <img
+                  src={supporter.src}
+                  alt={supporter.alt}
+                  className="max-h-full max-w-full object-contain"
+                />
+              </div>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
