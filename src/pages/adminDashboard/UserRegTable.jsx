@@ -630,7 +630,7 @@ const UserTable = () => {
                     key={user._id}
                     className={
                       duplicateUserIds && duplicateUserIds.includes(user._id)
-                        ? "bg-yellow-100"
+                        ? "bg-yellow-100 bg-opacity-50"
                         : ""
                     }
                   >
