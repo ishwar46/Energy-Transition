@@ -38,7 +38,6 @@ function App() {
         {/* <Route path="/homepage" element={<HomePage />} />{" "}
         <Route path="/event" element={<Schedule />} />{" "}
         <Route path="/ceomessage" element={<CeoMessage />} />{" "}
-        <Route path="/accomodation" element={<Accomodation />} />{" "}
         <Route path="/speakers" element={<Speakers />} />{" "}
         <Route path="/schedulenew" element={<Schedule />} />{" "}
         <Route path="/gallery" element={<GallerySection />} />{" "}
@@ -50,6 +49,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />{" "}
         <Route path="/sessions" element={<SessionDetails />} />{" "}
         <Route path="/questions-form" element={<QuestionsForm />} />{" "}
+        <Route path="/accomodation" element={<Accomodation />} />{" "}
         {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />{" "} */}
         <Route path="/ishwarrrrr" element={<Queries />} />{" "}
         {/* <Route path="/changepassword" element={<ChangePassword />} /> {""}{" "} */}
