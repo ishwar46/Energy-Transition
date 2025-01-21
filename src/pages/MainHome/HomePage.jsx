@@ -85,7 +85,7 @@ const HomePage = () => {
         </Slider>
       </div>
       <Supporters />
-      <div className="bg-[#001942] p-5 w-full">
+      <div className="bg-[#0060df] p-5 w-full">
         <Footer />
       </div>
     </>
