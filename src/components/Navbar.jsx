@@ -68,13 +68,11 @@ const Navbar = () => {
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-3">
         {/* Left Section with Logo and Text */}
         <div className="flex items-center space-x-3">
-          {/* Logo */}
           <img
             src={Logo}
             className="h-12 md:h-16 rounded"
             alt="Government Logo"
           />
-          {/* Text */}
           <div className="hidden md:block">
             <h3 className="text-red-500 font-semibold text-xs md:text-xs whitespace-nowrap">
               Government of Nepal
@@ -91,7 +89,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Hamburger Menu Button */}
         <button
           onClick={toggleMenu}
           type="button"
@@ -117,94 +115,162 @@ const Navbar = () => {
           </svg>
         </button>
 
-        {/* Navbar Links */}
+        {/* Mobile Menu */}
         <div
-          className={`w-full md:block md:w-auto ${
+          className={`fixed top-0 left-0 w-full h-full z-40 ${
             isMenuOpen ? "block" : "hidden"
           }`}
-          id="navbar-default"
         >
-          {/* Close Button */}
-          {isMenuOpen && (
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black opacity-50"
+            onClick={toggleMenu}
+          ></div>
+
+          {/* Menu Content */}
+          <div
+            className={`absolute top-0 right-0 w-3/4 max-w-sm h-full bg-white shadow-lg transform transition-transform ${
+              isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            {/* Close Button */}
             <button
               onClick={toggleMenu}
-              className="absolute top-4 right-4 p-2 bg-gray-200 rounded-full hover:bg-gray-300 md:hidden"
+              className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-300 focus:outline-none"
             >
               <XCircleIcon className="h-6 w-6 text-gray-600" />
             </button>
+
+            {/* Menu Links */}
+            <ul className="space-y-6 mt-16 px-6 text-gray-800">
+              <li>
+                <Link
+                  to="/"
+                  className={`block text-lg font-medium ${isActive("/")}`}
+                  onClick={toggleMenu}
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/sessions"
+                  className={`block text-lg font-medium ${isActive(
+                    "/sessions"
+                  )}`}
+                  onClick={toggleMenu}
+                >
+                  Session Details
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/accomodation"
+                  className={`block text-lg font-medium ${isActive(
+                    "/accomodation"
+                  )}`}
+                  onClick={toggleMenu}
+                >
+                  Venue
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/register"
+                  className={`block text-lg font-medium ${isActive(
+                    "/register"
+                  )}`}
+                  onClick={toggleMenu}
+                >
+                  Registration
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={isAdmin ? "/admindashboard" : "/userdashboard"}
+                  className={`block text-lg font-medium ${isActive(
+                    "/userdashboard"
+                  )}`}
+                  onClick={toggleMenu}
+                >
+                  👋 Hey! {username}
+                </Link>
+              </li>
+              <li>
+                {isLoggedIn ? (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      toggleMenu();
+                    }}
+                    className="block text-lg text-red-500 hover:text-red-600 font-medium flex items-center"
+                  >
+                    <PowerIcon className="h-5 w-5 mr-2" />
+                    Logout
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      handleLoginClick();
+                      toggleMenu();
+                    }}
+                    className="block text-lg text-green-500 hover:text-green-600 font-medium flex items-center"
+                  >
+                    <ArrowUpCircleIcon className="h-5 w-5 mr-2" />
+                    Login
+                  </button>
+                )}
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Desktop Navbar Links */}
+        <div className="hidden md:flex items-center space-x-6">
+          <Link to="/" className={`text-sm font-medium ${isActive("/")}`}>
+            Home
+          </Link>
+          <Link
+            to="/sessions"
+            className={`text-sm font-medium ${isActive("/sessions")}`}
+          >
+            Session Details
+          </Link>
+          <Link
+            to="/accomodation"
+            className={`text-sm font-medium ${isActive("/accomodation")}`}
+          >
+            Venue
+          </Link>
+          <Link
+            to="/register"
+            className={`text-sm font-medium ${isActive("/register")}`}
+          >
+            Registration
+          </Link>
+          <Link
+            to={isAdmin ? "/admindashboard" : "/userdashboard"}
+            className="text-sm font-medium text-gray-800 hover:text-blue-500"
+          >
+            👋 Hey! {username}
+          </Link>
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="text-sm font-medium text-red-500 hover:text-red-600 flex items-center"
+            >
+              <PowerIcon className="h-5 w-5 mr-1" />
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={handleLoginClick}
+              className="text-sm font-medium text-green-500 hover:text-green-600 flex items-center"
+            >
+              <ArrowUpCircleIcon className="h-5 w-5 mr-1" />
+              Login
+            </button>
           )}
-          <ul className="font-medium flex flex-col md:flex-row md:items-center md:space-x-6">
-            <li>
-              <Link
-                to="/"
-                className={`py-2 px-3 text-sm md:text-base ${isActive("/")}`}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/sessions"
-                className={`py-2 px-3 text-sm md:text-base ${isActive(
-                  "/sessions"
-                )}`}
-              >
-                Session Details
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/accomodation"
-                className={`py-2 px-3 text-sm md:text-base ${isActive(
-                  "/accomodation"
-                )}`}
-              >
-                Venue
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/register"
-                className={`py-2 px-3 text-sm md:text-base ${isActive(
-                  "/register"
-                )}`}
-              >
-                Registration
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={isAdmin ? "/admindashboard" : "/userdashboard"}
-                className={`py-2 px-3 text-sm md:text-base ${isActive(
-                  "/userdashboard"
-                )}`}
-              >
-                👋 Hey! {username}
-              </Link>
-            </li>
-            <li>
-              {isLoggedIn ? (
-                <button
-                  onClick={handleLogout}
-                  className="flex items-center text-sm text-red-500 hover:text-red-600"
-                >
-                  <PowerIcon className="h-5 w-5 mr-1" aria-hidden="true" />
-                  Logout
-                </button>
-              ) : (
-                <button
-                  onClick={handleLoginClick}
-                  className="flex items-center text-sm text-green-500 hover:text-green-600"
-                >
-                  <ArrowUpCircleIcon
-                    className="h-5 w-5 mr-1"
-                    aria-hidden="true"
-                  />
-                  Login
-                </button>
-              )}
-            </li>
-          </ul>
         </div>
       </div>
     </nav>
