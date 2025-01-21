@@ -1,4 +1,10 @@
 import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-coverflow";
 import "../../css/animations.css";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
@@ -170,65 +176,86 @@ const SessionDetails = () => {
     <>
       <Navbar />
       <div className="relative mx-auto px-4 sm:px-6 lg:px-8 py-10 max-w-7xl">
+        {/* Hero Section */}
         <div
-          className="text-4xl font-bold text-blue-800 text-center mb-10"
+          className="text-center bg-gradient-to-r from-blue-700 via-teal-500 to-blue-700 text-white py-12 rounded-lg shadow-lg"
           style={{ animation: "fadeIn 1s ease-out" }}
         >
-          Session Details
+          <h1 className="text-4xl font-extrabold mb-4">Session Details</h1>
+          <p className="text-lg font-medium">
+            Explore the agenda, speakers, and highlights of Energy Summit 2025.
+          </p>
         </div>
 
-        <div className="space-y-8">
-          {sessions.map((session, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg p-6 text-left transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
-              style={{ animation: "slideUp 0.8s ease-out forwards" }}
-            >
-              <h3 className="text-2xl font-bold text-blue-800 mb-4">
-                {session.title}
-              </h3>
-              <p className="text-md font-semibold text-gray-600 mb-4">
-                Time: {session.time}
-              </p>
-              <ul className="list-disc pl-5 space-y-2">
-                {session.program.map((item, i) => (
-                  <li key={i} className="text-gray-700">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-4">
-                <h4 className="text-lg font-semibold text-gray-800 mb-2">
-                  Speakers:
-                </h4>
-                <ul className="list-none pl-0 space-y-4">
-                  {session.details.map((detail, i) => (
-                    <li key={i} className="flex items-center space-x-4">
-                      <img
-                        src={detail.image}
-                        alt={detail.name}
-                        className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
-                      />
-                      <div>
-                        <p className="text-md font-semibold text-gray-700">
-                          {detail.name}
-                        </p>
-                        <p className="text-sm text-gray-500">{detail.role}</p>
-                      </div>
+        {/* Swiper Slider */}
+        <div className="mt-10">
+          <Swiper
+            modules={[Pagination, EffectCoverflow]}
+            pagination={{ clickable: true }}
+            effect="coverflow"
+            centeredSlides
+            slidesPerView={1}
+            spaceBetween={20}
+            breakpoints={{
+              640: { slidesPerView: 1.5, spaceBetween: 30 },
+              768: { slidesPerView: 2, spaceBetween: 40 },
+              1024: { slidesPerView: 3, spaceBetween: 50 },
+            }}
+            loop
+            className="rounded-lg shadow-lg"
+          >
+            {sessions.map((session, index) => (
+              <SwiperSlide
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl"
+              >
+                <h3 className="text-2xl font-bold text-blue-800 mb-4">
+                  {session.title}
+                </h3>
+                <p className="text-md font-semibold text-gray-600 mb-4">
+                  Time: {session.time}
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                  {session.program.map((item, i) => (
+                    <li key={i} className="text-gray-700">
+                      {item}
                     </li>
                   ))}
                 </ul>
-              </div>
-              <button
-                className="mt-4 px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-800 transition duration-300"
-                onClick={() => handleQrClick(session)}
-              >
-                View QR Code
-              </button>
-            </div>
-          ))}
+                <div className="mt-4">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                    Speakers:
+                  </h4>
+                  <ul className="list-none pl-0 space-y-4">
+                    {session.details.map((detail, i) => (
+                      <li key={i} className="flex items-center space-x-4">
+                        <img
+                          src={detail.image}
+                          alt={detail.name}
+                          className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
+                        />
+                        <div>
+                          <p className="text-md font-semibold text-gray-700">
+                            {detail.name}
+                          </p>
+                          <p className="text-sm text-gray-500">{detail.role}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <button
+                  className="mt-4 px-4 py-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold rounded hover:from-blue-800 hover:to-teal-600 transition duration-300"
+                  onClick={() => handleQrClick(session)}
+                >
+                  View QR Code
+                </button>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
+        {/* QR Code Popup */}
         {qrVisible && currentSession && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg p-6 w-96 flex flex-col items-center text-center relative">
@@ -244,7 +271,6 @@ const SessionDetails = () => {
                 )}`}
                 size={200}
               />
-
               <button
                 className="mt-4 px-4 py-2 bg-red-600 text-white font-semibold rounded hover:bg-red-800 transition duration-300"
                 onClick={closeQrPopup}
