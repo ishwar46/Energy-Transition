@@ -107,7 +107,7 @@ const SessionDetails = () => {
 
       {/* Speakers Modal */}
       {speakersModalVisible && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="relative bg-white rounded-xl shadow-lg overflow-y-auto max-h-[90vh] w-11/12 max-w-4xl p-8 mt-4 mb-4">
             {/* Close Button */}
             <button
@@ -134,10 +134,12 @@ const SessionDetails = () => {
                     alt={speaker.name}
                     className="w-20 h-20 rounded-full border-4 border-blue-500 shadow-lg object-cover mb-4 transition-transform transform group-hover:scale-110"
                   />
-                  <h5 className="text-lg font-bold text-blue-800 text-center">
+                  {/* Name */}
+                  <h5 className="text-sm font-normal text-blue-800 text-center">
                     {speaker.name}
                   </h5>
-                  <p className="text-sm text-gray-600 text-center mt-2">
+                  {/* Role */}
+                  <p className="text-xs text-gray-600 text-center mt-2 italic">
                     {speaker.role}
                   </p>
                 </div>
@@ -154,6 +156,7 @@ const SessionDetails = () => {
           </div>
         </div>
       )}
+
       <Footer />
     </>
   );

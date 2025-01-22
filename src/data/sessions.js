@@ -21,58 +21,62 @@ const sessions = [
         ],
         details: [
             {
-                name: "Session Chair",
-                role: "Nawa Raj Dhakal, AEPC-ED, Chairperson",
+                role: "Session Chair",
+                name: "Nawa Raj Dhakal, AEPC-ED, Chairperson",
                 image: userimg,
             },
             {
-                name: "Chief Guest",
-                role: "Mr. Dipak Khadka, Hon'ble Minister, MoEWRI",
+                role: "Chief Guest",
+                name: "Mr. Dipak Khadka, Hon'ble Minister, MoEWRI",
                 image: userimg,
             },
             {
-                name: "Special Guest",
-                role: "Dr. Ram Prasad Dhital, ERC, Chairperson",
-                image: userimg,
-            },
-
-            {
-                name: "Special Guest",
-                role: "Mr.Purna Bahadur Tamang, Hon'ble State Minister, MoEWRI",
+                role: "Special Guest",
+                name: "Dr. Ram Prasad Dhital, ERC, Chairperson",
                 image: userimg,
             },
             {
-                name: "Special Guest",
-                role: "Prof. Dr.  R.P. Bichha, Hon'ble Member, National Planning Commission (NPC)",
+                role: "Special Guest",
+                name: "Mr. Purna Bahadur Tamang, Hon'ble State Minister, MoEWRI",
                 image: userimg,
             },
             {
-                name: "Guest",
-                role: "Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
+                role: "Special Guest",
+                name: "Prof. Dr. R.P. Bichha, Hon'ble Member, National Planning Commission (NPC)",
                 image: userimg,
             },
             {
-                name: "Guest",
-                role: "Mr. Suresh Acharya, Secretary (Energy), MoEWRI",
+                role: "Guest",
+                name: "Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
                 image: userimg,
             },
             {
-                name: "Guest",
-                role: "Ms. Pippa Bird, Development Director & Deputy Ambassador for Nepal from UK, British Embassy (Representative of DPs in Nepal)",
+                role: "Guest",
+                name: "Mr. Suresh Acharya, Secretary (Energy), MoEWRI",
                 image: userimg,
             },
             {
-                name: "Guest",
-                role: "Dr. Pema Gyamtsho, Director General, International Center for Integrated Mountain Development (ICIMOD)",
+                role: "Guest",
+                name: "Ms. Pippa Bird, Development Director & Deputy Ambassador for Nepal from UK, British Embassy (Representative of DPs in Nepal)",
                 image: userimg,
             },
             {
-                name: "Guest",
-                role: "Ms. Gauri Singh, Deputy Director General, International Renewable Energy Agency (IRENA)",
+                role: "Guest",
+                name: "Dr. Pema Gyamtsho, Director General, International Center for Integrated Mountain Development (ICIMOD)",
                 image: userimg,
             },
-
-        ],
+            {
+                role: "Guest",
+                name: "Ms. Gauri Singh, Deputy Director General, International Renewable Energy Agency (IRENA)",
+                image: userimg,
+            },
+            {
+                role: "Guest",
+                name: "Mr. Kushal Gurung, Chairperson, Renewable Energy Confederation of Nepal (RECON) (Representative - Private Sector)",
+                image: userimg,
+            },
+        ]
+        ,
     },
     {
         title:
