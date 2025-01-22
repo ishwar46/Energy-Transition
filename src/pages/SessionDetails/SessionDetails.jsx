@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
@@ -16,6 +16,20 @@ const SessionDetails = () => {
 
   const [speakersModalVisible, setSpeakersModalVisible] = useState(false);
   const [selectedSessionSpeakers, setSelectedSessionSpeakers] = useState([]);
+
+  useEffect(() => {
+    // Disable body scrolling when the modal is open
+    if (speakersModalVisible) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [speakersModalVisible]);
 
   const openSpeakersModal = (speakers) => {
     setSelectedSessionSpeakers(speakers);
@@ -93,36 +107,49 @@ const SessionDetails = () => {
 
       {/* Speakers Modal */}
       {speakersModalVisible && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex justify-center items-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-2xl w-full shadow-lg relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-50">
+          <div className="relative bg-white rounded-xl shadow-lg overflow-y-auto max-h-[90vh] w-11/12 max-w-4xl p-8 mt-4 mb-4">
+            {/* Close Button */}
             <button
               onClick={closeSpeakersModal}
-              className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full"
+              className="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
             >
               ✕
             </button>
-            <h4 className="text-2xl font-bold text-center mb-6">
-              Speakers Details
+
+            {/* Modal Title */}
+            <h4 className="text-2xl font-bold text-center text-gray-800 mb-8">
+              Guest/Speaker Details
             </h4>
-            <div className="grid grid-cols-2 gap-4">
+
+            {/* Speaker Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {selectedSessionSpeakers.map((speaker, index) => (
                 <div
                   key={index}
-                  className="bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition"
+                  className="group bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-md p-5 flex flex-col items-center transition-transform transform hover:scale-105 hover:shadow-xl"
                 >
                   <img
                     src={speaker.image}
                     alt={speaker.name}
-                    className="w-16 h-16 rounded-full object-cover mx-auto mb-3"
+                    className="w-20 h-20 rounded-full border-4 border-blue-500 shadow-lg object-cover mb-4 transition-transform transform group-hover:scale-110"
                   />
-                  <h5 className="text-md font-semibold text-center text-blue-800">
+                  <h5 className="text-lg font-bold text-blue-800 text-center">
                     {speaker.name}
                   </h5>
-                  <p className="text-sm text-center text-gray-600">
+                  <p className="text-sm text-gray-600 text-center mt-2">
                     {speaker.role}
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Footer or Extra Info */}
+            <div className="mt-6 text-center">
+              <p className="text-gray-500 text-sm">
+                Energy Transition for Resilient and Low Carbon Economy Summit
+                2025.
+              </p>
             </div>
           </div>
         </div>

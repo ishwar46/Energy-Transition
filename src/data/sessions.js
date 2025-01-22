@@ -3,10 +3,9 @@ import userimg from "../../src/assets/images/nepal.png";
 const sessions = [
     {
         title: "Opening Session",
-        time: "8:30 AM - 10:30",
+        time: "8:30 AM - 10:30 AM",
         program: [
-            "Registration",
-            "Call on Dias",
+            "Registration (8:30 AM - 9:00 PM)",
             "Welcome and Description of Program Objective - Dr. Narayan Prasad Adhikari; Deputy Executive Director, AEPC",
             "Inauguration of the Program by Chief Guest, Hon,ble Minister, MoEWRI",
             "Keynote presentation on Energy Transition for Resilient and Low Carbon Economy: Global Experiences, Opportunities and Challenges for Nepal; by Prof. Dr. Shobhakar Dhakal (Professor, Asian Institute of Technology (AIT), Thailand)",
@@ -36,11 +35,43 @@ const sessions = [
                 role: "Dr. Ram Prasad Dhital, ERC, Chairperson",
                 image: userimg,
             },
+
             {
-                name: "Keynote",
-                role: "Energy Transition for Resilient and Low Carbon Economy by Prof. Dr. Shobhakar Dhakal",
+                name: "Special Guest",
+                role: "Mr.Purna Bahadur Tamang, Hon'ble State Minister, MoEWRI",
                 image: userimg,
             },
+            {
+                name: "Special Guest",
+                role: "Prof. Dr.  R.P. Bichha, Hon'ble Member, National Planning Commission (NPC)",
+                image: userimg,
+            },
+            {
+                name: "Guest",
+                role: "Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
+                image: userimg,
+            },
+            {
+                name: "Guest",
+                role: "Mr. Suresh Acharya, Secretary (Energy), MoEWRI",
+                image: userimg,
+            },
+            {
+                name: "Guest",
+                role: "Ms. Pippa Bird, Development Director & Deputy Ambassador for Nepal from UK, British Embassy (Representative of DPs in Nepal)",
+                image: userimg,
+            },
+            {
+                name: "Guest",
+                role: "Dr. Pema Gyamtsho, Director General, International Center for Integrated Mountain Development (ICIMOD)",
+                image: userimg,
+            },
+            {
+                name: "Guest",
+                role: "Ms. Gauri Singh, Deputy Director General, International Renewable Energy Agency (IRENA)",
+                image: userimg,
+            },
+
         ],
     },
     {
