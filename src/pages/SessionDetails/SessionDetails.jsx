@@ -76,27 +76,38 @@ const SessionDetails = () => {
             {sessions.map((session, index) => (
               <SwiperSlide
                 key={index}
-                className="bg-white rounded-lg shadow-lg p-6 transition-transform transform hover:scale-105 hover:shadow-2xl"
+                className="group bg-gradient-to-br from-white via-blue-50 to-blue-100 rounded-lg shadow-lg p-6 flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-xl"
               >
-                <h3 className="text-2xl font-bold text-blue-800 mb-4">
+                {/* Session Title */}
+                <h3 className="text-lg font-bold text-blue-800 mb-2 text-center">
                   {session.title}
                 </h3>
-                <p className="text-md font-semibold text-gray-600 mb-4">
-                  Time: {session.time}
+
+                {/* Separator */}
+                <div className="w-10 mx-auto border-b-2 border-blue-500 mb-4"></div>
+
+                {/* Session Time */}
+                <p className="text-md font-semibold text-gray-600 text-center mb-4">
+                  <span className="font-bold text-blue-600">Time:</span>{" "}
+                  {session.time}
                 </p>
-                <ul className="list-disc pl-5 space-y-2">
-                  {session.program.map((item, i) => (
-                    <li key={i} className="text-gray-700">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+
+                {/* Program List */}
+                <div className="overflow-y-auto max-h-40 px-2">
+                  <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                    {session.program.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Show All Speakers Button */}
                 <div className="mt-4 text-center">
                   <button
                     onClick={() => openSpeakersModal(session.details)}
-                    className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition"
+                    className="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-2 rounded-full hover:from-blue-600 hover:to-teal-600 transition"
                   >
-                    Show All Speakers
+                    Show Guest/Speakers
                   </button>
                 </div>
               </SwiperSlide>
