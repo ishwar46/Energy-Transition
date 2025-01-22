@@ -123,7 +123,7 @@ const Footer = () => {
             href="https://uranus-tech.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:underline"
+            className="text-teal-100 hover:underline"
           >
             Designed and Developed by Uranus Tech Nepal Pvt. Ltd.
           </a>
