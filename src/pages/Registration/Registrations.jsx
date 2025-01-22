@@ -247,6 +247,7 @@ const Registrations = () => {
                 <option value="Presenter">Presenter</option>
                 <option value="General Participant">General Participant</option>
                 <option value="VIP Guest">VIP Guest</option>
+                <option value="Media">Media</option>
               </select>
             </div>
           </div>
