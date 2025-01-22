@@ -66,24 +66,24 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 sticky top-0 z-50 shadow-md">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-3">
-        {/* Left Section with Logo and Text */}
+        {/* Logo and Government Text (Always Visible) */}
         <div className="flex items-center space-x-3">
           <img
             src={Logo}
             className="h-12 md:h-16 rounded"
             alt="Government Logo"
           />
-          <div className="hidden md:block">
-            <h3 className="text-red-500 font-semibold text-xs md:text-xs whitespace-nowrap">
+          <div>
+            <h3 className="text-red-500 font-semibold text-xs md:text-sm">
               Government of Nepal
             </h3>
-            <h2 className="text-red-500 font-semibold text-base md:text-sm whitespace-nowrap">
+            <h2 className="text-red-500 font-semibold text-xs md:text-sm">
               Ministry of Energy, Water Resources and Irrigation
             </h2>
-            <h1 className="text-red-500 font-bold text-lg md:text-1xl whitespace-nowrap">
+            <h1 className="text-red-500 font-bold text-sm md:text-base">
               Alternative Energy Promotion Centre
             </h1>
-            <p className="text-gray-600 text-xs whitespace-nowrap">
+            <p className="text-gray-600 text-xs">
               Making Renewable Energy Mainstream Supply in Nepal
             </p>
           </div>
@@ -114,116 +114,6 @@ const Navbar = () => {
             />
           </svg>
         </button>
-
-        {/* Mobile Menu */}
-        <div
-          className={`fixed top-0 left-0 w-full h-full z-40 ${
-            isMenuOpen ? "block" : "hidden"
-          }`}
-        >
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black opacity-50"
-            onClick={toggleMenu}
-          ></div>
-
-          {/* Menu Content */}
-          <div
-            className={`absolute top-0 right-0 w-3/4 max-w-sm h-full bg-white shadow-lg transform transition-transform ${
-              isMenuOpen ? "translate-x-0" : "translate-x-full"
-            }`}
-          >
-            {/* Close Button */}
-            <button
-              onClick={toggleMenu}
-              className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-300 focus:outline-none"
-            >
-              <XCircleIcon className="h-6 w-6 text-gray-600" />
-            </button>
-
-            {/* Menu Links */}
-            <ul className="space-y-6 mt-16 px-6 text-gray-800">
-              <li>
-                <Link
-                  to="/"
-                  className={`block text-lg font-medium ${isActive("/")}`}
-                  onClick={toggleMenu}
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/sessions"
-                  className={`block text-lg font-medium ${isActive(
-                    "/sessions"
-                  )}`}
-                  onClick={toggleMenu}
-                >
-                  Session Details
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/accomodation"
-                  className={`block text-lg font-medium ${isActive(
-                    "/accomodation"
-                  )}`}
-                  onClick={toggleMenu}
-                >
-                  Venue
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/register"
-                  className={`block text-lg font-medium ${isActive(
-                    "/register"
-                  )}`}
-                  onClick={toggleMenu}
-                >
-                  Registration
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to={isAdmin ? "/admindashboard" : "/userdashboard"}
-                  className={`block text-lg font-medium ${isActive(
-                    "/userdashboard"
-                  )}`}
-                  onClick={toggleMenu}
-                >
-                  👋 Hey! {username}
-                </Link>
-              </li>
-              <li>
-                {isLoggedIn ? (
-                  <button
-                    onClick={() => {
-                      handleLogout();
-                      toggleMenu();
-                    }}
-                    className="block text-lg text-red-500 hover:text-red-600 font-medium flex items-center"
-                  >
-                    <PowerIcon className="h-5 w-5 mr-2" />
-                    Logout
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      handleLoginClick();
-                      toggleMenu();
-                    }}
-                    className="block text-lg text-green-500 hover:text-green-600 font-medium flex items-center"
-                  >
-                    <ArrowUpCircleIcon className="h-5 w-5 mr-2" />
-                    Login
-                  </button>
-                )}
-              </li>
-            </ul>
-          </div>
-        </div>
 
         {/* Desktop Navbar Links */}
         <div className="hidden md:flex items-center space-x-6">
@@ -271,6 +161,112 @@ const Navbar = () => {
               Login
             </button>
           )}
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full z-40 ${
+          isMenuOpen ? "block" : "hidden"
+        }`}
+      >
+        {/* Overlay */}
+        <div
+          className="absolute inset-0 bg-black opacity-50"
+          onClick={toggleMenu}
+        ></div>
+
+        {/* Menu Content */}
+        <div
+          className={`absolute top-0 right-0 w-3/4 max-w-sm h-full bg-white shadow-lg transform transition-transform ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          {/* Close Button */}
+          <button
+            onClick={toggleMenu}
+            className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-300 focus:outline-none"
+          >
+            <XCircleIcon className="h-6 w-6 text-gray-600" />
+          </button>
+
+          {/* Menu Links */}
+          <ul className="space-y-6 mt-16 px-6 text-gray-800">
+            <li>
+              <Link
+                to="/"
+                className={`block text-lg font-medium ${isActive("/")}`}
+                onClick={toggleMenu}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/sessions"
+                className={`block text-lg font-medium ${isActive("/sessions")}`}
+                onClick={toggleMenu}
+              >
+                Session Details
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/accomodation"
+                className={`block text-lg font-medium ${isActive(
+                  "/accomodation"
+                )}`}
+                onClick={toggleMenu}
+              >
+                Venue
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/register"
+                className={`block text-lg font-medium ${isActive("/register")}`}
+                onClick={toggleMenu}
+              >
+                Registration
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={isAdmin ? "/admindashboard" : "/userdashboard"}
+                className={`block text-lg font-medium ${isActive(
+                  "/userdashboard"
+                )}`}
+                onClick={toggleMenu}
+              >
+                👋 Hey! {username}
+              </Link>
+            </li>
+            <li>
+              {isLoggedIn ? (
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    toggleMenu();
+                  }}
+                  className="block text-lg text-red-500 hover:text-red-600 font-medium flex items-center"
+                >
+                  <PowerIcon className="h-5 w-5 mr-2" />
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    handleLoginClick();
+                    toggleMenu();
+                  }}
+                  className="block text-lg text-green-500 hover:text-green-600 font-medium flex items-center"
+                >
+                  <ArrowUpCircleIcon className="h-5 w-5 mr-2" />
+                  Login
+                </button>
+              )}
+            </li>
+          </ul>
         </div>
       </div>
     </nav>

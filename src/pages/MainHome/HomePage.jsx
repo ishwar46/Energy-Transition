@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import "../../css/homepage.css";
-import cover1 from "../../assets/images/banner1.png";
+import cover1 from "../../assets/images/bannerenergy.jpg";
 import Snowfall from "react-snowfall";
 import Supporters from "../../components/Supporter";
 
@@ -43,7 +43,7 @@ const HomePage = () => {
         <div
           className="relative w-full"
           style={{
-            height: "100vh", // Full viewport height
+            height: "100vh",
           }}
         >
           <img
@@ -53,7 +53,7 @@ const HomePage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60 z-10" />
           <div className="absolute inset-0 flex flex-col justify-center items-center z-20 text-center text-white px-6">
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-wide">
+            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-wide">
               Energy Transition for Resilient and Low Carbon Economy Summit 2025
             </h1>
             <p className="mt-4 text-xl md:text-3xl font-light tracking-wider">
