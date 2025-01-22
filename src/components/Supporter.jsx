@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import img1 from "../assets/supporters/icimod.svg";
 import img2 from "../assets/supporters/world-bank-logo.png";
-import img3 from "../assets/supporters/UKaid.svg.png";
+import img3 from "../assets/supporters/UKAid.jpg";
 import img4 from "../assets/supporters/nrep.jpg";
 import img5 from "../assets/supporters/giz.jpg";
 import img6 from "../assets/supporters/recon.png";
@@ -17,7 +17,7 @@ import img14 from "../assets/supporters/gggi.png";
 import img15 from "../assets/supporters/green_fund_climate.jpg";
 import img16 from "../assets/supporters/imwi.png";
 import img17 from "../assets/supporters/kathmandu_university.png";
-import img18 from "../assets/supporters/nmb_bank.jpg";
+import img18 from "../assets/supporters/nmb_bank.png";
 import img19 from "../assets/supporters/norway.png";
 import img20 from "../assets/supporters/practical_action.png";
 import img21 from "../assets/supporters/renewable_world.png";
@@ -25,6 +25,8 @@ import img22 from "../assets/supporters/snv.jpg";
 import img23 from "../assets/supporters/tribhuwan_university.png";
 import img24 from "../assets/supporters/undp.png";
 import img25 from "../assets/supporters/unicef_for_every_child.png";
+import img26 from "../assets/supporters/samudayik_bidhyut_upabhokta.jpg";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -56,6 +58,7 @@ const Supporters = () => {
     { id: 23, src: img23, alt: "Supporter 3" },
     { id: 24, src: img24, alt: "Supporter 4" },
     { id: 25, src: img25, alt: "Supporter 5" },
+    { id: 26, src: img26, alt: "Supporter 5" },
   ];
 
   const sliderSettings = {
