@@ -79,7 +79,7 @@ const SessionDetails = () => {
                 className="group bg-gradient-to-br from-white via-blue-50 to-blue-100 rounded-lg shadow-lg p-6 flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-xl"
               >
                 {/* Session Title */}
-                <h3 className="text-lg font-bold text-blue-800 mb-2 text-center">
+                <h3 className="text-md text-blue-800 mb-2 text-center">
                   {session.title}
                 </h3>
 
@@ -87,7 +87,7 @@ const SessionDetails = () => {
                 <div className="w-10 mx-auto border-b-2 border-blue-500 mb-4"></div>
 
                 {/* Session Time */}
-                <p className="text-md font-semibold text-gray-600 text-center mb-4">
+                <p className="text-xs text-gray-600 text-center mb-4">
                   <span className="font-bold text-blue-600">Time:</span>{" "}
                   {session.time}
                 </p>
