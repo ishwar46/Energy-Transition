@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Logo from "../assets/images/nepal.png";
+import NepalFlag from "../assets/images/nepal-flag.gif";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowUpCircleIcon,
@@ -66,7 +67,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white border-gray-200 sticky top-0 z-50 shadow-md">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-3">
-        {/* Logo and Government Text (Always Visible) */}
+        {/* Left Section with Logo and Government Text */}
         <div className="flex items-center space-x-3">
           <img
             src={Logo}
@@ -74,13 +75,13 @@ const Navbar = () => {
             alt="Government Logo"
           />
           <div>
-            <h3 className="text-red-500 font-semibold text-xs md:text-sm">
+            <h3 className="text-red-500 font-semibold text-xs md:text-xs">
               Government of Nepal
             </h3>
-            <h2 className="text-red-500 font-semibold text-xs md:text-sm">
+            <h2 className="text-red-500 font-normal text-xs md:text-sm">
               Ministry of Energy, Water Resources and Irrigation
             </h2>
-            <h1 className="text-red-500 font-bold text-sm md:text-base">
+            <h1 className="text-red-500 font-bold text-sm md:text-lg">
               Alternative Energy Promotion Centre
             </h1>
             <p className="text-gray-600 text-xs">
@@ -89,34 +90,9 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Hamburger Menu Button */}
-        <button
-          onClick={toggleMenu}
-          type="button"
-          className="inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-800 rounded-lg md:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
-          aria-controls="navbar-default"
-          aria-expanded={isMenuOpen}
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
-
-        {/* Desktop Navbar Links */}
+        {/* Right Section: Flag and Navbar Links */}
         <div className="hidden md:flex items-center space-x-6">
+          {/* Navbar Links */}
           <Link to="/" className={`text-sm font-medium ${isActive("/")}`}>
             Home
           </Link>
@@ -161,7 +137,39 @@ const Navbar = () => {
               Login
             </button>
           )}
+          {/* Nepal Flag */}
+          <img
+            src={NepalFlag}
+            className="h-12 w-auto rounded transform -scale-x-100"
+            alt="Nepal Flag"
+          />
         </div>
+
+        {/* Hamburger Menu Button */}
+        <button
+          onClick={toggleMenu}
+          type="button"
+          className="inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-800 rounded-lg md:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          aria-controls="navbar-default"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
       </div>
 
       {/* Mobile Menu */}
