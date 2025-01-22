@@ -28,16 +28,12 @@ const Registrations = () => {
 
   // Basic Client-Side Validation
   const validateForm = () => {
-    if (!title.trim()) {
-      toast.error("Title is required.");
-      return false;
-    }
-    if (!gender) {
-      toast.error("Gender is required.");
-      return false;
-    }
     if (!institution.trim()) {
       toast.error("Organization name is required.");
+      return false;
+    }
+    if (!title.trim()) {
+      toast.error("Title is required.");
       return false;
     }
     if (!firstName.trim()) {
@@ -48,14 +44,19 @@ const Registrations = () => {
       toast.error("Last name is required.");
       return false;
     }
-    if (!jobPosition.trim()) {
-      toast.error("Designation is required.");
+    if (!gender) {
+      toast.error("Gender is required.");
       return false;
     }
     if (!participantType) {
       toast.error("Participant type is required.");
       return false;
     }
+    if (!jobPosition.trim()) {
+      toast.error("Designation is required.");
+      return false;
+    }
+
     if (!mobileNumber.trim()) {
       toast.error("Mobile number is required.");
       return false;
