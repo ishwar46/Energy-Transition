@@ -1,4 +1,16 @@
 import userimg from "../../src/assets/images/nepal.png";
+import dipak_khadka from "../../src/assets/speakers/Dipak_Khadka.jpg";
+import gauri_singh from "../../src/assets/speakers/gauri_singh.jpg";
+import kushal_gurung from "../../src/assets/speakers/Kushal_Gurung.jpg";
+import nawaraj from "../../src/assets/speakers/nawrajdhakal.jpg";
+import pemag from "../../src/assets/speakers/PEMA_G.jpg";
+import rpbichha from "../../src/assets/speakers/RP_BICHHA.jpg";
+import shobakar from "../../src/assets/speakers/Shobhakar_Dhakal .png";
+import sureshach from "../../src/assets/speakers/Suresh_Acharya.jpg";
+import purnabahadur from "../../src/assets/speakers/Purna_Bahadur_Tamang.jpg";
+import bird from "../../src/assets/speakers/Pippa_Bird.jpg";
+import ramprasad from "../../src/assets/speakers/ram_prasad_dhital.png";
+
 
 const sessions = [
     {
@@ -33,29 +45,34 @@ const sessions = [
         ],
         details: [
             {
-                role: "Session Chair",
-                name: "Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Center (AEPC)",
-                image: userimg,
-            },
-            {
                 role: "Chief Guest",
                 name: "Mr. Dipak Khadka, Hon. Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
-                image: userimg,
+                image: dipak_khadka,
+            },
+            {
+                role: "Session Chair",
+                name: "Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Center (AEPC)",
+                image: nawaraj,
             },
             {
                 role: "Special Guest",
                 name: "Mr. Purna Bahadur Tamang, Hon. State Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
-                image: userimg,
+                image: purnabahadur,
             },
             {
                 role: "Special Guest",
                 name: "Prof. Dr. R.P. Bichha, Hon'ble Member, National Planning Commission (NPC)",
-                image: userimg,
+                image: rpbichha,
+            },
+            {
+                role: "Keynote Speaker",
+                name: "Prof. Dr.Shobhakar Dhakal, Professor, AIT, Thailand",
+                image: shobakar,
             },
             {
                 role: "Guest",
                 name: "Mr. Suresh Acharya, Secretary (Energy), Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
-                image: userimg,
+                image: sureshach,
             },
             {
                 role: "Guest",
@@ -65,27 +82,27 @@ const sessions = [
             {
                 role: "Guest",
                 name: "Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
-                image: userimg,
+                image: ramprasad,
             },
             {
                 role: "Guest",
                 name: "Ms. Pippa Bird, Development Director & Deputy Ambassador for Nepal from UK, British Embassy (Representative of DPs in Nepal)",
-                image: userimg,
+                image: bird,
             },
             {
                 role: "Guest",
                 name: "Dr. Pema Gyamtsho, Director General, International Center for Integrated Mountain Development (ICIMOD)",
-                image: userimg,
+                image: pemag,
             },
             {
                 role: "Guest",
                 name: "Ms. Gauri Singh, Deputy Director General, International Renewable Energy Agency (IRENA)",
-                image: userimg,
+                image: gauri_singh,
             },
             {
                 role: "Guest",
                 name: "Mr. Kushal Gurung, Chairperson, Renewable Energy Confederation of Nepal (RECON) (Representative - Private Sector)",
-                image: userimg,
+                image: kushal_gurung,
             },
         ],
     },
