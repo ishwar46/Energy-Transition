@@ -9,14 +9,17 @@ import shobakar from "../../src/assets/speakers/Shobhakar_Dhakal .png";
 import sureshach from "../../src/assets/speakers/Suresh_Acharya.jpg";
 import purnabahadur from "../../src/assets/speakers/Purna_Bahadur_Tamang.jpg";
 import bird from "../../src/assets/speakers/Pippa_Bird.jpg";
+import sarita from "../../src/assets/speakers/sarita_dwadi.png";
 import ramprasad from "../../src/assets/speakers/ram_prasad_dhital.png";
 import hemraj from "../../src/assets/speakers/Hemraj_Dhakal.png";
 import narayanprasad from "../../src/assets/speakers/Narayan_Prasad_Chaulagain.png";
+import narayanprasadadhi from "../../src/assets/speakers/nrayan_prasad.png";
 import poojasharma from "../../src/assets/speakers/Pooja_Sharma.png";
 import rajandhakal from "../../src/assets/speakers/Rajan_Dhakal.png";
 import sabnam from "../../src/assets/speakers/Sabnam_Shivakoti .jpg";
 import sandipkumar from "../../src/assets/speakers/Sandip_Kumar_Dev.png";
-
+import khagendra from "../../src/assets/speakers/khagendra.png";
+import arindam from "../../src/assets/speakers/arindam_mukh.png";
 
 
 const sessions = [
@@ -84,7 +87,7 @@ const sessions = [
             {
                 role: "Guest",
                 name: "Ms. Sarita Dawadi, Secretary (Water Resources), Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
-                image: userimg,
+                image: sarita,
             },
             {
                 role: "Guest",
@@ -167,7 +170,7 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Mr. Khagendra Basnet, Director, Department of Industry, Ministry of Industry, Commerce and Supplies (MoICS)",
-                image: userimg,
+                image: khagendra,
             },
             {
                 role: "Panelist",
@@ -177,7 +180,7 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Dr. Narayan Prasad Adhikari, Deputy Executive Director, AEPC",
-                image: narayanprasad,
+                image: narayanprasadadhi,
             },
             {
                 role: "Panelist",
@@ -187,7 +190,7 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Mr. Arindam Mukherjee, Energy Efficiency Specialist, USAID Urja Nepal",
-                image: userimg,
+                image: arindam,
             },
         ],
     },
