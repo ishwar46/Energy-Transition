@@ -20,6 +20,14 @@ import sabnam from "../../src/assets/speakers/Sabnam_Shivakoti .jpg";
 import sandipkumar from "../../src/assets/speakers/Sandip_Kumar_Dev.png";
 import khagendra from "../../src/assets/speakers/khagendra.png";
 import arindam from "../../src/assets/speakers/arindam_mukh.png";
+import arati from "../../src/assets/speakers/Arati Khadgi.png";
+import jeebach from "../../src/assets/speakers/Jeebachh Mandal.jpg";
+import kavita from "../../src/assets/speakers/Kavita Rai.jpg";
+import Maheshwar from "../../src/assets/speakers/Maheshwar Dhakal.jpg";
+import Manjeet from "../../src/assets/speakers/Manjeet Dhakal .jpg";
+import thakurthapa from "../../src/assets/speakers/thakur_thapa.jpg";
+import vijayasingh from "../../src/assets/speakers/Vijaya Singh.png";
+
 
 
 const sessions = [
@@ -213,22 +221,22 @@ const sessions = [
             {
                 role: "Session Chair",
                 name: "Dr. Maheshwar Dhakal, Joint Secretary, CCMD Chief, Ministry of Forests and Environment (MoFE)",
-                image: userimg,
+                image: Maheshwar,
             },
             {
                 role: "Moderator",
                 name: "Mr. Manjeet Dhakal, Head of LDC Support Team & Director, Climate Analytics South Asia",
-                image: userimg,
+                image: Manjeet,
             },
             {
                 role: "Keynote Speaker",
                 name: "Dr. Kavita Rai, International Renewable Energy Agency (IRENA)",
-                image: userimg,
+                image: kavita,
             },
             {
                 role: "Panelist",
                 name: "Mr. Jeebachh Mandal, Joint Secretary, MoEWRI",
-                image: userimg,
+                image: jeebach,
             },
             {
                 role: "Panelist",
@@ -238,7 +246,7 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Ms. Arati Khadgi, Head of Climate and Energy Platform, World Wildlife Fund (WWF) Nepal",
-                image: userimg,
+                image: arati,
             },
             {
                 role: "Panelist",
@@ -248,12 +256,12 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Mr. Vijaya Singh, Assistant Resident Representative, Resilience, DRR and Climate Change, UNDP",
-                image: userimg,
+                image: vijayasingh,
             },
             {
                 role: "Panelist",
                 name: "Mr. Thakur Thapa, Country Director, Renewable World",
-                image: userimg,
+                image: thakurthapa,
             },
         ],
     },
