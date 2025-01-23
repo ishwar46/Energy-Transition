@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { getEventPdfsApi } from "../../apis/Api";
+import toast from "react-hot-toast";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
@@ -14,28 +16,36 @@ import sessions from "../../../src/data/sessions";
 const SessionDetails = () => {
   useDocumentTitle("Session Details - Energy Summit 2025");
 
+  const [pdfs, setPdfs] = useState([]);
   const [speakersModalVisible, setSpeakersModalVisible] = useState(false);
   const [selectedSessionSpeakers, setSelectedSessionSpeakers] = useState([]);
 
-  useEffect(() => {
-    // Disable body scrolling when the modal is open
-    if (speakersModalVisible) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
+  // Fetch PDFs from API
+  const fetchPdfs = useCallback(async () => {
+    try {
+      const response = await getEventPdfsApi();
+      if (response.data.success) {
+        setPdfs(response.data.files);
+      } else {
+        toast.error("Failed to fetch PDFs.");
+      }
+    } catch (error) {
+      toast.error("Error fetching PDFs.");
+      console.error("Error fetching PDFs:", error);
     }
+  }, []);
 
-    // Cleanup on component unmount
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [speakersModalVisible]);
+  useEffect(() => {
+    fetchPdfs();
+  }, [fetchPdfs]);
 
+  // Open Speakers Modal
   const openSpeakersModal = (speakers) => {
     setSelectedSessionSpeakers(speakers);
     setSpeakersModalVisible(true);
   };
 
+  // Close Speakers Modal
   const closeSpeakersModal = () => {
     setSpeakersModalVisible(false);
     setSelectedSessionSpeakers([]);
@@ -46,17 +56,14 @@ const SessionDetails = () => {
       <Navbar />
       <div className="relative mx-auto px-4 sm:px-6 lg:px-8 py-10 max-w-7xl">
         {/* Hero Section */}
-        <div
-          className="text-center bg-gradient-to-r from-blue-700 via-teal-500 to-blue-700 text-white py-12 rounded-lg shadow-lg"
-          style={{ animation: "fadeIn 1s ease-out" }}
-        >
+        <div className="text-center bg-gradient-to-r from-blue-700 via-teal-500 to-blue-700 text-white py-12 rounded-lg shadow-lg">
           <h1 className="text-4xl font-extrabold mb-4">Session Details</h1>
           <p className="text-lg font-medium">
             Explore the agenda, speakers, and highlights of Energy Summit 2025.
           </p>
         </div>
 
-        {/* Swiper Slider */}
+        {/* Swiper Section */}
         <div className="mt-10">
           <Swiper
             modules={[Pagination, EffectCoverflow]}
@@ -113,6 +120,29 @@ const SessionDetails = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+        </div>
+
+        {/* PDF Section */}
+        <div className="mt-10 bg-white p-6 rounded-lg shadow-lg">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">
+            Download Session Details
+          </h2>
+          <div className="space-y-6">
+            {pdfs.map((pdf) => (
+              <div key={pdf} className="">
+                <div className="flex space-x-4">
+                  {/* Download PDF Button */}
+                  <a
+                    href={`https://energy-transition-api.onrender.com/public/uploads/eventPdfs/${pdf}`}
+                    download
+                    className="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-lg hover:bg-green-600"
+                  >
+                    Download PDF
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

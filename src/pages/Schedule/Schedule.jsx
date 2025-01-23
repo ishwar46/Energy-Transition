@@ -82,10 +82,9 @@ const Schedule = () => {
                   onClick={
                     () =>
                       openPdf(
-                        `https://crownthevisionapi.onrender.com/${pdf.pdf}`
+                        `https://energy-transition-api.onrender.com/${pdf.pdf}`
                       )
                     // openPdf(`http://localhost:5000/${pdf.pdf}`)
-                    // openPdf(`https://crownthevisionapi.onrender.com/${pdf.pdf}`)
                   }
                 >
                   {pdf.title}

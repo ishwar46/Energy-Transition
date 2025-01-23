@@ -25,7 +25,7 @@ const Notifications = () => {
 
     fetchNotifications();
 
-    const socket = io("https://crownthevisionapi.onrender.com");
+    const socket = io("https://energy-transition-api.onrender.com");
 
     // Listen for live notifications
     socket.on("receiveNotification", (newNotification) => {

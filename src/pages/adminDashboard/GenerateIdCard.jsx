@@ -667,7 +667,7 @@ const GenerateIdCard = () => {
                       <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-700">
                         {user.onSiteRegisterImage && (
                           <img
-                            src={`https://crownthevisionapi.onrender.com/${user.onSiteRegisterImage}`}
+                            src={`https://energy-transition-api.onrender.com/${user.onSiteRegisterImage}`}
                             alt={`OnSite User ${user.fullName}`}
                             className="w-16 h-16 object-cover mr-2 mb-2 rounded-full"
                           />

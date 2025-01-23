@@ -77,7 +77,7 @@ const CeoMessage = () => {
                               )}
                               {message.author1.author1image && (
                                 <img
-                                  src={`https://crownthevisionapi.onrender.com/${message.author1.author1image}`}
+                                  src={`https://energy-transition-api.onrender.com/${message.author1.author1image}`}
                                   alt={
                                     message.author1.author1fullName || "Author"
                                   }
@@ -98,7 +98,7 @@ const CeoMessage = () => {
                               )}
                               {message.author2.author2image && (
                                 <img
-                                  src={`https://crownthevisionapi.onrender.com/${message.author2.author2image}`}
+                                  src={`https://energy-transition-api.onrender.com/${message.author2.author2image}`}
                                   alt={
                                     message.author2.author2fullName || "Author"
                                   }

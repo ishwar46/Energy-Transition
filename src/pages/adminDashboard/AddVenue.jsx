@@ -157,7 +157,7 @@ const AddVenue = () => {
     });
 
     const imageUrls = venue.venueimage.map(
-      // (img) => `https://crownthevisionapi.onrender.com/${img}`
+      // (img) => `https://energy-transition-api.onrender.com/${img}`
       (img) => `https://energy-transition-api.onrender.com/${img}`
     );
     setImagePreviews(imageUrls);
@@ -363,7 +363,7 @@ const AddVenue = () => {
                         {venue.venueimage.map((img, index) => (
                           <img
                             key={index}
-                            // src={`https://crownthevisionapi.onrender.com/${img}`}
+                            // src={`https://energy-transition-api.onrender.com/${img}`}
                             src={`https://energy-transition-api.onrender.com/${img}`}
                             alt={`Venue ${index + 1}`}
                             className="w-16 h-16 object-cover mr-2 mb-2"

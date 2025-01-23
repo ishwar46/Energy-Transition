@@ -427,11 +427,11 @@ const AdminMessage = () => {
                           )}
                           {message.author1.author1image && (
                             <img
-                              // src={`https://crownthevisionapi.onrender.com/${message.author1.author1image}`}
+                              // src={`https://energy-transition-api.onrender.com/${message.author1.author1image}`}
                               src={
                                 message.author1.author1image
-                                  ? // ? `https://crownthevisionapi.onrender.com/${message.author1.author1image}`
-                                    `https://crownthevisionapi.onrender.com/${message.author1.author1image}`
+                                  ? // ? `https://energy-transition-api.onrender.com/${message.author1.author1image}`
+                                    `https://energy-transition-api.onrender.com/${message.author1.author1image}`
                                   : "https://via.placeholder.com/100"
                               }
                               alt={message.author1.author1fullName || "Author"}
@@ -452,10 +452,10 @@ const AdminMessage = () => {
                           )}
                           {message.author2.author2image && (
                             <img
-                              // src={`https://crownthevisionapi.onrender.com/${message.author2.author2image}`}
+                              // src={`https://energy-transition-api.onrender.com/${message.author2.author2image}`}
                               src={
                                 message.author2.author2image
-                                  ? `https://crownthevisionapi.onrender.com/${message.author2.author2image}`
+                                  ? `https://energy-transition-api.onrender.com/${message.author2.author2image}`
                                   : "https://via.placeholder.com/100"
                               }
                               alt={message.author2.author2fullName || "Author"}
@@ -495,21 +495,21 @@ const AdminMessage = () => {
                     {selectedMessage.msgFrom}
                   </h3>
                   <img
-                    // src={`https://crownthevisionapi.onrender.com/${selectedMessage.author2.author2image}`}
+                    // src={`https://energy-transition-api.onrender.com/${selectedMessage.author2.author2image}`}
                     src={
                       selectedMessage.author2.author2image
-                        ? `https://crownthevisionapi.onrender.com/${selectedMessage.author2.author2image}`
+                        ? `https://energy-transition-api.onrender.com/${selectedMessage.author2.author2image}`
                         : "https://via.placeholder.com/100"
                     }
                     style={{ width: "80px" }}
                     alt=""
                   />
                   <img
-                    // src={`https://crownthevisionapi.onrender.com/${selectedMessage.author1.author1image}`}
+                    // src={`https://energy-transition-api.onrender.com/${selectedMessage.author1.author1image}`}
                     src={
                       selectedMessage.author1.author1image
-                        ? // ? `https://crownthevisionapi.onrender.com/${selectedMessage.author1.author1image}`
-                          `https://crownthevisionapi.onrender.com/${selectedMessage.author1.author1image}`
+                        ? // ? `https://energy-transition-api.onrender.com/${selectedMessage.author1.author1image}`
+                          `https://energy-transition-api.onrender.com/${selectedMessage.author1.author1image}`
                         : "https://via.placeholder.com/100"
                     }
                     style={{ width: "80px" }}

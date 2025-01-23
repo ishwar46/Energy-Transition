@@ -822,13 +822,13 @@ const UserTable = () => {
                     {currentUser?.personalInformation?.profilePicture
                       ?.fileName && (
                       <img
-                        src={`https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        src={`https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
                         alt="Profile"
                         className="w-24 h-24 rounded-full object-cover border border-gray-300 shadow-sm cursor-pointer
                            hover:shadow-md transition-shadow"
                         onClick={() =>
                           handleImageClick(
-                            `https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
+                            `https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
                           )
                         }
                       />

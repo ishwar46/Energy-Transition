@@ -201,7 +201,7 @@ const BannerManager = () => {
                 <img
                   src={
                     banner.url
-                      ? `https://crownthevisionapi.onrender.com/${banner.url.replace(
+                      ? `https://energy-transition-api.onrender.com/${banner.url.replace(
                           /\\/g,
                           "/"
                         )}`

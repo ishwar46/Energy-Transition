@@ -867,13 +867,13 @@ const AllParticipants = () => {
                     {currentUser?.personalInformation?.profilePicture
                       ?.fileName && (
                       <img
-                        src={`https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        src={`https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
                         // src={`http://localhost:5000/${currentUser.personalInformation?.profilePicture.fileName}`}
                         alt="Profile"
                         className="w-20 h-20 rounded-full cursor-pointer"
                         onClick={() =>
                           handleImageClick(
-                            `https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
+                            `https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
                             // `https://api.acsicnepal.com/${currentUser.personalInformation.profilePicture.fileName}`
                           )
                         }
