@@ -5,39 +5,47 @@ const sessions = [
         title: "Opening Session",
         time: "8:30 AM - 10:30 AM",
         program: [
-            "Registration (8:30 AM - 9:00 PM)",
-            "Welcome and Description of Program Objective - Dr. Narayan Prasad Adhikari; Deputy Executive Director, AEPC",
-            "Inauguration of the Program by Chief Guest, Hon,ble Minister, MoEWRI",
-            "Keynote presentation on Energy Transition for Resilient and Low Carbon Economy: Global Experiences, Opportunities and Challenges for Nepal; by Prof. Dr. Shobhakar Dhakal (Professor, Asian Institute of Technology (AIT), Thailand)",
-            "Launching of Nepal Solar Thermal Roadmap Development by Chief Gues",
+            "8:30 AM - 9:00 AM: Registration",
+            "9:00 AM - 10:30 AM: Opening Session",
+            "• Session Chair: Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Center (AEPC)",
+            "• Chief Guest: Mr. Dipak Khadka, Hon. Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
+            "• Special Guest: Mr. Purna Bahadur Tamang, Hon. State Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
+            "• Special Guest: Prof. Dr. R.P. Bichha, Hon'ble Member, National Planning Commission (NPC)",
+            "Guests:",
+            "• Mr. Suresh Acharya, Secretary (Energy), Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
+            "• Ms. Sarita Dawadi, Secretary (Water Resources), Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
+            "• Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
+            "• Ms. Pippa Bird, Development Director & Deputy Ambassador for Nepal from UK, British Embassy (Representative of DPs in Nepal)",
+            "• Dr. Pema Gyamtsho, Director General, International Center for Integrated Mountain Development (ICIMOD)",
+            "• Ms. Gauri Singh, Deputy Director General, International Renewable Energy Agency (IRENA)",
+            "• Mr. Kushal Gurung, Chairperson, Renewable Energy Confederation of Nepal (RECON) (Representative - Private Sector)",
+            "Welcome and Objective of Program - Dr. Narayan Prasad Adhikari; Deputy Executive Director, AEPC",
+            "Inauguration of the Program by Chief Guest, Hon. Minister, Mr. Dipak Khadka, MoEWRI",
+            "Keynote Presentation: Energy Transition for Resilient and Low Carbon Economy: Global Experiences, Opportunities and Challenges for Nepal; by Prof. Dr. Shobhakar Dhakal, Professor, Asian Institute of Technology (AIT), Thailand",
             "Remarks by Dr. Pema Gyamtsho, Director General, ICIMOD",
             "Remarks by Ms. Gauri Singh, Deputy Director General, IRENA, Abudhabi, UAE",
             "Remarks by Ms. Pippa Bird, Development Director & Deputy Ambassador for Nepal from UK, British Embassy",
             "Remarks by Mr. Suresh Acharya, Secretary, MoEWRI",
-            "Remarks by Prof. Dr.  R.P. Bichha, NPC Member",
-            "Remarks by Mr. Purna Bahadur Tamang, Hon'ble State Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
-            "Chief Guest Remarks: Mr. Dipak Khadka, Hon'ble Minister, MoEWRI",
-            "Closing Remarks and Vote of Thanks by Session Chair:  Mr. Nawa Raj Dhakal, ED, AEPC",
+            "Remarks by Prof. Dr. R.P. Bichha, NPC Member",
+            "Remarks by Mr. Purna Bahadur Tamang, Hon. State Minister, MoEWRI",
+            "Chief Guest Remarks: Mr. Dipak Khadka, Hon. Minister, MoEWRI",
+            "Closing Remarks and Vote of Thanks by Session Chair: Mr. Nawa Raj Dhakal, ED, AEPC",
+            "Group Photo",
         ],
         details: [
             {
                 role: "Session Chair",
-                name: "Nawa Raj Dhakal, AEPC-ED, Chairperson",
+                name: "Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Center (AEPC)",
                 image: userimg,
             },
             {
                 role: "Chief Guest",
-                name: "Mr. Dipak Khadka, Hon'ble Minister, MoEWRI",
+                name: "Mr. Dipak Khadka, Hon. Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
                 image: userimg,
             },
             {
                 role: "Special Guest",
-                name: "Dr. Ram Prasad Dhital, ERC, Chairperson",
-                image: userimg,
-            },
-            {
-                role: "Special Guest",
-                name: "Mr. Purna Bahadur Tamang, Hon'ble State Minister, MoEWRI",
+                name: "Mr. Purna Bahadur Tamang, Hon. State Minister, Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
                 image: userimg,
             },
             {
@@ -47,12 +55,17 @@ const sessions = [
             },
             {
                 role: "Guest",
-                name: "Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
+                name: "Mr. Suresh Acharya, Secretary (Energy), Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
                 image: userimg,
             },
             {
                 role: "Guest",
-                name: "Mr. Suresh Acharya, Secretary (Energy), MoEWRI",
+                name: "Ms. Sarita Dawadi, Secretary (Water Resources), Ministry of Energy, Water Resources and Irrigation (MoEWRI)",
+                image: userimg,
+            },
+            {
+                role: "Guest",
+                name: "Dr. Ram Prasad Dhital, Chairperson, Electricity Regulatory Commission (ERC)",
                 image: userimg,
             },
             {
@@ -75,16 +88,15 @@ const sessions = [
                 name: "Mr. Kushal Gurung, Chairperson, Renewable Energy Confederation of Nepal (RECON) (Representative - Private Sector)",
                 image: userimg,
             },
-        ]
-        ,
+        ],
     },
+
     {
-        title: "Group Photo and Project Observation",
+        title: "Tea Coffee and Observation of ",
         time: "10:30 AM - 11:00 AM",
         program: [
-            "Group photo with all attendees",
-            "Observation of showcased projects at the lobby of the main hall",
-            "Observation of the solar system installed at the Soaltee Hotel under Sustainable Energy Challenge Fund (SECF) modality",
+            "Showcased Projects at the project demonstration hall, and ",
+            "Solar System Installed at the Soaltee Hotel under Sustainable Energy Challenge Fund (SECF) Modality",
         ],
         details: [
             {
@@ -100,13 +112,13 @@ const sessions = [
         program: [
             "Session Chair: Mr. Sandip Kumar Dev, Joint Secretary, MoEWRI",
             "Moderator: Ms. Pooja Sharma, Country Director, Practical Action Nepal",
-            "Keynote: What does Energy Transition mean in the Nepalese Context?: Demand and Supply Side Perspectives by Dr. Narayan Prasad Chaulagain, Senior Energy Specialist, GIZ",
-            "Speaker: Dr. Kiran Gautam, Senior Divisional Engineer, Water and Energy Commission Secretariat (WECS)",
-            "Speaker: Mr. Rajan Dhakal, Deputy Managing Director, Nepal Electricity Authority (WECS)",
-            "Speaker: Mr. Khagendra Basnet, Director, Department of Industry, Ministry of Industry, Commerce and Supplies (MoICS)",
-            "Speaker: Ms. Sabnam Shivakoti Aryal, Joint Secretary, Ministry of Agriculture and Livestock Development (MoALD)",
-            "Speaker: Dr. Narayan Prasad Adhikari, Deputy Executive Director, AEPC",
-            "Speaker: Mr. Hem Raj Dhakal, Vice President, Federation of Nepalese Chambers of Commerce and Industry (FNCCI)",
+            "Keynote: What does Energy Transition mean in the Nepalese Context? Demand and Supply Side Perspectives by Dr. Narayan Prasad Chaulagain, Senior Energy Specialist, GIZ",
+            "Panelist: Mr. Rajan Dhakal, Deputy Managing Director, Nepal Electricity Authority (NEA)",
+            "Panelist: Mr. Khagendra Basnet, Director, Department of Industry, Ministry of Industry, Commerce and Supplies (MoICS)",
+            "Panelist: Ms. Sabnam Shivakoti Aryal, Joint Secretary, Ministry of Agriculture and Livestock Development (MoALD)",
+            "Panelist: Dr. Narayan Prasad Adhikari, Deputy Executive Director, AEPC",
+            "Panelist: Mr. Hem Raj Dhakal, Vice President, Federation of Nepalese Chambers of Commerce and Industry (FNCCI)",
+            "Panelist: Mr. Arindam Mukherjee, Energy Efficiency Specialist, USAID Urja Nepal",
         ],
         details: [
             {
@@ -125,37 +137,38 @@ const sessions = [
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Dr. Kiran Gautam, Senior Divisional Engineer, Water and Energy Commission Secretariat (WECS)",
+                role: "Panelist",
+                name: "Mr. Rajan Dhakal, Deputy Managing Director, Nepal Electricity Authority (NEA)",
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Mr. Rajan Dhakal, Deputy Managing Director, Nepal Electricity Authority (WECS)",
-                image: userimg,
-            },
-            {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Khagendra Basnet, Director, Department of Industry, Ministry of Industry, Commerce and Supplies (MoICS)",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Ms. Sabnam Shivakoti Aryal, Joint Secretary, Ministry of Agriculture and Livestock Development (MoALD)",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Dr. Narayan Prasad Adhikari, Deputy Executive Director, AEPC",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Hem Raj Dhakal, Vice President, Federation of Nepalese Chambers of Commerce and Industry (FNCCI)",
+                image: userimg,
+            },
+            {
+                role: "Panelist",
+                name: "Mr. Arindam Mukherjee, Energy Efficiency Specialist, USAID Urja Nepal",
                 image: userimg,
             },
         ],
     },
+
     {
         title: "Session 2: Energy Transition: Towards Achieving Net Zero and Resilient Economy",
         time: "11:00 AM - 12:30 PM",
@@ -163,12 +176,12 @@ const sessions = [
             "Session Chair: Dr. Maheshwar Dhakal, Joint Secretary, CCMD Chief, Ministry of Forests and Environment (MoFE)",
             "Moderator: Mr. Manjeet Dhakal, Head of LDC Support Team & Director, Climate Analytics South Asia",
             "Keynote: Global and Regional Initiatives for Net Zero Energy Transition by Dr. Kavita Rai, International Renewable Energy Agency (IRENA)",
-            "Speaker: Ms. Arati Khadgi, Head of Climate and Energy Platform, World Wildlife Fund (WWF) Nepal",
-            "Speaker: Dr. Shree Raj Shakya, Director, Center for Energy Studies (CES), Institute of Engineering (IoE), Tribhuvan University",
-            "Speaker: Mr. Guru Prasad Paudel, Executive Director, Nepal Rastra Bank (NRB)",
-            "Speaker: Mr. Vijaya Singh, Assistant Resident Representative, Resilience, DRR and Climate Change, UNDP",
-            "Speaker: Dr. Prem Kumar Pokhrel, Climate and Carbon Expert",
-            "Speaker: Mr. Thakur Thapa, Country Director, Renewable World",
+            "Panelist: Mr. Jeebachh Mandal, Joint Secretary, MoEWRI",
+            "Panelist: Mr. Guru Prasad Paudel, Executive Director, Nepal Rastra Bank (NRB)",
+            "Panelist: Ms. Arati Khadgi, Head of Climate and Energy Platform, World Wildlife Fund (WWF) Nepal",
+            "Panelist: Dr. Shree Raj Shakya, Director, Center for Energy Studies (CES), Institute of Engineering (IoE), Tribhuvan University",
+            "Panelist: Mr. Vijaya Singh, Assistant Resident Representative, Resilience, DRR and Climate Change, UNDP",
+            "Panelist: Mr. Thakur Thapa, Country Director, Renewable World",
         ],
         details: [
             {
@@ -187,37 +200,38 @@ const sessions = [
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Ms. Arati Khadgi, Head of Climate and Energy Platform, World Wildlife Fund (WWF) Nepal",
+                role: "Panelist",
+                name: "Mr. Jeebachh Mandal, Joint Secretary, MoEWRI",
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Dr. Shree Raj Shakya, Director, Center for Energy Studies (CES), Institute of Engineering (IoE), Tribhuvan University",
-                image: userimg,
-            },
-            {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Guru Prasad Paudel, Executive Director, Nepal Rastra Bank (NRB)",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
+                name: "Ms. Arati Khadgi, Head of Climate and Energy Platform, World Wildlife Fund (WWF) Nepal",
+                image: userimg,
+            },
+            {
+                role: "Panelist",
+                name: "Dr. Shree Raj Shakya, Director, Center for Energy Studies (CES), Institute of Engineering (IoE), Tribhuvan University",
+                image: userimg,
+            },
+            {
+                role: "Panelist",
                 name: "Mr. Vijaya Singh, Assistant Resident Representative, Resilience, DRR and Climate Change, UNDP",
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Dr. Prem Kumar Pokhrel, Climate and Carbon Expert",
-                image: userimg,
-            },
-            {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Thakur Thapa, Country Director, Renewable World",
                 image: userimg,
             },
         ],
     },
+
 
     {
         title: "Networking Lunch",
@@ -240,12 +254,12 @@ const sessions = [
             "Session Chair: Mr. Dhani Ram Sharma, Joint Secretary, Ministry of Finance (MoF)",
             "Moderator: Mr. Suman Basnet, Team Leader, Nepal Renewable Energy Programme (NREP)",
             "Keynote: Recent Trends of Development and Climate Financing for Energy Transition: Global and Regional Experiences by Mr. Raju Pandit Chhetri, Executive Director, PRC",
-            "Speaker: Mr. Jeebachh Mandal, Joint Secretary, MoEWRI",
-            "Speaker: Mr. Om Prakash Bhattarai, Under Secretary, MoF",
-            "Speaker: Ms. Barsha Pandey, Energy Specialist, The World Bank",
-            "Speaker: Ms. Grishma Shah, ADB",
-            "Speaker: Mr. Sunil KC, Immediate Past President of Nepal Bankers Association and CEO, NMB Bank Ltd.",
-            "Speaker: Mr. Guna Raj Dhakal, Founding President of RECON",
+            "Panelist: Mr. Om Prakash Bhattarai, Under Secretary, MoF",
+            "Panelist: Ms. Barsha Pandey, Energy Specialist, The World Bank",
+            "Panelist: Ms. Grishma Shah, Project Officer (Energy), ADB",
+            "Panelist: Mr. Sunil KC, Immediate Past President of Nepal Bankers Association and CEO, NMB Bank Ltd.",
+            "Panelist: Mr. Guna Raj Dhakal, Founding President of RECON",
+            "Panelist: Dr. Prem Kumar Pokhrel, Climate and Carbon Expert",
         ],
         details: [
             {
@@ -264,37 +278,38 @@ const sessions = [
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Mr. Jeebachh Mandal, Joint Secretary, MoEWRI",
-                image: userimg,
-            },
-            {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Om Prakash Bhattarai, Under Secretary, MoF",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Ms. Barsha Pandey, Energy Specialist, The World Bank",
                 image: userimg,
             },
             {
-                role: "Speaker",
-                name: "Ms. Grishma Shah, ADB",
+                role: "Panelist",
+                name: "Ms. Grishma Shah, Project Officer (Energy), ADB",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Sunil KC, Immediate Past President of Nepal Bankers Association and CEO, NMB Bank Ltd.",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Guna Raj Dhakal, Founding President of RECON",
+                image: userimg,
+            },
+            {
+                role: "Panelist",
+                name: "Dr. Prem Kumar Pokhrel, Climate and Carbon Expert",
                 image: userimg,
             },
         ],
     },
+
     {
         title: "Session 4: Regulatory Framework, Governance, and Capacity Development for Energy Transition",
         time: "1:30 PM - 3:00 PM",
@@ -302,12 +317,12 @@ const sessions = [
             "Session Chair: Prof. Dr. Govind Raj Pokharel, Former Vice Chairperson, NPC & Former ED, AEPC",
             "Moderator: Mr. Vishwa Bhusan Amatya, Senior Renewable Energy Expert",
             "Keynote: Regulatory Framework, Policy Alignments and Governance Issues in Energy Transition by Dr. Ram Prasad Dhital, Chairperson, ERC",
-            "Speaker: Dr. Sandip Shah, President, Nepal Solar Power Producers Association",
-            "Speaker: Mr. Rajendra Prasad Pyakurel, Executive Director, National Association of Rural Municipalities in Nepal (NARMIN)",
-            "Speaker: Mr. Kalanidhi Devkota, Executive Director, Municipal Association of Nepal (MuAN)",
-            "Speaker: Ms. Sama Shrestha, Programme Specialist (WPS, Humanitarian, DRR and Climate Change), UN Women",
-            "Speaker: Ms. Manohara Khadka, Country Representative - Nepal, International Water Management Institute (IWMI)",
-            "Speaker: Dr. Biraj Singh Thapa, Associate Professor, Kathmandu University",
+            "Panelist: Dr. Sandip Shah, President, Nepal Solar Power Producers Association",
+            "Panelist: Mr. Rajendra Prasad Pyakurel, Executive Director, National Association of Rural Municipalities in Nepal (NARMIN)",
+            "Panelist: Mr. Kalanidhi Devkota, Executive Director, Municipal Association of Nepal (MuAN)",
+            "Panelist: Ms. Sama Shrestha, Programme Specialist (WPS, Humanitarian, DRR and Climate Change), UN Women",
+            "Panelist: Ms. Manohara Khadka, Country Representative - Nepal, International Water Management Institute (IWMI)",
+            "Panelist: Dr. Biraj Singh Thapa, Associate Professor, Kathmandu University",
         ],
         details: [
             {
@@ -326,37 +341,38 @@ const sessions = [
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Dr. Sandip Shah, President, Nepal Solar Power Producers Association",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Rajendra Prasad Pyakurel, Executive Director, National Association of Rural Municipalities in Nepal (NARMIN)",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Mr. Kalanidhi Devkota, Executive Director, Municipal Association of Nepal (MuAN)",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Ms. Sama Shrestha, Programme Specialist (WPS, Humanitarian, DRR and Climate Change), UN Women",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Ms. Manohara Khadka, Country Representative - Nepal, International Water Management Institute (IWMI)",
                 image: userimg,
             },
             {
-                role: "Speaker",
+                role: "Panelist",
                 name: "Dr. Biraj Singh Thapa, Associate Professor, Kathmandu University",
                 image: userimg,
             },
         ],
     },
+
     {
         title: "Tea Break",
         time: "3:00 PM - 3:30 PM",
@@ -372,18 +388,18 @@ const sessions = [
         ],
     },
     {
-        title: "Session 5: Plenary Session & Closing Ceremony",
+        title: "Session 5: Plenary Session - Panel Discussion on 'What Next for Energy Transition for Resilient and Low Carbon Economy?'",
         time: "3:30 PM - 5:00 PM",
         program: [
             "Moderator: Ms. Sama Thapa, Journalist",
             "Context Setting Presentation: Ms. Resha Piya, Infrastructure Advisor, British Embassy, Kathmandu",
-            "Panel Discussion: 'What Next for Energy Transition for Resilient and Low Carbon Economy?'",
-            "Panelist: Mr. Kulman Ghising, Managing Director, Nepal Electricity Authority (NEA)",
-            "Panelist: Dr. Chandika Prasad Bhatta, Managing Director, Nepal Oil Corporation (NOC)",
-            "Panelist: Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Centre (AEPC)",
-            "Panelist: Mr. Niraj Subedi, Head of Office, KFW",
-            "Panelist: Mr. Ganesh Karki, President, Independent Power Producers' Association, Nepal (IPPAN)",
-            "Panelist: Mr. Kushal Gurung, Renewable Energy Confederation of Nepal (RECON)",
+            "Panel Discussion:",
+            "• Panelist: Mr. Kulman Ghising, Managing Director, Nepal Electricity Authority (NEA)",
+            "• Panelist: Dr. Chandika Prasad Bhatta, Managing Director, Nepal Oil Corporation (NOC)",
+            "• Panelist: Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Centre (AEPC)",
+            "• Panelist: Mr. Niraj Subedi, Head of Office, KFW",
+            "• Panelist: Mr. Ganesh Karki, President, Independent Power Producers' Association, Nepal (IPPAN)",
+            "• Panelist: Mr. Kushal Gurung, Renewable Energy Confederation of Nepal (RECON)",
         ],
         details: [
             {
@@ -428,19 +444,30 @@ const sessions = [
             },
         ],
     },
+
     {
         title: "Session 6: Concluding Session",
         time: "5:00 PM - 5:30 PM",
         program: [
             "Session Chair: Mr. Madhu Prasad Bhetuwal, Secretary, Water and Energy Commission Secretariat (WECS)",
-            "Summary and Recap of Overall Events: Prof. Dr. Ramesh Kumar Maskey & Dr. Mukesh Ghimire",
-            "Remarks and Vote of Thanks: Mr. Rudra Prasad Khanal, Director, AEPC",
-            "Closing Remarks by Session Chair: Mr. Madhu Prasad Bhetuwal",
+            "Guests:",
+            "• Mr. Sushil Chandra Acharya, Joint Secretary, MoEWRI",
+            "• Mr. Nabin Raj Singh, Director General, Department of Electricity Development (DoED)",
+            "• Ms. Pooja Sharma, Country Director, Practical Action Nepal",
+            "• Mr. Manjeet Dhakal, Head of LDC Support Team & Director, Climate Analytics South Asia",
+            "• Mr. Suman Basnet, Team Leader, Nepal Renewable Energy Programme (NREP)",
+            "• Mr. Vishwa Bhusan Amatya, Senior Renewable Energy Expert",
+            "Summary and Recap of Overall Event: Prof. Dr. Ramesh Kumar Maskey & Dr. Mukesh Ghimire",
+            "Remarks:",
+            "• Mr. Nabin Raj Singh, Director General, DoED",
+            "• Mr. Sushil Chandra Acharya, Joint Secretary, MoEWRI",
+            "Vote of Thanks from AEPC: Mr. Rudra Prasad Khanal, Director, AEPC",
+            "Closing Remarks and End of Event by Session Chair: Mr. Madhu Prasad Bhetuwal, Secretary, WECS",
         ],
         details: [
             {
                 role: "Session Chair",
-                name: "Mr. Madhu Prasad Bhetuwal, Secretary, WECS",
+                name: "Mr. Madhu Prasad Bhetuwal, Secretary, Water and Energy Commission Secretariat (WECS)",
                 image: userimg,
             },
             {
@@ -473,8 +500,24 @@ const sessions = [
                 name: "Mr. Vishwa Bhusan Amatya, Senior Renewable Energy Expert",
                 image: userimg,
             },
+            {
+                role: "Presenter",
+                name: "Prof. Dr. Ramesh Kumar Maskey",
+                image: userimg,
+            },
+            {
+                role: "Presenter",
+                name: "Dr. Mukesh Ghimire",
+                image: userimg,
+            },
+            {
+                role: "Vote of Thanks",
+                name: "Mr. Rudra Prasad Khanal, Director, AEPC",
+                image: userimg,
+            },
         ],
     },
+
     {
         title: "Networking Dinner",
         time: "5:30 PM - 7:30 PM",
@@ -493,10 +536,10 @@ const sessions = [
         title: "Parallel Side Event",
         time: "N/A",
         program: [
-            "Side Event: Live Demo Event at the lobby of the main hall",
-            "Project Showcasing of selected Sustainable Energy Challenge Fund (SECF) projects",
+            "Side Event: Parallel Live Demo Event at the Lobby and Demonstration Hall",
+            "Project Showcasing of selected Sustainable Energy Challenge Fund (SECF) projects and other impactful projects",
             "Investment Match Making (B2B) Event",
-            "Digital Display of 10-15 impactful RE, EE, and Climate Financing Projects",
+            "Digital Display and Poster Presentation of impactful RE, EE, and Climate Financing Projects",
         ],
         details: [
             {
@@ -506,6 +549,7 @@ const sessions = [
             },
         ],
     },
+
 
 ];
 
