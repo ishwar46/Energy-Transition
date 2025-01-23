@@ -27,7 +27,6 @@ import Maheshwar from "../../src/assets/speakers/Maheshwar Dhakal.jpg";
 import Manjeet from "../../src/assets/speakers/Manjeet Dhakal .jpg";
 import thakurthapa from "../../src/assets/speakers/thakur_thapa.jpg";
 import vijayasingh from "../../src/assets/speakers/Vijaya Singh.png";
-
 import Barsha from "../../src/assets/speakers/Barsha pandey.jpg";
 import Dhaniram from "../../src/assets/speakers/Dhani Ram Sharma.png";
 import Dipesh from "../../src/assets/speakers/Dipesh Joshi.jpg";
@@ -38,6 +37,16 @@ import premkumar from "../../src/assets/speakers/Prem Kumar Pokhrel.jpg";
 import rajupandit from "../../src/assets/speakers/Raju Pandit.jpg";
 import SumanBasnet from "../../src/assets/speakers/Suman Basnet.jpg";
 import SunilKC from "../../src/assets/speakers/Sunil KC.png";
+
+import Biraj from "../../src/assets/speakers/Biraj Singh Thapa.jpg";
+import Govind from "../../src/assets/speakers/Govind Raj Pokharel.png";
+import Kalanidhi from "../../src/assets/speakers/kalanidhi devkota.jpg";
+import Manohara from "../../src/assets/speakers/Manohara Khadka.jpg";
+import RajendraPD from "../../src/assets/speakers/Rajendra Prasad Pyakurel.jpg";
+import RamPD from "../../src/assets/speakers/Ram Prasad Dhita.png";
+import Sama from "../../src/assets/speakers/Sama Shrestha.jpg";
+import Sandipshah from "../../src/assets/speakers/Sandip Shah.jpg";
+import VB from "../../src/assets/speakers/V B Amatya.jpg";
 
 
 
@@ -379,47 +388,47 @@ const sessions = [
             {
                 role: "Session Chair",
                 name: "Prof. Dr. Govind Raj Pokharel, Former Vice Chairperson, NPC & Former ED, AEPC",
-                image: userimg,
+                image: Govind,
             },
             {
                 role: "Moderator",
                 name: "Mr. Vishwa Bhusan Amatya, Senior Renewable Energy Expert",
-                image: userimg,
+                image: VB,
             },
             {
                 role: "Keynote Speaker",
                 name: "Dr. Ram Prasad Dhital, Chairperson, ERC",
-                image: userimg,
+                image: RamPD,
             },
             {
                 role: "Panelist",
                 name: "Dr. Sandip Shah, President, Nepal Solar Power Producers Association",
-                image: userimg,
+                image: Sandipshah,
             },
             {
                 role: "Panelist",
                 name: "Mr. Rajendra Prasad Pyakurel, Executive Director, National Association of Rural Municipalities in Nepal (NARMIN)",
-                image: userimg,
+                image: RajendraPD,
             },
             {
                 role: "Panelist",
                 name: "Mr. Kalanidhi Devkota, Executive Director, Municipal Association of Nepal (MuAN)",
-                image: userimg,
+                image: Kalanidhi,
             },
             {
                 role: "Panelist",
                 name: "Ms. Sama Shrestha, Programme Specialist (WPS, Humanitarian, DRR and Climate Change), UN Women",
-                image: userimg,
+                image: Sama,
             },
             {
                 role: "Panelist",
                 name: "Ms. Manohara Khadka, Country Representative - Nepal, International Water Management Institute (IWMI)",
-                image: userimg,
+                image: Manohara,
             },
             {
                 role: "Panelist",
                 name: "Dr. Biraj Singh Thapa, Associate Professor, Kathmandu University",
-                image: userimg,
+                image: Biraj,
             },
         ],
     },
