@@ -258,6 +258,7 @@ const sessions = [
             "Panelist: Ms. Barsha Pandey, Energy Specialist, The World Bank",
             "Panelist: Ms. Grishma Shah, Project Officer (Energy), ADB",
             "Panelist: Mr. Sunil KC, Immediate Past President of Nepal Bankers Association and CEO, NMB Bank Ltd.",
+            " Panelist: Mr. Dipesh Joshi, Program Lead, Global Green Growth Institute (GGGI -Nepal Country Office)",
             "Panelist: Mr. Guna Raj Dhakal, Founding President of RECON",
             "Panelist: Dr. Prem Kumar Pokhrel, Climate and Carbon Expert",
         ],
@@ -295,6 +296,11 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Mr. Sunil KC, Immediate Past President of Nepal Bankers Association and CEO, NMB Bank Ltd.",
+                image: userimg,
+            },
+            {
+                role: "Panelist",
+                name: "Mr. Dipesh Joshi, Program Lead, Global Green Growth Institute (GGGI -Nepal Country Office)",
                 image: userimg,
             },
             {
