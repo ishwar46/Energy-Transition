@@ -37,7 +37,6 @@ import premkumar from "../../src/assets/speakers/Prem Kumar Pokhrel.jpg";
 import rajupandit from "../../src/assets/speakers/Raju Pandit.jpg";
 import SumanBasnet from "../../src/assets/speakers/Suman Basnet.jpg";
 import SunilKC from "../../src/assets/speakers/Sunil KC.png";
-
 import Biraj from "../../src/assets/speakers/Biraj Singh Thapa.jpg";
 import Govind from "../../src/assets/speakers/Govind Raj Pokharel.png";
 import Kalanidhi from "../../src/assets/speakers/kalanidhi devkota.jpg";
@@ -47,7 +46,20 @@ import RamPD from "../../src/assets/speakers/Ram Prasad Dhita.png";
 import Sama from "../../src/assets/speakers/Sama Shrestha.jpg";
 import Sandipshah from "../../src/assets/speakers/Sandip Shah.jpg";
 import VB from "../../src/assets/speakers/V B Amatya.jpg";
+import Chandika from "../../src/assets/speakers/Chandika Prasad Bhatta.png";
+import Ganesh from "../../src/assets/speakers/ganesh karki.jpg";
+import KulmanG from "../../src/assets/speakers/Kulman Ghising.png";
+import KushalG from "../../src/assets/speakers/Kushal Gurung.jpg";
+import NirajSubedi from "../../src/assets/speakers/Niraj Subedi.jpg";
+import ReshaPiya from "../../src/assets/speakers/Resha Piya.jpg";
+import SamaThapa from "../../src/assets/speakers/Sama Thapa.jpg";
 
+import Madhu from "../../src/assets/speakers/Madhu Prasad Bhetuwal.png";
+import Mukesh from "../../src/assets/speakers/Mukesh ghimire.png";
+import NabinRaj from "../../src/assets/speakers/Nabin Raj Singh.jpg";
+import RameshKumar from "../../src/assets/speakers/Ramesh Kumar Maskey.png";
+import Rudra from "../../src/assets/speakers/Rudra Prasad khanal.jpg";
+import Susheel from "../../src/assets/speakers/susheel Chandra Acharya.png";
 
 
 const sessions = [
@@ -465,42 +477,42 @@ const sessions = [
             {
                 role: "Moderator",
                 name: "Ms. Sama Thapa, Journalist",
-                image: userimg,
+                image: SamaThapa,
             },
             {
                 role: "Presenter",
                 name: "Ms. Resha Piya, Infrastructure Advisor, British Embassy, Kathmandu",
-                image: userimg,
+                image: ReshaPiya,
             },
             {
                 role: "Panelist",
                 name: "Mr. Kulman Ghising, Managing Director, Nepal Electricity Authority (NEA)",
-                image: userimg,
+                image: KulmanG,
             },
             {
                 role: "Panelist",
                 name: "Dr. Chandika Prasad Bhatta, Managing Director, Nepal Oil Corporation (NOC)",
-                image: userimg,
+                image: Chandika,
             },
             {
                 role: "Panelist",
                 name: "Mr. Nawa Raj Dhakal, Executive Director, Alternative Energy Promotion Centre (AEPC)",
-                image: userimg,
+                image: nawaraj,
             },
             {
                 role: "Panelist",
                 name: "Mr. Niraj Subedi, Head of Office, KFW",
-                image: userimg,
+                image: NirajSubedi,
             },
             {
                 role: "Panelist",
                 name: "Mr. Ganesh Karki, President, Independent Power Producers' Association, Nepal (IPPAN)",
-                image: userimg,
+                image: Ganesh,
             },
             {
                 role: "Panelist",
                 name: "Mr. Kushal Gurung, Renewable Energy Confederation of Nepal (RECON)",
-                image: userimg,
+                image: KushalG,
             },
         ],
     },
@@ -528,53 +540,55 @@ const sessions = [
             {
                 role: "Session Chair",
                 name: "Mr. Madhu Prasad Bhetuwal, Secretary, Water and Energy Commission Secretariat (WECS)",
-                image: userimg,
+                image: Madhu,
             },
+            {
+                role: "Presenter",
+                name: "Prof. Dr. Ramesh Kumar Maskey, Kathmandu University",
+                image: RameshKumar,
+            },
+            {
+                role: "Presenter",
+                name: "Dr. Mukesh Ghimire, Deputy Director, AEPC",
+                image: Mukesh,
+            },
+
             {
                 role: "Guest",
                 name: "Mr. Sushil Chandra Acharya, Joint Secretary, MoEWRI",
-                image: userimg,
+                image: Susheel,
             },
             {
                 role: "Guest",
                 name: "Mr. Nabin Raj Singh, Director General, Department of Electricity Development (DoED)",
-                image: userimg,
+                image: NabinRaj,
             },
             {
                 role: "Guest",
                 name: "Ms. Pooja Sharma, Country Director, Practical Action Nepal",
-                image: userimg,
+                image: poojasharma,
             },
             {
                 role: "Guest",
                 name: "Mr. Manjeet Dhakal, Head of LDC Support Team & Director, Climate Analytics South Asia",
-                image: userimg,
+                image: Manjeet,
             },
             {
                 role: "Guest",
                 name: "Mr. Suman Basnet, Team Leader, Nepal Renewable Energy Programme (NREP)",
-                image: userimg,
+                image: SumanBasnet,
             },
             {
                 role: "Guest",
                 name: "Mr. Vishwa Bhusan Amatya, Senior Renewable Energy Expert",
-                image: userimg,
-            },
-            {
-                role: "Presenter",
-                name: "Prof. Dr. Ramesh Kumar Maskey",
-                image: userimg,
-            },
-            {
-                role: "Presenter",
-                name: "Dr. Mukesh Ghimire",
-                image: userimg,
+                image: VB,
             },
             {
                 role: "Vote of Thanks",
                 name: "Mr. Rudra Prasad Khanal, Director, AEPC",
-                image: userimg,
+                image: Rudra,
             },
+
         ],
     },
 
