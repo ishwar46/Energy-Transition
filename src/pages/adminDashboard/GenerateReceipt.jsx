@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import institutions from "../../data/institution";
-import dcgfimg from "../../assets/images/dcgffullogo.jpg";
+import dcgfimg from "../../assets/images/uranuslogo.png";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import GenerateReceiptForInstitution from "./GenerateReceiptForInstitution";
@@ -107,7 +107,7 @@ const GenerateReceipt = () => {
   return (
     <>
       <div className="text-2xl font-bold text-start mb-4 text-black mt-2">
-         Receipt For Individual
+        Receipt For Individual
       </div>
       <div className="mt-5 p-5 border border-gray-200 rounded-md bg-white shadow-sm">
         <div className="flex space-x-4 mb-4">
@@ -209,7 +209,7 @@ const GenerateReceipt = () => {
           </button>
         </div>
       </div>
-      <GenerateReceiptForInstitution/>
+      <GenerateReceiptForInstitution />
       {invoice && (
         <>
           <div

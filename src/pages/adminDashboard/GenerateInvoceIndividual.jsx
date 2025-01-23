@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import institutions from "../../data/institution";
-import dcgfimg from "../../assets/images/dcgffullogo.jpg";
+import dcgfimg from "../../assets/images/uranuslogo.png";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "../../css/invoice.css";
