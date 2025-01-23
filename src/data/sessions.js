@@ -10,6 +10,13 @@ import sureshach from "../../src/assets/speakers/Suresh_Acharya.jpg";
 import purnabahadur from "../../src/assets/speakers/Purna_Bahadur_Tamang.jpg";
 import bird from "../../src/assets/speakers/Pippa_Bird.jpg";
 import ramprasad from "../../src/assets/speakers/ram_prasad_dhital.png";
+import hemraj from "../../src/assets/speakers/Hemraj_Dhakal.png";
+import narayanprasad from "../../src/assets/speakers/Narayan_Prasad_Chaulagain.png";
+import poojasharma from "../../src/assets/speakers/Pooja_Sharma.png";
+import rajandhakal from "../../src/assets/speakers/Rajan_Dhakal.png";
+import sabnam from "../../src/assets/speakers/Sabnam_Shivakoti .jpg";
+import sandipkumar from "../../src/assets/speakers/Sandip_Kumar_Dev.png";
+
 
 
 const sessions = [
@@ -140,22 +147,22 @@ const sessions = [
             {
                 role: "Session Chair",
                 name: "Mr. Sandip Kumar Dev, Joint Secretary, MoEWRI",
-                image: userimg,
+                image: sandipkumar,
             },
             {
                 role: "Moderator",
                 name: "Ms. Pooja Sharma, Country Director, Practical Action Nepal",
-                image: userimg,
+                image: poojasharma,
             },
             {
                 role: "Keynote Speaker",
                 name: "Dr. Narayan Prasad Chaulagain, Senior Energy Specialist, GIZ",
-                image: userimg,
+                image: narayanprasad,
             },
             {
                 role: "Panelist",
                 name: "Mr. Rajan Dhakal, Deputy Managing Director, Nepal Electricity Authority (NEA)",
-                image: userimg,
+                image: rajandhakal,
             },
             {
                 role: "Panelist",
@@ -165,17 +172,17 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Ms. Sabnam Shivakoti Aryal, Joint Secretary, Ministry of Agriculture and Livestock Development (MoALD)",
-                image: userimg,
+                image: sabnam,
             },
             {
                 role: "Panelist",
                 name: "Dr. Narayan Prasad Adhikari, Deputy Executive Director, AEPC",
-                image: userimg,
+                image: narayanprasad,
             },
             {
                 role: "Panelist",
                 name: "Mr. Hem Raj Dhakal, Vice President, Federation of Nepalese Chambers of Commerce and Industry (FNCCI)",
-                image: userimg,
+                image: hemraj,
             },
             {
                 role: "Panelist",
