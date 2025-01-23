@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { getEventPdfsApi } from "../../apis/Api";
 import toast from "react-hot-toast";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, EffectCoverflow } from "swiper/modules";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -66,7 +66,8 @@ const SessionDetails = () => {
         {/* Swiper Section */}
         <div className="mt-10">
           <Swiper
-            modules={[Pagination, EffectCoverflow]}
+            modules={[Navigation, Pagination, EffectCoverflow]}
+            navigation
             pagination={{ clickable: true }}
             effect="coverflow"
             centeredSlides

@@ -53,7 +53,8 @@ import KushalG from "../../src/assets/speakers/Kushal Gurung.jpg";
 import NirajSubedi from "../../src/assets/speakers/Niraj Subedi.jpg";
 import ReshaPiya from "../../src/assets/speakers/Resha Piya.jpg";
 import SamaThapa from "../../src/assets/speakers/Sama Thapa.jpg";
-
+import Guru from "../../src/assets/speakers/Guru Prasad.jpg";
+import ShreeRaj from "../../src/assets/speakers/Shree Raj Shakya.jpg";
 import Madhu from "../../src/assets/speakers/Madhu Prasad Bhetuwal.png";
 import Mukesh from "../../src/assets/speakers/Mukesh ghimire.png";
 import NabinRaj from "../../src/assets/speakers/Nabin Raj Singh.jpg";
@@ -273,7 +274,7 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Mr. Guru Prasad Paudel, Executive Director, Nepal Rastra Bank (NRB)",
-                image: userimg,
+                image: Guru,
             },
             {
                 role: "Panelist",
@@ -283,7 +284,7 @@ const sessions = [
             {
                 role: "Panelist",
                 name: "Dr. Shree Raj Shakya, Director, Center for Energy Studies (CES), Institute of Engineering (IoE), Tribhuvan University",
-                image: userimg,
+                image: ShreeRaj,
             },
             {
                 role: "Panelist",
