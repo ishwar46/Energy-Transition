@@ -10,7 +10,7 @@ import {
   verifyUserByAdminApi,
   resetUserPasswordApi,
 } from "../../apis/Api";
-import acsisclogo from "../../assets/images/leologo.png";
+import acsisclogo from "../../assets/images/uranuslogo.png";
 import { QRCodeSVG } from "qrcode.react";
 import toast from "react-hot-toast";
 import Pagination from "@mui/material/Pagination";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import logo from "../../assets/images/leologo.png";
+import logo from "../../assets/images/uranuslogo.png";
 import Navbar from "../../components/Navbar";
 import useDocumentTitle from "../../components/DocTitle";
 import { getUserByIdApi, updateProfileApi } from "../../apis/Api";
