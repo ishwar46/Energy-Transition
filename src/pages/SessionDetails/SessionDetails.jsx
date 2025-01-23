@@ -191,7 +191,7 @@ const SessionDetails = () => {
             <div className="mt-6 text-center">
               <p className="text-gray-500 text-sm">
                 Energy Transition for Resilient and Low Carbon Economy Summit
-                2025.
+                2025
               </p>
             </div>
           </div>
