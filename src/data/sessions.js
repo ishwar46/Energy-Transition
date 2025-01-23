@@ -28,6 +28,17 @@ import Manjeet from "../../src/assets/speakers/Manjeet Dhakal .jpg";
 import thakurthapa from "../../src/assets/speakers/thakur_thapa.jpg";
 import vijayasingh from "../../src/assets/speakers/Vijaya Singh.png";
 
+import Barsha from "../../src/assets/speakers/Barsha pandey.jpg";
+import Dhaniram from "../../src/assets/speakers/Dhani Ram Sharma.png";
+import Dipesh from "../../src/assets/speakers/Dipesh Joshi.jpg";
+import Grishma from "../../src/assets/speakers/Grishma shah.jpg";
+import Gunaraj from "../../src/assets/speakers/guna raj.jpg";
+import omprakash from "../../src/assets/speakers/Om Prakash Bhattarai.png";
+import premkumar from "../../src/assets/speakers/Prem Kumar Pokhrel.jpg";
+import rajupandit from "../../src/assets/speakers/Raju Pandit.jpg";
+import SumanBasnet from "../../src/assets/speakers/Suman Basnet.jpg";
+import SunilKC from "../../src/assets/speakers/Sunil KC.png";
+
 
 
 const sessions = [
@@ -300,52 +311,52 @@ const sessions = [
             {
                 role: "Session Chair",
                 name: "Mr. Dhani Ram Sharma, Joint Secretary, Ministry of Finance (MoF)",
-                image: userimg,
+                image: Dhaniram,
             },
             {
                 role: "Moderator",
                 name: "Mr. Suman Basnet, Team Leader, Nepal Renewable Energy Programme (NREP)",
-                image: userimg,
+                image: SumanBasnet,
             },
             {
                 role: "Keynote Speaker",
                 name: "Mr. Raju Pandit Chhetri, Executive Director, PRC",
-                image: userimg,
+                image: rajupandit,
             },
             {
                 role: "Panelist",
                 name: "Mr. Om Prakash Bhattarai, Under Secretary, MoF",
-                image: userimg,
+                image: omprakash,
             },
             {
                 role: "Panelist",
                 name: "Ms. Barsha Pandey, Energy Specialist, The World Bank",
-                image: userimg,
+                image: Barsha,
             },
             {
                 role: "Panelist",
                 name: "Ms. Grishma Shah, Project Officer (Energy), ADB",
-                image: userimg,
+                image: Grishma,
             },
             {
                 role: "Panelist",
                 name: "Mr. Sunil KC, Immediate Past President of Nepal Bankers Association and CEO, NMB Bank Ltd.",
-                image: userimg,
+                image: SunilKC,
             },
             {
                 role: "Panelist",
                 name: "Mr. Dipesh Joshi, Program Lead, Global Green Growth Institute (GGGI -Nepal Country Office)",
-                image: userimg,
+                image: Dipesh,
             },
             {
                 role: "Panelist",
                 name: "Mr. Guna Raj Dhakal, Founding President of RECON",
-                image: userimg,
+                image: Gunaraj,
             },
             {
                 role: "Panelist",
                 name: "Dr. Prem Kumar Pokhrel, Climate and Carbon Expert",
-                image: userimg,
+                image: premkumar,
             },
         ],
     },
