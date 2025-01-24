@@ -37,7 +37,7 @@ import premkumar from "../../src/assets/speakers/Prem Kumar Pokhrel.jpg";
 import rajupandit from "../../src/assets/speakers/Raju Pandit.jpg";
 import SumanBasnet from "../../src/assets/speakers/Suman Basnet.jpg";
 import SunilKC from "../../src/assets/speakers/Sunil KC.png";
-import Biraj from "../../src/assets/speakers/Biraj Singh Thapa.jpg";
+import Biraj from "../../src/assets/speakers/Biraj Singh Thapa.jpeg";
 import Govind from "../../src/assets/speakers/Govind Raj Pokharel.png";
 import Kalanidhi from "../../src/assets/speakers/kalanidhi devkota.jpg";
 import Manohara from "../../src/assets/speakers/Manohara Khadka.jpg";
