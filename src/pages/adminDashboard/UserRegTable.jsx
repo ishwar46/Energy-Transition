@@ -11,7 +11,7 @@ import {
   resetUserPasswordApi,
 } from "../../apis/Api";
 import { useReactToPrint } from "react-to-print";
-import logo from "../../assets/images/uranuslogo.png";
+import logo from "../../assets/images/nepal.png";
 import { QRCodeSVG } from "qrcode.react";
 import toast from "react-hot-toast";
 import Pagination from "@mui/material/Pagination";
