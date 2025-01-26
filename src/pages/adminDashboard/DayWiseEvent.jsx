@@ -10,7 +10,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import useDocumentTitle from "../../components/DocTitle";
 
 const DayWiseEvent = () => {
-  useDocumentTitle(" Day Wise Event With PDF - International Youth Camp 2025");
+  useDocumentTitle(" Day Wise Event With PDF - Uranus Event Management");
 
   const [allEventWithPdf, setAllEventWithPdf] = useState([]);
   const [formData, setFormData] = useState({

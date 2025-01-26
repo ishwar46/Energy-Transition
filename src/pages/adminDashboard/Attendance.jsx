@@ -56,7 +56,7 @@ const customStyles = {
 const COLORS = ["#009B53", "#FF1F44"];
 
 const ParticipantAttendance = () => {
-  useDocumentTitle("Attendance - International Youth Camp 2025");
+  useDocumentTitle("Attendance - Uranus Event Management");
 
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

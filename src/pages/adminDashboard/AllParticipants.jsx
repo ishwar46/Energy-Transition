@@ -403,7 +403,7 @@ const AllParticipants = () => {
         doc.internal.pageSize.height - 10
       );
       doc.text(
-        "International Youth Camp 2025",
+        "Uranus Event Management",
         14,
         doc.internal.pageSize.height - 10
       );

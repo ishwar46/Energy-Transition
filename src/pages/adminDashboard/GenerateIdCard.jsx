@@ -36,7 +36,7 @@ const customStyles = {
 };
 
 const GenerateIdCard = () => {
-  useDocumentTitle("Generate ID Card - International Youth Camp 2025");
+  useDocumentTitle("Generate ID Card - Uranus Event Management");
 
   // -----------------------------------------------------------------
   // 1. States for "Generate ID Card for Existing Users" via Email

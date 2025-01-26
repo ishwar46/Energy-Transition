@@ -10,7 +10,7 @@ import { FaEye } from "react-icons/fa";
 import useDocumentTitle from "../../components/DocTitle";
 
 const AdminMessage = () => {
-  useDocumentTitle("Add Message - International Youth Camp 2025");
+  useDocumentTitle("Add Message - Uranus Event Management");
 
   const [messageGet, setMessageGet] = useState([]);
   const [selectedMessage, setSelectedMessage] = useState(null);

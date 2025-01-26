@@ -6,7 +6,7 @@
 // import logo from "../../assets/images/leologo.png";
 
 // const Introduction = () => {
-//   useDocumentTitle("Introduction - International Youth Camp 2025");
+//   useDocumentTitle("Introduction - Uranus Event Management");
 
 //   return (
 //     <>
@@ -28,7 +28,7 @@
 //           className="relative z-10 text-4xl font-bold text-blue-800 pt-5 text-center mb-10"
 //           style={{ animation: "fadeIn 1s ease-out" }}
 //         >
-//           International Youth Camp 2025
+//           Uranus Event Management
 //         </div>
 
 //         {/* Introduction Paragraphs */}
@@ -39,7 +39,7 @@
 //           }}
 //         >
 //           <p className="mb-6">
-//             The International Youth Camp 2025, hosted by Leo District Council
+//             The Uranus Event Management, hosted by Leo District Council
 //             325 L Nepal under the auspices of Lions Club International District
 //             325 L Nepal, is a culture designed to unite young leaders from
 //             around the globe to experience Nepal’s rich cultural heritage,
@@ -67,7 +67,7 @@
 //             development, the camp fosters a vibrant environment of
 //             cross-cultural networking, understanding and unity, enabling
 //             participants to experience the unique cultural diversity of Nepal
-//             and engage with local communities. The International Youth Camp 2025
+//             and engage with local communities. The Uranus Event Management
 //             thus aligns seamlessly with the mission of Lions Club International
 //             by encouraging youth empowerment and global awareness. As
 //             participants leave with strengthened leadership abilities, a

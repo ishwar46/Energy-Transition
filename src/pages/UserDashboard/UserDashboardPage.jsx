@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import AlertDialog from "../../components/AlertDialog";
 
 const UserDashboardPage = () => {
-  useDocumentTitle("User Profile - International Youth Camp 2025");
+  useDocumentTitle("User Profile - Uranus Event Management");
 
   const [user, setUser] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);

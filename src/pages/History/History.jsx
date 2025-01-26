@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import useDocumentTitle from "../../components/DocTitle";
 
 const History = () => {
-  useDocumentTitle("History of ACSIC - International Youth Camp 2025");
+  useDocumentTitle("History of ACSIC - Uranus Event Management");
 
   const historyEntries = historyData.ACSIC_History;
 

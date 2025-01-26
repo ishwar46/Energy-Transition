@@ -9,7 +9,7 @@ import GalleryConfirmationModel from "../../components/GalleryConfirmationModel"
 import useDocumentTitle from "../../components/DocTitle";
 
 const Gallery = () => {
-  useDocumentTitle("Gallery - International Youth Camp 2025");
+  useDocumentTitle("Gallery - Uranus Event Management");
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

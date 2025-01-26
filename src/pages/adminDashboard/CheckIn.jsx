@@ -22,7 +22,7 @@ const formatDate = (date) => {
 };
 
 const CheckIn = () => {
-  useDocumentTitle("Manage Check-ins - International Youth Camp 2025");
+  useDocumentTitle("Manage Check-ins - Uranus Event Management");
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -216,7 +216,7 @@ const CheckIn = () => {
       );
 
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit 2025",
         14,
         doc.internal.pageSize.height - 10
       );

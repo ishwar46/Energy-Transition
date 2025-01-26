@@ -19,9 +19,7 @@ import { FaFilePdf, FaFileExcel } from "react-icons/fa";
 import useDocumentTitle from "../../components/DocTitle";
 
 const MealsExcursionsAdmin = () => {
-  useDocumentTitle(
-    "Manage Meals and Excursions - International Youth Camp 2025"
-  );
+  useDocumentTitle("Manage Meals and Excursions - Uranus Event Management");
 
   const [participants, setParticipants] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -214,7 +212,7 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
       );
 
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit 2025",
         14,
         doc.internal.pageSize.height - 10
       );

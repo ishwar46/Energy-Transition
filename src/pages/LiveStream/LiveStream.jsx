@@ -36,7 +36,7 @@ const LiveStreamPage = () => {
         />
 
         <h1 className="text-4xl font-bold conference-title mb-2">
-          The 36th ACSIC Conference Nepal
+          Energy Transition for Resilient and Low Carbon Economy Summit 2025
         </h1>
         <p className="text-xl font-medium live-from">
           We Are Live from Kathmandu, Nepal

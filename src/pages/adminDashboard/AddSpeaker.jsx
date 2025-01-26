@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { Pagination, Stack } from "@mui/material";
 
 const AddSpeaker = () => {
-  useDocumentTitle("Add Speakers - International Youth Camp 2025");
+  useDocumentTitle("Add Speakers - Uranus Event Management");
 
   const [speakers, setSpeakers] = useState([]);
   const [collapsed, setCollapsed] = useState({});

@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 
 const AddVenue = () => {
-  useDocumentTitle("Add Venue - International Youth Camp 2025");
+  useDocumentTitle("Add Venue - Uranus Event Management");
 
   const [allVenue, setAllVenue] = useState([]);
   const [formData, setFormData] = useState({

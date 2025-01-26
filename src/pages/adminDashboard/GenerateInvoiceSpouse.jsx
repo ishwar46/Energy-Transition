@@ -10,7 +10,7 @@ import useDocumentTitle from "../../components/DocTitle";
 initTWE({ Input });
 
 const GenerateInvoiceSpouse = () => {
-  useDocumentTitle("Generate Invoice Spouse - International Youth Camp 2025");
+  useDocumentTitle("Generate Invoice Spouse - Uranus Event Management");
   const [selectedInstitution, setSelectedInstitution] = useState("");
   const [participantName, setParticipantName] = useState("");
   const [accompanyPersonName, setAccompanyPersonName] = useState("");

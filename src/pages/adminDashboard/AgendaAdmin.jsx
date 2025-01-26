@@ -9,7 +9,7 @@ import excelIcon from "../../assets/images/sheet.png";
 import useDocumentTitle from "../../components/DocTitle";
 
 const AgendaAdmin = () => {
-  useDocumentTitle("Agenda Answers - International Youth Camp 2025");
+  useDocumentTitle("Agenda Answers - Uranus Event Management");
 
   const [agendaData, setAgendaData] = useState([]);
   const [questions, setQuestions] = useState([]);

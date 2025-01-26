@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 
 const PdfManagement = () => {
-  useDocumentTitle("Manage PDFs - International Youth Camp 2025");
+  useDocumentTitle("Manage PDFs - Uranus Event Management");
 
   const [pdfs, setPdfs] = useState([]);
   const [pdfFile, setPdfFile] = useState(null);

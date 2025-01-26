@@ -8,7 +8,7 @@ import useDocumentTitle from "../../components/DocTitle";
 initTWE({ Input });
 
 const AddSession = () => {
-  useDocumentTitle("Add Sessions - International Youth Camp 2025");
+  useDocumentTitle("Add Sessions - Uranus Event Management");
   const [speakers, setSpeakers] = useState([]);
 
   const [formData, setFormData] = useState({
