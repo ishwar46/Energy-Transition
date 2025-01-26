@@ -274,7 +274,8 @@ const UserTable = () => {
         "Last Name": user.personalInformation?.fullName?.lastName || "N/A",
         Email: user.personalInformation?.emailAddress || "N/A",
         Status: user.adminVerification?.status || "N/A",
-        Occupation: user.personalInformation?.occupation || "N/A",
+        Organization: user.personalInformation?.nameOfInstitution || "N/A",
+        Occupation: user.personalInformation?.jobPosition || "N/A",
         "Phone Number": user.personalInformation?.mobileNumber || "N/A",
         Gender: user.personalInformation?.gender || "N/A",
         "Participant Type": user.personalInformation?.participantType || "N/A", // New Column
@@ -288,7 +289,8 @@ const UserTable = () => {
       { wch: 20 }, // Last Name
       { wch: 30 }, // Email
       { wch: 15 }, // Status
-      { wch: 30 }, // Occupation
+      { wch: 25 }, // Organization
+      { wch: 25 }, // Occupation
       { wch: 20 }, // Phone Number
       { wch: 10 }, // Gender
       { wch: 30 }, // Participant Type
@@ -332,7 +334,7 @@ const UserTable = () => {
       "Name",
       "Email",
       "Phone Number",
-      "Gender",
+      "Organization",
       "Participant Type",
     ];
 
@@ -348,8 +350,8 @@ const UserTable = () => {
         userName,
         user.personalInformation?.emailAddress || "N/A",
         user.personalInformation?.mobileNumber || "N/A",
-        user.personalInformation?.gender || "N/A",
-        user.personalInformation?.participantType || "N/A", // New Column
+        user.personalInformation?.nameOfInstitution || "N/A",
+        user.personalInformation?.participantType || "N/A",
       ];
     });
 
