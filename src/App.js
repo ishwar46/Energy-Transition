@@ -15,11 +15,12 @@ import Queries from "./pages/queries/Queries.jsx";
 import SessionDetails from "./pages/SessionDetails/SessionDetails.jsx";
 import QuestionsForm from "./components/QuestionForm.jsx";
 import LiveStreamPage from "./pages/LiveStream/LiveStream.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
     <Router>
-      <Toaster position="bottom-left" reverseOrder={false} /> <ScrollToTop />
+      <Toaster position="bottom-left" reverseOrder={false} /> <ScrollToTop /> <Analytics />
       <Routes>
         <Route path="/" element={<HomePage />} />{" "}
         {/* <Route path="/homepage" element={<HomePage />} />{" "}
@@ -64,6 +65,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />{" "}
       </Routes>{" "}
     </Router>
+
   );
 }
 
