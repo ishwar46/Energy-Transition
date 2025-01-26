@@ -166,7 +166,7 @@ const UserTable = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   //Role
   const [genderFilter, setGenderFilter] = useState("");
-
+  const [statusFilter, setStatusFilter] = useState("");
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
@@ -445,6 +445,7 @@ const UserTable = () => {
     }
   };
 
+  //Filters
   const filteredUsers = users.filter((user) => {
     const matchesSearch =
       user.personalInformation?.fullName?.firstName
@@ -460,14 +461,17 @@ const UserTable = () => {
         ?.trim()
         .includes(searchFilter.trim());
 
-    const matchRole =
+    const matchGender =
       !genderFilter || user.personalInformation?.gender === genderFilter;
 
     const matchParticipantType =
       !participantTypeFilter ||
       user.personalInformation?.participantType === participantTypeFilter;
 
-    return matchesSearch && matchRole && matchParticipantType;
+    const matchStatus =
+      !statusFilter || user.adminVerification?.status === statusFilter;
+
+    return matchesSearch && matchGender && matchParticipantType && matchStatus;
   });
 
   // Get current users for pagination
@@ -532,22 +536,21 @@ const UserTable = () => {
                   onChange={(e) => setSearchFilter(e.target.value)}
                   className="p-2 border rounded w-full sm:w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
                 />
-                <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
-                  {/* Gender Filter */}
+                <div className="flex flex-col sm:flex-row sm:space-x-4 w-full text-gray-700">
+                  {/* Status Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center text-gray-700"
-                    value={genderFilter}
-                    onChange={(e) => setGenderFilter(e.target.value)}
+                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center "
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
                   >
-                    <option value="">All Gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="others">Others</option>
+                    <option value="">All Status</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="pending">Pending</option>
+                    <option value="rejected">Rejected</option>
                   </select>
-
                   {/* Participant Type Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center text-gray-700"
+                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center"
                     value={participantTypeFilter}
                     onChange={(e) => setParticipantTypeFilter(e.target.value)}
                   >
@@ -561,6 +564,17 @@ const UserTable = () => {
                     <option value="VIP Guest">VIP Guest</option>
                     <option value="Media">Media</option>
                     <option value="Keynote Speaker">Keynote Speaker</option>
+                  </select>
+                  {/* Gender Filter */}
+                  <select
+                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center"
+                    value={genderFilter}
+                    onChange={(e) => setGenderFilter(e.target.value)}
+                  >
+                    <option value="">All Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
                   </select>
                 </div>
               </div>
