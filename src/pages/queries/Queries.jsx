@@ -171,7 +171,14 @@ const Queries = () => {
                           {indexOfFirstQuery + index + 1}
                         </td>
                         <td className="py-3 px-6">{query.fullname}</td>
-                        <td className="py-3 px-6">{query.email}</td>
+                        <td className="py-3 px-6">
+                          <a
+                            href={`mailto:${query.email}`}
+                            className="text-blue-500 hover:underline"
+                          >
+                            {query.email}
+                          </a>
+                        </td>
                         <td className="py-3 px-6">{query.message}</td>
                         <td className="py-3 px-6">
                           {formatDate(query.createdAt)}
