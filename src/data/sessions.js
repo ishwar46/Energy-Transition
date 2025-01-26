@@ -299,7 +299,6 @@ const sessions = [
         ],
     },
 
-
     {
         title: "Networking Lunch",
         time: "12:30 PM - 1:30 PM",

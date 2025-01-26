@@ -386,11 +386,11 @@ const UserTable = () => {
         user.personalInformation?.currentAddress || "N/A",
         user.personalInformation?.highestEducationLevel || "N/A",
         user.personalInformation?.gender?.male
-          ? "Male"
+          ? "male"
           : user.personalInformation?.gender?.feMale
-          ? "Female"
+          ? "female"
           : user.personalInformation?.gender?.others
-          ? "Others"
+          ? "others"
           : "N/A",
         user?.personalInformation?.dietaryRequirements?.vegetarian
           ? "Vegetarian"
@@ -503,7 +503,7 @@ const UserTable = () => {
       user.personalInformation?.emailAddress
         ?.toLowerCase()
         .includes(searchFilter.toLowerCase()) ||
-      user.personalInformation?.whatsAppNumber
+      user.personalInformation?.mobileNumber
         ?.trim()
         .includes(searchFilter.trim());
     console.log(searchFilter);
@@ -750,10 +750,10 @@ const UserTable = () => {
                         "N/A"
                       }`}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong className="font-medium">Nationality:</strong>{" "}
                       {currentUser?.personalInformation?.nationality || "N/A"}
-                    </p>
+                    </p> */}
                     <p>
                       <strong className="font-medium">Gender:</strong>{" "}
                       {currentUser?.personalInformation?.gender || "N/A"}
@@ -791,7 +791,11 @@ const UserTable = () => {
                       {currentUser?.personalInformation?.mobileNumber || "N/A"}
                     </p>
                     <p>
-                      <strong className="font-medium">Organization</strong>{" "}
+                      <strong className="font-medium">Designation:</strong>{" "}
+                      {currentUser?.personalInformation?.jobPosition || "N/A"}
+                    </p>
+                    <p>
+                      <strong className="font-medium">Organization:</strong>{" "}
                       {currentUser?.personalInformation?.nameOfInstitution ||
                         "N/A"}
                     </p>
