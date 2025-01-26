@@ -182,6 +182,8 @@ const UserTable = () => {
   // const biography = currentUser?.biography || "";
   // const truncatedBiography = truncateText(biography, 50);
 
+  const [participantTypeFilter, setParticipantTypeFilter] = useState("");
+
   const handleImageClick = (imageUrl) => {
     setImageToPreview(imageUrl);
     setIsImagePreviewOpen(true);
@@ -275,6 +277,7 @@ const UserTable = () => {
         Occupation: user.personalInformation?.occupation || "N/A",
         "Phone Number": user.personalInformation?.mobileNumber || "N/A",
         Gender: user.personalInformation?.gender || "N/A",
+        "Participant Type": user.personalInformation?.participantType || "N/A", // New Column
       }))
     );
 
@@ -288,6 +291,7 @@ const UserTable = () => {
       { wch: 30 }, // Occupation
       { wch: 20 }, // Phone Number
       { wch: 10 }, // Gender
+      { wch: 30 }, // Participant Type
     ];
 
     const wb = XLSX.utils.book_new();
@@ -298,7 +302,7 @@ const UserTable = () => {
       "Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit.xlsx"
     );
   };
-
+  // Export to PDF
   const exportToPDF = () => {
     const doc = new jsPDF("landscape");
     const currentDate = new Date().toLocaleDateString("en-US", {
@@ -323,7 +327,14 @@ const UserTable = () => {
     doc.setTextColor(33, 37, 41);
     doc.text(`Total Participants: ${totalParticipants}`, 14, 28);
 
-    const tableColumn = ["SN", "Name", "Email", "Phone Number", "Gender"];
+    const tableColumn = [
+      "SN",
+      "Name",
+      "Email",
+      "Phone Number",
+      "Gender",
+      "Participant Type",
+    ];
 
     const tableRows = filteredUsers.map((user, index) => {
       const userName = `${user.personalInformation?.title || "N/A"} ${
@@ -338,6 +349,7 @@ const UserTable = () => {
         user.personalInformation?.emailAddress || "N/A",
         user.personalInformation?.mobileNumber || "N/A",
         user.personalInformation?.gender || "N/A",
+        user.personalInformation?.participantType || "N/A", // New Column
       ];
     });
 
@@ -449,7 +461,11 @@ const UserTable = () => {
     const matchRole =
       !genderFilter || user.personalInformation?.gender === genderFilter;
 
-    return matchesSearch && matchRole;
+    const matchParticipantType =
+      !participantTypeFilter ||
+      user.personalInformation?.participantType === participantTypeFilter;
+
+    return matchesSearch && matchRole && matchParticipantType;
   });
 
   // Get current users for pagination
@@ -514,10 +530,10 @@ const UserTable = () => {
                   onChange={(e) => setSearchFilter(e.target.value)}
                   className="p-2 border rounded w-full sm:w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
                 />
-
-                <div className="flex flex-col sm:flex-row sm:space-x-4 w-full text-black mb-4 h-11">
+                <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
+                  {/* Gender Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center"
+                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center text-gray-700"
                     value={genderFilter}
                     onChange={(e) => setGenderFilter(e.target.value)}
                   >
@@ -525,6 +541,24 @@ const UserTable = () => {
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     <option value="others">Others</option>
+                  </select>
+
+                  {/* Participant Type Filter */}
+                  <select
+                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center text-gray-700"
+                    value={participantTypeFilter}
+                    onChange={(e) => setParticipantTypeFilter(e.target.value)}
+                  >
+                    <option value="">All Participant Types</option>
+                    <option value="Session Chair">Session Chair</option>
+                    <option value="Moderator">Moderator</option>
+                    <option value="Presenter">Presenter</option>
+                    <option value="General Participant">
+                      General Participant
+                    </option>
+                    <option value="VIP Guest">VIP Guest</option>
+                    <option value="Media">Media</option>
+                    <option value="Keynote Speaker">Keynote Speaker</option>
                   </select>
                 </div>
               </div>
