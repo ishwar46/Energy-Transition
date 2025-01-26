@@ -528,18 +528,18 @@ const UserTable = () => {
 
             <div className="mb-5 flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-4 justify-between items-center">
               <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
-                {/* Unified search input */}
+                {/* search input */}
                 <input
                   type="text"
                   placeholder="Search by name, email or number..."
                   value={searchFilter}
                   onChange={(e) => setSearchFilter(e.target.value)}
-                  className="p-2 border rounded w-full sm:w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
+                  className="p-2 border rounded sm:w-1/2 w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
                 />
                 <div className="flex flex-col sm:flex-row sm:space-x-4 w-full text-gray-700">
                   {/* Status Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center "
+                    className="border rounded focus:ring focus:ring-gray-200 sm:w-1/3 w-full text-center"
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
                   >
@@ -550,7 +550,7 @@ const UserTable = () => {
                   </select>
                   {/* Participant Type Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center"
+                    className="border rounded focus:ring focus:ring-gray-200 sm:w-1/3 w-full text-center"
                     value={participantTypeFilter}
                     onChange={(e) => setParticipantTypeFilter(e.target.value)}
                   >
@@ -567,7 +567,7 @@ const UserTable = () => {
                   </select>
                   {/* Gender Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center"
+                    className="border rounded focus:ring focus:ring-gray-200 sm:w-1/3 w-full text-center"
                     value={genderFilter}
                     onChange={(e) => setGenderFilter(e.target.value)}
                   >
@@ -579,7 +579,6 @@ const UserTable = () => {
                 </div>
               </div>
             </div>
-
             <table className="min-w-full leading-normal bg-transparent shadow-md">
               <thead>
                 <tr>

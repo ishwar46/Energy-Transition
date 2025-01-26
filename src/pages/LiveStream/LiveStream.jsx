@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import loadingAnimation from "../../assets/animations/loading.json";
 import "../../css/liveStreamPage.css";
-import brandLogo from "../../assets/acsic.png";
+import brandLogo from "../../assets/images/nepal.png";
 
 const LiveStreamPage = () => {
   const [liveStreamUrl, setLiveStreamUrl] = useState(null);
@@ -43,7 +43,7 @@ const LiveStreamPage = () => {
         </p>
         {/* Slogan */}
         <p className="text-lg font-semibold text-gray-200 italic">
-          Financing Innovations for Economic Growth: "Shaping Innovative Future"
+          Organized By: Alternative Energy Promotion Center
         </p>
       </div>
 

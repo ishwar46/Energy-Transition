@@ -14,6 +14,7 @@ import ParticipantAttendance from "./pages/adminDashboard/Attendance.jsx";
 import Queries from "./pages/queries/Queries.jsx";
 import SessionDetails from "./pages/SessionDetails/SessionDetails.jsx";
 import QuestionsForm from "./components/QuestionForm.jsx";
+import LiveStreamPage from "./pages/LiveStream/LiveStream.jsx";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />{" "}
         <Route path="/sessions" element={<SessionDetails />} />{" "}
         <Route path="/questions-form" element={<QuestionsForm />} />{" "}
+        <Route path="/live-stream" element={<LiveStreamPage />} />{" "}
         <Route path="/accomodation" element={<Accomodation />} />{" "}
         {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />{" "} */}
         <Route path="/ishwarrrrr" element={<Queries />} />{" "}
