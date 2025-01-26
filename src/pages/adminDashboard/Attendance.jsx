@@ -184,7 +184,7 @@ const ParticipantAttendance = () => {
     { name: "Present", value: attendanceCounts.present },
     { name: "Absent", value: attendanceCounts.absent },
   ];
-
+  // eslint-disable-next-line
   const handleInstitutionChange = (e) => {
     setSelectedInstitution(e.target.value);
   };
