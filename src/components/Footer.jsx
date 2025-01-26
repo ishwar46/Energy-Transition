@@ -66,7 +66,7 @@ const Footer = () => {
               <img src={Wasapp} alt="WhatsApp" className="h-8" />
               <div>
                 <span className="text-white font-semibold cursor-pointer">
-                  +977-9840174852
+                  +977-9851129926
                 </span>{" "}
                 <span>feel free to message for queries. (Chat Only)</span>
               </div>
