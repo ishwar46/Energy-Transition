@@ -270,34 +270,11 @@ const UserTable = () => {
         "First Name": user.personalInformation?.fullName?.firstName || "N/A",
         "Middle Name": user.personalInformation?.fullName?.middleName || "",
         "Last Name": user.personalInformation?.fullName?.lastName || "N/A",
-        "Date Of Birth": user.personalInformation?.dateOfBirth
-          ? new Date(user.personalInformation?.dateOfBirth).toLocaleDateString(
-              "en-US",
-              {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }
-            )
-          : "N/A",
         Email: user.personalInformation?.emailAddress || "N/A",
         Status: user.adminVerification?.status || "N/A",
         Occupation: user.personalInformation?.occupation || "N/A",
         "Phone Number": user.personalInformation?.mobileNumber || "N/A",
-        Gender: user.personalInformation?.gender?.male
-          ? "Male"
-          : user.personalInformation?.gender?.feMale
-          ? "Female"
-          : user.personalInformation?.gender?.others
-          ? "Others"
-          : "N/A",
-        Meal: user?.personalInformation?.dietaryRequirements?.vegetarian
-          ? "Vegetarian"
-          : user?.personalInformation?.dietaryRequirements?.nonveg
-          ? "Nonveg"
-          : user?.personalInformation?.dietaryRequirements?.other
-          ? "Other"
-          : "N/A",
+        Gender: user.personalInformation?.gender || "N/A",
       }))
     );
 
@@ -306,25 +283,11 @@ const UserTable = () => {
       { wch: 20 }, // First Name
       { wch: 20 }, // Middle Name
       { wch: 20 }, // Last Name
-      { wch: 20 }, // Date of Birth
       { wch: 30 }, // Email
-      { wch: 30 }, // Current Address
-      { wch: 30 }, // Highest Education Level
-      { wch: 40 }, // Leo Multiple District And Club Name
-      { wch: 30 }, // Position in District
       { wch: 15 }, // Status
       { wch: 30 }, // Occupation
-      { wch: 40 }, // INTL Occupation Passport Number
-      { wch: 20 }, // WhatsApp Number
-      { wch: 20 }, // Emergency Contact Number
+      { wch: 20 }, // Phone Number
       { wch: 10 }, // Gender
-      { wch: 70 }, // Why Attend
-      { wch: 50 }, // What Makes You Unique
-      { wch: 50 }, // Achievements
-      { wch: 50 }, // Special Skills
-      { wch: 30 }, // Social Media
-      { wch: 90 }, // Health Description
-      { wch: 90 }, // Notable Things
     ];
 
     const wb = XLSX.utils.book_new();
@@ -360,14 +323,7 @@ const UserTable = () => {
     doc.setTextColor(33, 37, 41);
     doc.text(`Total Participants: ${totalParticipants}`, 14, 28);
 
-    const tableColumn = [
-      "SN",
-      "Name",
-      "Email",
-      "Phone Number",
-      "Gender",
-      "Meal",
-    ];
+    const tableColumn = ["SN", "Name", "Email", "Phone Number", "Gender"];
 
     const tableRows = filteredUsers.map((user, index) => {
       const userName = `${user.personalInformation?.title || "N/A"} ${
@@ -381,24 +337,7 @@ const UserTable = () => {
         userName,
         user.personalInformation?.emailAddress || "N/A",
         user.personalInformation?.mobileNumber || "N/A",
-        user.personalInformation?.occupation || "N/A",
-        // accompanyingPersonInfo,
-        user.personalInformation?.currentAddress || "N/A",
-        user.personalInformation?.highestEducationLevel || "N/A",
-        user.personalInformation?.gender?.male
-          ? "male"
-          : user.personalInformation?.gender?.feMale
-          ? "female"
-          : user.personalInformation?.gender?.others
-          ? "others"
-          : "N/A",
-        user?.personalInformation?.dietaryRequirements?.vegetarian
-          ? "Vegetarian"
-          : user?.personalInformation?.dietaryRequirements?.nonveg
-          ? "Nonveg"
-          : user?.personalInformation?.dietaryRequirements?.other
-          ? "Other"
-          : "N/A",
+        user.personalInformation?.gender || "N/A",
       ];
     });
 
@@ -506,16 +445,9 @@ const UserTable = () => {
       user.personalInformation?.mobileNumber
         ?.trim()
         .includes(searchFilter.trim());
-    console.log(searchFilter);
 
     const matchRole =
-      !genderFilter ||
-      (genderFilter === "Male" &&
-        user.personalInformation.gender?.male === true) ||
-      (genderFilter === "Female" &&
-        user.personalInformation.gender?.feMale === true) ||
-      (genderFilter === "Others" &&
-        user.personalInformation.gender?.others === true);
+      !genderFilter || user.personalInformation?.gender === genderFilter;
 
     return matchesSearch && matchRole;
   });
@@ -590,9 +522,9 @@ const UserTable = () => {
                     onChange={(e) => setGenderFilter(e.target.value)}
                   >
                     <option value="">All Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Others">Others</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
                   </select>
                 </div>
               </div>
@@ -797,6 +729,11 @@ const UserTable = () => {
                     <p>
                       <strong className="font-medium">Organization:</strong>{" "}
                       {currentUser?.personalInformation?.nameOfInstitution ||
+                        "N/A"}
+                    </p>
+                    <p>
+                      <strong className="font-medium">Participant Type:</strong>{" "}
+                      {currentUser?.personalInformation?.participantType ||
                         "N/A"}
                     </p>
 
