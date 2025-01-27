@@ -29,7 +29,7 @@ const MealsExcursionsAdmin = () => {
   const [participantsPerPage] = useState(10);
   const [currentTab, setCurrentTab] = useState(0);
 
-  //For Date Wise Filter 
+  //For Date Wise Filter
   const [selectDate, setSelectDate] = useState(null);
 
   const handleDateChange = (date) => {
@@ -37,7 +37,7 @@ const MealsExcursionsAdmin = () => {
     setSelectDate(isoDate);
     console.log("Selected Date is", isoDate);
     filterDataByDate(isoDate);
-  }
+  };
 
   const filterDataByDate = async (selectedDate) => {
     try {
@@ -49,24 +49,34 @@ const MealsExcursionsAdmin = () => {
           excursions: participant.excursions || [],
         })
       );
-      const filteredParticipants = participantsWithMeals.filter((participant) => {
-        let valid = false;
+      const filteredParticipants = participantsWithMeals.filter(
+        (participant) => {
+          let valid = false;
 
-        // Check if the date matches with any of the meal or excursion dates
-        participant.meals.forEach((meal) => {
-          if (meal.date && new Date(meal.date).toISOString().split("T")[0] === selectedDate.split("T")[0]) {
-            valid = true;
-          }
-        });
+          // Check if the date matches with any of the meal or excursion dates
+          participant.meals.forEach((meal) => {
+            if (
+              meal.date &&
+              new Date(meal.date).toISOString().split("T")[0] ===
+                selectedDate.split("T")[0]
+            ) {
+              valid = true;
+            }
+          });
 
-        participant.excursions.forEach((excursion) => {
-          if (excursion.date && new Date(excursion.date).toISOString().split("T")[0] === selectedDate.split("T")[0]) {
-            valid = true;
-          }
-        });
+          participant.excursions.forEach((excursion) => {
+            if (
+              excursion.date &&
+              new Date(excursion.date).toISOString().split("T")[0] ===
+                selectedDate.split("T")[0]
+            ) {
+              valid = true;
+            }
+          });
 
-        return valid;
-      });
+          return valid;
+        }
+      );
 
       console.log("Filtered Participants:", filteredParticipants);
 
@@ -75,11 +85,9 @@ const MealsExcursionsAdmin = () => {
       console.error("Error fetching meals and excursions:", error);
       toast.error("Failed to fetch participants.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
-
-  
 
   useEffect(() => {
     const today = new Date();
@@ -102,9 +110,6 @@ const MealsExcursionsAdmin = () => {
   // 2) Show current date/time at the top (optional)
   const currentDateTimeString = new Date().toLocaleString();
 
-
-
-
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
     setCurrentPage(1);
@@ -115,11 +120,14 @@ const MealsExcursionsAdmin = () => {
     const date = new Date(dateString);
     return isNaN(date.getTime())
       ? "N/A"
-      : date.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "2-digit",
-      });
+      : date.toLocaleString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        });
   };
 
   // 3) Filter participants for the current page
@@ -130,9 +138,11 @@ const MealsExcursionsAdmin = () => {
   const currentParticipants = participants
     .filter((participant) => {
       // Match search term
-      const fullName = `${participant.personalInformation?.fullName?.firstName || ""
-        } ${participant.personalInformation?.fullName?.lastName || ""
-        }`.toLowerCase();
+      const fullName = `${
+        participant.personalInformation?.fullName?.firstName || ""
+      } ${
+        participant.personalInformation?.fullName?.lastName || ""
+      }`.toLowerCase();
       const institution =
         participant.personalInformation?.nameOfInstitution?.toLowerCase() || "";
 
@@ -198,16 +208,17 @@ const MealsExcursionsAdmin = () => {
       );
       const lunch = participant.meals.find((meal) => meal.type === "lunch");
       const dinner = participant.meals.find((meal) => meal.type === "dinner");
-      const excursion = participant.excursions.find((exc) => exc.status);
+      // const excursion = participant.excursions.find((exc) => exc.status);
 
       const participantData = [
-        `${participant.personalInformation?.fullName?.firstName || ""} ${participant.personalInformation?.fullName?.lastName || ""
+        `${participant.personalInformation?.fullName?.firstName || ""} ${
+          participant.personalInformation?.fullName?.lastName || ""
         }`,
         participant.personalInformation?.nameOfInstitution || "N/A",
         `Breakfast: ${breakfast?.status ? "Yes" : "No"}
         Lunch: ${lunch?.status ? "Yes" : "No"}
         Dinner: ${dinner?.status ? "Yes" : "No"}
-        Excursion: ${excursion?.status ? "Yes" : "No"}`,
+        `,
         parseDate(breakfast?.date),
       ];
 
@@ -264,8 +275,9 @@ const MealsExcursionsAdmin = () => {
     });
     const ws = XLSX.utils.json_to_sheet(
       participants.map((participant) => ({
-        Name: `${participant.personalInformation?.fullName?.firstName || ""} ${participant.personalInformation?.fullName?.lastName || ""
-          }`,
+        Name: `${participant.personalInformation?.fullName?.firstName || ""} ${
+          participant.personalInformation?.fullName?.lastName || ""
+        }`,
         Institution:
           participant.personalInformation?.nameOfInstitution || "N/A",
         Breakfast: participant.meals.find((meal) => meal.type === "breakfast")
@@ -342,24 +354,25 @@ const MealsExcursionsAdmin = () => {
         prevParticipants.map((participant) =>
           participant._id === participantId
             ? {
-              ...participant,
-              meals: participant.meals.map((meal) =>
-                meal.type === mealType
-                  ? { ...meal, status: updatedStatus }
-                  : meal
-              ),
-              excursions: participant.excursions.map((excursion) =>
-                mealType === "excursion"
-                  ? { ...excursion, status: updatedStatus }
-                  : excursion
-              ),
-            }
+                ...participant,
+                meals: participant.meals.map((meal) =>
+                  meal.type === mealType
+                    ? { ...meal, status: updatedStatus }
+                    : meal
+                ),
+                excursions: participant.excursions.map((excursion) =>
+                  mealType === "excursion"
+                    ? { ...excursion, status: updatedStatus }
+                    : excursion
+                ),
+              }
             : participant
         )
       );
 
       toast.success(
-        `${mealType.charAt(0).toUpperCase() + mealType.slice(1)
+        `${
+          mealType.charAt(0).toUpperCase() + mealType.slice(1)
         } status updated successfully.`
       );
     } catch (error) {
@@ -374,7 +387,7 @@ const MealsExcursionsAdmin = () => {
         Manage Meals and Excursions
       </h1>
 
-      {/* 2) Display current date/time somewhere in your UI */}
+      {/* Display current date/time somewhere in your UI */}
       <p className="mb-2 text-gray-700">
         Current date/time: {currentDateTimeString}
       </p>
@@ -469,7 +482,7 @@ const MealsExcursionsAdmin = () => {
                       {currentTab === 2 && "Dinner"}
                       {currentTab === 3 && "Excursion"}
                     </th>
-                    <th className="py-3 px-6 text-center">Date</th>
+                    <th className="py-3 px-6 text-center">Date/Time</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -505,11 +518,13 @@ const MealsExcursionsAdmin = () => {
                       return (
                         <tr key={participant._id} className="border-b">
                           <td className="py-3 px-6">
-                            {`${participant.personalInformation?.fullName
+                            {`${
+                              participant.personalInformation?.fullName
                                 ?.firstName || ""
-                              } ${participant.personalInformation?.fullName
+                            } ${
+                              participant.personalInformation?.fullName
                                 ?.lastName || ""
-                              }`}
+                            }`}
                           </td>
                           <td className="py-3 px-6">
                             {participant.personalInformation
@@ -525,17 +540,17 @@ const MealsExcursionsAdmin = () => {
                                   currentTab === 0
                                     ? "breakfast"
                                     : currentTab === 1
-                                      ? "lunch"
-                                      : currentTab === 2
-                                        ? "dinner"
-                                        : "excursion"
+                                    ? "lunch"
+                                    : currentTab === 2
+                                    ? "dinner"
+                                    : "excursion"
                                 )
                               }
                               className="cursor-pointer"
                             />
                           </td>
                           <td className="py-3 px-6 text-center">
-                            {date ? parseDate(selectDate) : "N/A"}
+                            {date ? parseDate(date) : "N/A"}
                           </td>
                         </tr>
                       );
@@ -560,9 +575,11 @@ const MealsExcursionsAdmin = () => {
                   // We must recalculate how many participants match the filter
                   participants.filter((p) => {
                     // Reuse the same filter logic as above but without pagination
-                    const fullName = `${p.personalInformation?.fullName?.firstName || ""
-                      } ${p.personalInformation?.fullName?.lastName || ""
-                      }`.toLowerCase();
+                    const fullName = `${
+                      p.personalInformation?.fullName?.firstName || ""
+                    } ${
+                      p.personalInformation?.fullName?.lastName || ""
+                    }`.toLowerCase();
                     const institution =
                       p.personalInformation?.nameOfInstitution?.toLowerCase() ||
                       "";
