@@ -15,8 +15,9 @@ import {
   MapIcon,
   FolderOpenIcon,
 } from "@heroicons/react/24/outline";
-import { FaFilePdf, FaFileExcel } from "react-icons/fa";
+import { FaFilePdf, FaFileExcel, FaCalendarAlt } from "react-icons/fa";
 import useDocumentTitle from "../../components/DocTitle";
+import DatePicker from "react-datepicker";
 
 const MealsExcursionsAdmin = () => {
   useDocumentTitle(
@@ -29,6 +30,64 @@ const MealsExcursionsAdmin = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [participantsPerPage] = useState(10);
   const [currentTab, setCurrentTab] = useState(0);
+
+  //For Date Wise Filter 
+  const [selectDate, setSelectDate] = useState(null);
+
+  const handleDateChange = (date) => {
+    const isoDate = date.toISOString();
+    setSelectDate(isoDate);
+    console.log("Selected Date is", isoDate);
+    filterDataByDate(isoDate);
+  }
+
+  const filterDataByDate = async (selectedDate) => {
+    try {
+      const response = await getMealsAndExcursionsApi();
+      const participantsWithMeals = response.data.participants.map(
+        (participant) => ({
+          ...participant,
+          meals: participant.meals || [],
+          excursions: participant.excursions || [],
+        })
+      );
+      const filteredParticipants = participantsWithMeals.filter((participant) => {
+        let valid = false;
+
+        // Check if the date matches with any of the meal or excursion dates
+        participant.meals.forEach((meal) => {
+          if (meal.date && new Date(meal.date).toISOString().split("T")[0] === selectedDate.split("T")[0]) {
+            valid = true;
+          }
+        });
+
+        participant.excursions.forEach((excursion) => {
+          if (excursion.date && new Date(excursion.date).toISOString().split("T")[0] === selectedDate.split("T")[0]) {
+            valid = true;
+          }
+        });
+
+        return valid;
+      });
+
+      console.log("Filtered Participants:", filteredParticipants);
+
+      setParticipants(filteredParticipants);
+    } catch (error) {
+      console.error("Error fetching meals and excursions:", error);
+      toast.error("Failed to fetch participants.");
+    } finally {
+      setIsLoading(false)
+    }
+  };
+
+  
+
+  useEffect(() => {
+    const today = new Date();
+    setSelectDate(today.toISOString());
+    filterDataByDate(today.toISOString());
+  }, []);
 
   // 1) Helper to check if a date (string) is today's date
   const isToday = (dateString) => {
@@ -45,29 +104,8 @@ const MealsExcursionsAdmin = () => {
   // 2) Show current date/time at the top (optional)
   const currentDateTimeString = new Date().toLocaleString();
 
-  useEffect(() => {
-    fetchMealsAndExcursions();
-  }, []);
 
-  const fetchMealsAndExcursions = async () => {
-    setIsLoading(true);
-    try {
-      const response = await getMealsAndExcursionsApi();
-      const participantsWithMeals = response.data.participants.map(
-        (participant) => ({
-          ...participant,
-          meals: participant.meals || [],
-          excursions: participant.excursions || [],
-        })
-      );
-      setParticipants(participantsWithMeals);
-    } catch (error) {
-      console.error("Error fetching meals and excursions:", error);
-      toast.error("Failed to fetch participants.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value.toLowerCase());
@@ -80,10 +118,10 @@ const MealsExcursionsAdmin = () => {
     return isNaN(date.getTime())
       ? "N/A"
       : date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "short",
-          day: "2-digit",
-        });
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+      });
   };
 
   // 3) Filter participants for the current page
@@ -94,11 +132,9 @@ const MealsExcursionsAdmin = () => {
   const currentParticipants = participants
     .filter((participant) => {
       // Match search term
-      const fullName = `${
-        participant.personalInformation?.fullName?.firstName || ""
-      } ${
-        participant.personalInformation?.fullName?.lastName || ""
-      }`.toLowerCase();
+      const fullName = `${participant.personalInformation?.fullName?.firstName || ""
+        } ${participant.personalInformation?.fullName?.lastName || ""
+        }`.toLowerCase();
       const institution =
         participant.personalInformation?.nameOfInstitution?.toLowerCase() || "";
 
@@ -167,14 +203,13 @@ const MealsExcursionsAdmin = () => {
       const excursion = participant.excursions.find((exc) => exc.status);
 
       const participantData = [
-        `${participant.personalInformation?.fullName?.firstName || ""} ${
-          participant.personalInformation?.fullName?.lastName || ""
+        `${participant.personalInformation?.fullName?.firstName || ""} ${participant.personalInformation?.fullName?.lastName || ""
         }`,
         participant.personalInformation?.nameOfInstitution || "N/A",
         `Breakfast: ${breakfast?.status ? "Yes" : "No"}
-Lunch: ${lunch?.status ? "Yes" : "No"}
-Dinner: ${dinner?.status ? "Yes" : "No"}
-Excursion: ${excursion?.status ? "Yes" : "No"}`,
+        Lunch: ${lunch?.status ? "Yes" : "No"}
+        Dinner: ${dinner?.status ? "Yes" : "No"}
+        Excursion: ${excursion?.status ? "Yes" : "No"}`,
         parseDate(breakfast?.date),
       ];
 
@@ -231,9 +266,8 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
     });
     const ws = XLSX.utils.json_to_sheet(
       participants.map((participant) => ({
-        Name: `${participant.personalInformation?.fullName?.firstName || ""} ${
-          participant.personalInformation?.fullName?.lastName || ""
-        }`,
+        Name: `${participant.personalInformation?.fullName?.firstName || ""} ${participant.personalInformation?.fullName?.lastName || ""
+          }`,
         Institution:
           participant.personalInformation?.nameOfInstitution || "N/A",
         Breakfast: participant.meals.find((meal) => meal.type === "breakfast")
@@ -310,25 +344,24 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
         prevParticipants.map((participant) =>
           participant._id === participantId
             ? {
-                ...participant,
-                meals: participant.meals.map((meal) =>
-                  meal.type === mealType
-                    ? { ...meal, status: updatedStatus }
-                    : meal
-                ),
-                excursions: participant.excursions.map((excursion) =>
-                  mealType === "excursion"
-                    ? { ...excursion, status: updatedStatus }
-                    : excursion
-                ),
-              }
+              ...participant,
+              meals: participant.meals.map((meal) =>
+                meal.type === mealType
+                  ? { ...meal, status: updatedStatus }
+                  : meal
+              ),
+              excursions: participant.excursions.map((excursion) =>
+                mealType === "excursion"
+                  ? { ...excursion, status: updatedStatus }
+                  : excursion
+              ),
+            }
             : participant
         )
       );
 
       toast.success(
-        `${
-          mealType.charAt(0).toUpperCase() + mealType.slice(1)
+        `${mealType.charAt(0).toUpperCase() + mealType.slice(1)
         } status updated successfully.`
       );
     } catch (error) {
@@ -347,6 +380,16 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
       <p className="mb-2 text-gray-700">
         Current date/time: {currentDateTimeString}
       </p>
+
+      <div className="relative">
+        <DatePicker
+          placeholderText="Select Date"
+          selected={selectDate}
+          onChange={handleDateChange}
+          className="block w-full p-1 pl-10 border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50 focus:ring-indigo-300 text-gray-900"
+        />
+        <FaCalendarAlt className="absolute left-3 top-2 text-black" />
+      </div>
 
       {isLoading ? (
         <div className="flex justify-center items-center">
@@ -374,6 +417,7 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
                   0
                 )})`}
               />
+
               <Tab
                 icon={<CakeIcon className="h-5 w-5" />}
                 label={`Lunch (${participants.reduce(
@@ -463,13 +507,11 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
                       return (
                         <tr key={participant._id} className="border-b">
                           <td className="py-3 px-6">
-                            {`${
-                              participant.personalInformation?.fullName
+                            {`${participant.personalInformation?.fullName
                                 ?.firstName || ""
-                            } ${
-                              participant.personalInformation?.fullName
+                              } ${participant.personalInformation?.fullName
                                 ?.lastName || ""
-                            }`}
+                              }`}
                           </td>
                           <td className="py-3 px-6">
                             {participant.personalInformation
@@ -485,17 +527,17 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
                                   currentTab === 0
                                     ? "breakfast"
                                     : currentTab === 1
-                                    ? "lunch"
-                                    : currentTab === 2
-                                    ? "dinner"
-                                    : "excursion"
+                                      ? "lunch"
+                                      : currentTab === 2
+                                        ? "dinner"
+                                        : "excursion"
                                 )
                               }
                               className="cursor-pointer"
                             />
                           </td>
                           <td className="py-3 px-6 text-center">
-                            {date ? parseDate(date) : "N/A"}
+                            {date ? parseDate(selectDate) : "N/A"}
                           </td>
                         </tr>
                       );
@@ -520,11 +562,9 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
                   // We must recalculate how many participants match the filter
                   participants.filter((p) => {
                     // Reuse the same filter logic as above but without pagination
-                    const fullName = `${
-                      p.personalInformation?.fullName?.firstName || ""
-                    } ${
-                      p.personalInformation?.fullName?.lastName || ""
-                    }`.toLowerCase();
+                    const fullName = `${p.personalInformation?.fullName?.firstName || ""
+                      } ${p.personalInformation?.fullName?.lastName || ""
+                      }`.toLowerCase();
                     const institution =
                       p.personalInformation?.nameOfInstitution?.toLowerCase() ||
                       "";
@@ -536,16 +576,16 @@ Excursion: ${excursion?.status ? "Yes" : "No"}`,
 
                     if (currentTab === 0) {
                       const meal = p.meals.find((m) => m.type === "breakfast");
-                      return meal?.date && isToday(meal.date);
+                      return meal?.date === selectDate;
                     } else if (currentTab === 1) {
                       const meal = p.meals.find((m) => m.type === "lunch");
-                      return meal?.date && isToday(meal.date);
+                      return meal?.date && selectDate;
                     } else if (currentTab === 2) {
                       const meal = p.meals.find((m) => m.type === "dinner");
-                      return meal?.date && isToday(meal.date);
+                      return meal?.date && selectDate;
                     } else if (currentTab === 3) {
                       const excursion = p.excursions.find((ex) => ex.date);
-                      return excursion?.date && isToday(excursion.date);
+                      return excursion?.date && selectDate;
                     }
                     return false;
                   }).length / participantsPerPage
