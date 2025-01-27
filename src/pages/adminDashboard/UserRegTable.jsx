@@ -170,6 +170,7 @@ const UserTable = () => {
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
+  const [showOnlyDuplicates, setShowOnlyDuplicates] = useState(false);
 
   // const truncateText = (text, wordLimit) => {
   //   const words = text.split(" ");
@@ -471,7 +472,16 @@ const UserTable = () => {
     const matchStatus =
       !statusFilter || user.adminVerification?.status === statusFilter;
 
-    return matchesSearch && matchGender && matchParticipantType && matchStatus;
+    const matchDuplicates =
+      !showOnlyDuplicates || duplicateUserIds.includes(user._id);
+
+    return (
+      matchesSearch &&
+      matchGender &&
+      matchParticipantType &&
+      matchStatus &&
+      matchDuplicates
+    );
   });
 
   // Get current users for pagination
@@ -497,32 +507,59 @@ const UserTable = () => {
         {users.length > 0 ? (
           <div className="border rounded-xl p-5 bg-transparent shadow-md">
             <div className="flex justify-between items-center mb-5">
-              <div className="text-1xl text-gray-800 font-bold">
-                Registered Participant
+              {/* Title */}
+              <div className="text-lg font-bold text-gray-800">
+                Registered Participants
               </div>
-              <div className="flex space-x-4 items-center">
-                {/* Export to Excel */}
-                <button
-                  onClick={exportToExcel}
-                  className="p-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded flex items-center"
-                >
-                  <img
-                    src={excelIcon}
-                    alt="Export to Excel"
-                    className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5"
+
+              {/* Right Section: Duplicate Filter + Export Buttons */}
+              <div className="flex items-center space-x-6">
+                {/* Duplicate Filter */}
+                <div className="flex items-center space-x-2">
+                  <input
+                    type="checkbox"
+                    id="duplicateFilter"
+                    checked={showOnlyDuplicates}
+                    onChange={(e) => setShowOnlyDuplicates(e.target.checked)}
+                    className="cursor-pointer w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring focus:ring-blue-200"
+                    aria-label="Show only duplicate users"
                   />
-                </button>
-                {/* Export to PDF */}
-                <button
-                  onClick={() => exportToPDF()}
-                  className="p-2 bg-green-600 hover:bg-green-500 text-white font-bold rounded flex items-center"
-                >
-                  <img
-                    src={pdfIcon}
-                    alt="Export to PDF"
-                    className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5"
-                  />
-                </button>
+                  <label
+                    htmlFor="duplicateFilter"
+                    className="text-sm font-medium text-gray-700 cursor-pointer"
+                  >
+                    Show Only Duplicates
+                  </label>
+                </div>
+
+                {/* Export Buttons */}
+                <div className="flex space-x-4">
+                  {/* Export to Excel */}
+                  <button
+                    onClick={exportToExcel}
+                    className="p-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded flex items-center"
+                    aria-label="Export to Excel"
+                  >
+                    <img
+                      src={excelIcon}
+                      alt="Export to Excel"
+                      className="w-5 h-5"
+                    />
+                  </button>
+
+                  {/* Export to PDF */}
+                  <button
+                    onClick={exportToPDF}
+                    className="p-2 bg-green-600 hover:bg-green-500 text-white font-semibold rounded flex items-center"
+                    aria-label="Export to PDF"
+                  >
+                    <img
+                      src={pdfIcon}
+                      alt="Export to PDF"
+                      className="w-5 h-5"
+                    />
+                  </button>
+                </div>
               </div>
             </div>
 
