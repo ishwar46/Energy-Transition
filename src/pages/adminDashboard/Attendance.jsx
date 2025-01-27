@@ -60,7 +60,7 @@ const ParticipantAttendance = () => {
 
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedInstitution, setSelectedInstitution] = useState("");
+  // const [selectedInstitution, setSelectedInstitution] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
@@ -96,9 +96,9 @@ const ParticipantAttendance = () => {
 
   const filteredUsers = useMemo(() => {
     return users.filter((user) => {
-      const matchesInstitution = selectedInstitution
-        ? user.personalInformation.nameOfInstitution === selectedInstitution
-        : true;
+      // const matchesInstitution = selectedInstitution
+      //   ? user.personalInformation.nameOfInstitution === selectedInstitution
+      //   : true;
       const hasAttendanceInRange =
         startDate && endDate
           ? user.attendance.some((att) => {
@@ -136,7 +136,7 @@ const ParticipantAttendance = () => {
           .toLowerCase()
           .includes(searchQuery.toLowerCase());
       return (
-        matchesInstitution &&
+        // matchesInstitution &&
         hasAttendanceInRange &&
         hasAttendanceOnSelectedDate &&
         matchesStatus &&
@@ -145,7 +145,7 @@ const ParticipantAttendance = () => {
     });
   }, [
     users,
-    selectedInstitution,
+    // selectedInstitution,
     selectedStatus,
     startDate,
     endDate,
@@ -185,9 +185,9 @@ const ParticipantAttendance = () => {
     { name: "Absent", value: attendanceCounts.absent },
   ];
   // eslint-disable-next-line
-  const handleInstitutionChange = (e) => {
-    setSelectedInstitution(e.target.value);
-  };
+  // const handleInstitutionChange = (e) => {
+  //   setSelectedInstitution(e.target.value);
+  // };
 
   const handleStatusChange = (e) => {
     setSelectedStatus(e.target.value);
