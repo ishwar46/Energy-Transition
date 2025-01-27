@@ -46,7 +46,7 @@ const Navbar = () => {
   };
 
   const handleLoginClick = () => {
-    navigate("/login");
+    navigate("/");
   };
 
   const handleLogout = () => {
@@ -55,7 +55,7 @@ const Navbar = () => {
     setIsLoggedIn(false);
     setUsername("Guest");
     setIsAdmin(false);
-    navigate("/homepage");
+    navigate("/");
   };
 
   const isActive = (path) => {

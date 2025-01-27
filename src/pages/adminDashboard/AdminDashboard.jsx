@@ -409,7 +409,7 @@ const AdminDashboard = () => {
                         }`}
                       >
                         <FaHotel className="w-5 h-5 text-gray-500 transition group-hover:text-[#3051A0]" />
-                        <span className="ml-3">Registration Check-in</span>
+                        <span className="ml-3">Check-Ins</span>
                       </button>
                     </li>
                     <li>
@@ -425,6 +425,22 @@ const AdminDashboard = () => {
                         <span className="ml-3">Attendance</span>
                       </button>
                     </li>
+                    <li>
+                      <button
+                        onClick={() => handleContainerChange("mealsexc")}
+                        className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-blue-200 group ${
+                          activeContainer === "mealsexc"
+                            ? "bg-blue-200 text-[#3051A0] border-l-4 border-[#3051A0]"
+                            : ""
+                        }`}
+                      >
+                        <FolderOpenIcon className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#3051A0]" />
+                        <span className="ms-3 lg:block md:hidden">
+                          Meals/Excursion
+                        </span>
+                      </button>
+                    </li>
+
                     {/* Queries */}
                     <li>
                       <button
@@ -481,22 +497,6 @@ const AdminDashboard = () => {
                         </span>
                       </button>
                     </li>
-                    <li>
-                      <button
-                        onClick={() => handleContainerChange("mealsexc")}
-                        className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-blue-200 group ${
-                          activeContainer === "mealsexc"
-                            ? "bg-blue-200 text-[#3051A0] border-l-4 border-[#3051A0]"
-                            : ""
-                        }`}
-                      >
-                        <FolderOpenIcon className="w-5 h-5 text-gray-500 transition duration-75 group-hover:text-[#3051A0]" />
-                        <span className="ms-3 lg:block md:hidden">
-                          Meals/Excursion
-                        </span>
-                      </button>
-                    </li>
-
                     <li>
                       <button
                         onClick={() => handleContainerChange("venue")}
