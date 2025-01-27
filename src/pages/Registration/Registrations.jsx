@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 import { energyRegisterApi } from "../../apis/Api";
 import SuccessDialog from "../../components/SuccessDialog";
+import Navbar from "../../components/Navbar";
 
 const Registrations = () => {
   useDocumentTitle(
@@ -19,6 +20,7 @@ const Registrations = () => {
   const [jobPosition, setJobPosition] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
+  const [participantType, setParticipantType] = useState("");
   const [loading, setLoading] = useState(false);
 
   // State for success dialog
@@ -26,16 +28,12 @@ const Registrations = () => {
 
   // Basic Client-Side Validation
   const validateForm = () => {
-    if (!title.trim()) {
-      toast.error("Title is required.");
-      return false;
-    }
-    if (!gender) {
-      toast.error("Gender is required.");
-      return false;
-    }
     if (!institution.trim()) {
       toast.error("Organization name is required.");
+      return false;
+    }
+    if (!title.trim()) {
+      toast.error("Title is required.");
       return false;
     }
     if (!firstName.trim()) {
@@ -46,10 +44,19 @@ const Registrations = () => {
       toast.error("Last name is required.");
       return false;
     }
+    if (!gender) {
+      toast.error("Gender is required.");
+      return false;
+    }
+    if (!participantType) {
+      toast.error("Participant type is required.");
+      return false;
+    }
     if (!jobPosition.trim()) {
       toast.error("Designation is required.");
       return false;
     }
+
     if (!mobileNumber.trim()) {
       toast.error("Mobile number is required.");
       return false;
@@ -69,10 +76,10 @@ const Registrations = () => {
     setLoading(true);
 
     try {
-      // Create FormData
       const formData = new FormData();
       formData.append("title", title);
-      formData.append("gender", gender); // single string
+      formData.append("gender", gender);
+      formData.append("participantType", participantType);
       formData.append("nameOfInstitution", institution);
       formData.append("firstName", firstName);
       formData.append("middleName", middleName);
@@ -81,10 +88,10 @@ const Registrations = () => {
       formData.append("emailAddress", emailAddress);
       formData.append("mobileNumber", mobileNumber);
 
-      // Call API
       await energyRegisterApi(formData);
 
-      // Clear fields
+      // Reset fields
+      setParticipantType("");
       setTitle("");
       setGender("");
       setInstitution("");
@@ -94,14 +101,9 @@ const Registrations = () => {
       setJobPosition("");
       setEmailAddress("");
       setMobileNumber("");
-
-      // Show success dialog
       setSuccessOpen(true);
     } catch (error) {
-      console.error("Registration Error:", error);
-      toast.error(
-        error.response?.data?.message || "Registration failed. Try again."
-      );
+      toast.error(error.response?.data?.message || "Registration failed.");
     } finally {
       setLoading(false);
     }
@@ -109,6 +111,8 @@ const Registrations = () => {
 
   return (
     <>
+      {" "}
+      <Navbar />
       <div className="max-w-4xl mx-auto mt-10 p-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-4xl font-bold text-blue-800 text-center mb-8">
           Registration Form
@@ -139,6 +143,7 @@ const Registrations = () => {
                 value={institution}
                 onChange={(e) => setInstitution(e.target.value)}
                 className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                autoFocus
               />
             </div>
 
@@ -206,7 +211,7 @@ const Registrations = () => {
             </div>
           </div>
 
-          {/* Row 2: Gender + Designation */}
+          {/* Row 2: Gender + Participant Type */}
           <div className="grid md:grid-cols-2 gap-4 mb-6 text-blue-800">
             {/* Gender */}
             <div>
@@ -226,7 +231,31 @@ const Registrations = () => {
               </select>
             </div>
 
-            {/* Designation */}
+            {/* Participant type */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Participant Type <span className="text-red-500">*</span>
+              </label>
+              <select
+                value={participantType}
+                onChange={(e) => setParticipantType(e.target.value)}
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                aria-label="Select participant type"
+              >
+                <option value="">-- Select Participant Type --</option>
+                <option value="Session Chair">Session Chair</option>
+                <option value="Moderator">Moderator</option>
+                <option value="Presenter">Presenter</option>
+                <option value="General Participant">General Participant</option>
+                <option value="VIP Guest">VIP Guest</option>
+                <option value="Keynote Speaker">Keynote Speaker</option>
+                <option value="Media">Media</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Row 3: Mobile + Designation */}
+          <div className="grid md:grid-cols-2 gap-4 mb-6 text-blue-800">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Designation <span className="text-red-500">*</span>
@@ -240,21 +269,19 @@ const Registrations = () => {
                 className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
               />
             </div>
-          </div>
-
-          {/* Mobile Number */}
-          <div className="mb-6 text-blue-800">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Mobile Number <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="mobileNumber"
-              placeholder="Enter mobile number"
-              value={mobileNumber}
-              onChange={(e) => setMobileNumber(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-            />
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Mobile Number <span className="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                name="mobileNumber"
+                placeholder="Enter mobile number"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+                className="w-full px-4 py-2 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+              />
+            </div>
           </div>
 
           {/* Email */}
@@ -272,7 +299,7 @@ const Registrations = () => {
             />
           </div>
 
-          <p className="text-gray-700 text-sm text-start font-medium mb-6">
+          <p className="text-gray-600 text-sm text-start font-medium mb-6">
             All fields marked with <span className="text-red-500">*</span> are
             required.
           </p>
@@ -293,13 +320,12 @@ const Registrations = () => {
           </div>
         </form>
       </div>
-
       {/* Success Dialog */}
       <SuccessDialog
         open={successOpen}
         setOpen={setSuccessOpen}
-        title="Registration Successful"
-        description="Thank you for registration for the Energy Transition for Resilient and Low Carbon Economy Summit 2025!  Now, you can check your email for further details and your unique QR code associated with your Registration. We look forward to your participation."
+        title="Application Received"
+        description="Thank you for submitting your application for the Energy Transition for Resilient and Low Carbon Economy Summit 2025! Our team will review your application, and we will notify you via email with further details. We appreciate your patience and look forward to your participation."
         onConfirm={() => setSuccessOpen(false)}
       />
     </>

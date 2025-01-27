@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../assets/images/leologo.png";
-import SecondaryLogo1 from "../assets/images/lionslogo.png";
-import SecondaryLogo2 from "../assets/images/leoclublogo.png";
+import Logo from "../assets/images/nepal.png";
+import NepalFlag from "../assets/images/nepal-flag.gif";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ArrowUpCircleIcon,
-  BellIcon,
+  XCircleIcon,
   PowerIcon,
 } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  // const [loginDropdownOpen, setLoginDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("Guest");
   const [isAdmin, setIsAdmin] = useState(false);
@@ -48,14 +45,6 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
-  // const toggleLoginDropdown = () => {
-  //   setLoginDropdownOpen(!loginDropdownOpen);
-  // };
-
   const handleLoginClick = () => {
     navigate("/login");
   };
@@ -70,29 +59,97 @@ const Navbar = () => {
   };
 
   const isActive = (path) => {
-    return location.pathname === path ? "text-white" : "text-blue-300";
+    return location.pathname === path
+      ? "text-blue-700 font-bold"
+      : "text-gray-600 hover:text-blue-500";
   };
 
   return (
-    <nav className="bg-[#001942] border-gray-200 sticky top-0 z-50 shadow-md">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-2">
-        {/* Main Logo */}
-        <a
-          href="/homepage"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-        >
+    <nav className="bg-white border-gray-200 sticky top-0 z-50 shadow-md">
+      <div className="max-w-screen-xl flex items-center justify-between mx-auto p-3">
+        {/* Left Section with Logo and Government Text */}
+        <div className="flex items-center space-x-3">
           <img
             src={Logo}
-            className="h-10 md:h-12 lg:h-16 rounded"
-            alt="Main Logo"
+            className="h-12 md:h-16 rounded"
+            alt="Government Logo"
           />
-        </a>
+          <div>
+            <h3 className="text-red-500 font-semibold text-xs md:text-xs">
+              Government of Nepal
+            </h3>
+            <h2 className="text-red-500 font-normal text-xs md:text-sm">
+              Ministry of Energy, Water Resources and Irrigation
+            </h2>
+            <h1 className="text-red-500 font-bold text-sm md:text-lg">
+              Alternative Energy Promotion Centre
+            </h1>
+            <p className="text-gray-600 text-xs">
+              Making Renewable Energy Mainstream Supply in Nepal
+            </p>
+          </div>
+        </div>
 
-        {/* Mobile Menu Button */}
+        {/* Right Section: Flag and Navbar Links */}
+        <div className="hidden md:flex items-center space-x-6">
+          {/* Navbar Links */}
+          <Link to="/" className={`text-sm font-medium ${isActive("/")}`}>
+            Home
+          </Link>
+          <Link
+            to="/sessions"
+            className={`text-sm font-medium ${isActive("/sessions")}`}
+          >
+            Session Details
+          </Link>
+          <Link
+            to="/accomodation"
+            className={`text-sm font-medium ${isActive("/accomodation")}`}
+          >
+            Venue
+          </Link>
+          <Link
+            to="/register"
+            className={`text-sm font-medium ${isActive("/register")}`}
+          >
+            Registration
+          </Link>
+          <Link
+            to={isAdmin ? "/admindashboard" : "/userdashboard"}
+            className="text-sm font-medium text-gray-800 hover:text-blue-500"
+          >
+            👋 Hey! {username}
+          </Link>
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="text-sm font-medium text-red-500 hover:text-red-600 flex items-center"
+            >
+              <PowerIcon className="h-5 w-5 mr-1" />
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={handleLoginClick}
+              className="text-sm font-medium text-green-500 hover:text-green-600 flex items-center"
+            >
+              <ArrowUpCircleIcon className="h-5 w-5 mr-1" />
+              Login
+            </button>
+          )}
+          {/* Nepal Flag */}
+          <img
+            src={NepalFlag}
+            className="h-12 w-auto rounded transform -scale-x-100"
+            alt="Nepal Flag"
+          />
+        </div>
+
+        {/* Hamburger Menu Button */}
         <button
           onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-200 rounded-lg md:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
+          className="inline-flex items-center p-2 w-8 h-8 justify-center text-sm text-gray-800 rounded-lg md:hidden hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
           aria-controls="navbar-default"
           aria-expanded={isMenuOpen}
         >
@@ -113,93 +170,61 @@ const Navbar = () => {
             />
           </svg>
         </button>
+      </div>
 
-        {/* Navbar Links */}
+      {/* Mobile Menu */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full z-40 ${
+          isMenuOpen ? "block" : "hidden"
+        }`}
+      >
+        {/* Overlay */}
         <div
-          className={`w-full md:block md:w-auto ${isMenuOpen ? "" : "hidden"}`}
-          id="navbar-default"
+          className="absolute inset-0 bg-black opacity-50"
+          onClick={toggleMenu}
+        ></div>
+
+        {/* Menu Content */}
+        <div
+          className={`absolute top-0 right-0 w-3/4 max-w-sm h-full bg-white shadow-lg transform transition-transform ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         >
-          <ul className="font-medium flex flex-col items-start lg:items-center p-4 mt-4 border border-gray-100 rounded-lg bg-[#001942] md:flex-row md:space-x-4 lg:space-x-6 md:mt-0 md:border-0">
+          {/* Close Button */}
+          <button
+            onClick={toggleMenu}
+            className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-300 focus:outline-none"
+          >
+            <XCircleIcon className="h-6 w-6 text-gray-600" />
+          </button>
+
+          {/* Menu Links */}
+          <ul className="space-y-6 mt-16 px-6 text-gray-800">
             <li>
               <Link
                 to="/"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
-                  "/"
-                )} md:bg-transparent md:p-0 hover:text-white`}
+                className={`block text-lg font-medium ${isActive("/")}`}
+                onClick={toggleMenu}
               >
                 Home
               </Link>
             </li>
-            <li className="relative">
-              <button
-                onClick={toggleDropdown}
-                className="flex items-center space-x-1 py-1 px-2 text-sm md:text-base lg:text-sm rounded text-blue-300 md:bg-transparent md:p-0 hover:text-white"
-              >
-                About Us
-                <svg
-                  className={`w-4 h-4 transform transition-transform ${
-                    dropdownOpen ? "rotate-180" : "rotate-0"
-                  }`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <ul
-                className={`${
-                  dropdownOpen ? "block" : "hidden"
-                } absolute bg-white text-black shadow-lg border rounded mt-1 min-w-max text-sm`}
-              >
-                <li>
-                  <Link
-                    to="/introduction"
-                    className="block py-1 px-3 hover:bg-gray-200"
-                  >
-                    Introduction
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/aboutus"
-                    className="block py-1 px-3 hover:bg-gray-200"
-                  >
-                    Mission and Vision
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/ourteam"
-                    className="block py-1 px-3 hover:bg-gray-200"
-                  >
-                    Meet Our Team
-                  </Link>
-                </li>
-              </ul>
-            </li>
             <li>
               <Link
-                to="/event"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
-                  "/event"
-                )} md:bg-transparent md:p-0 hover:text-white`}
+                to="/sessions"
+                className={`block text-lg font-medium ${isActive("/sessions")}`}
+                onClick={toggleMenu}
               >
-                Schedule
+                Session Details
               </Link>
             </li>
             <li>
               <Link
                 to="/accomodation"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
+                className={`block text-lg font-medium ${isActive(
                   "/accomodation"
-                )} md:bg-transparent md:p-0 hover:text-white`}
+                )}`}
+                onClick={toggleMenu}
               >
                 Venue
               </Link>
@@ -207,86 +232,49 @@ const Navbar = () => {
             <li>
               <Link
                 to="/register"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
-                  "/register"
-                )} md:bg-transparent md:p-0 hover:text-white`}
+                className={`block text-lg font-medium ${isActive("/register")}`}
+                onClick={toggleMenu}
               >
-                Registration Form
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/gallery"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
-                  "/gallery"
-                )} md:bg-transparent md:p-0 hover:text-white`}
-              >
-                Gallery
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/chiefguest"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded ${isActive(
-                  "/chiefguest"
-                )} md:bg-transparent md:p-0 hover:text-white`}
-              >
-                Chief Guest
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/notifications"
-                className={`block py-1 px-2 text-sm md:text-base lg:text-sm rounded text-blue-300 hover:text-white`}
-              >
-                <BellIcon className="h-5 w-5" aria-hidden="true" />
+                Registration
               </Link>
             </li>
             <li>
               <Link
                 to={isAdmin ? "/admindashboard" : "/userdashboard"}
-                className="block py-1 px-2 text-sm md:text-base lg:text-sm text-white font-semibold md:p-0 hover:text-emerald-500"
+                className={`block text-lg font-medium ${isActive(
+                  "/userdashboard"
+                )}`}
+                onClick={toggleMenu}
               >
                 👋 Hey! {username}
               </Link>
             </li>
-            <li className="relative">
+            <li>
               {isLoggedIn ? (
                 <button
-                  onClick={handleLogout}
-                  className="flex items-center px-3 py-1 mt-2 bg-red-500 text-white rounded hover:bg-red-600 block text-sm"
+                  onClick={() => {
+                    handleLogout();
+                    toggleMenu();
+                  }}
+                  className="block text-lg text-red-500 hover:text-red-600 font-medium flex items-center"
                 >
-                  <PowerIcon className="h-5 w-5 mr-2" aria-hidden="true" />
+                  <PowerIcon className="h-5 w-5 mr-2" />
                   Logout
                 </button>
               ) : (
                 <button
-                  onClick={handleLoginClick}
-                  className="flex items-center px-3 py-1 mt-2 bg-green-700 text-white rounded hover:bg-green-600 block text-sm"
+                  onClick={() => {
+                    handleLoginClick();
+                    toggleMenu();
+                  }}
+                  className="block text-lg text-green-500 hover:text-green-600 font-medium flex items-center"
                 >
-                  <ArrowUpCircleIcon
-                    className="h-5 w-5 mr-2"
-                    aria-hidden="true"
-                  />
+                  <ArrowUpCircleIcon className="h-5 w-5 mr-2" />
                   Login
                 </button>
               )}
             </li>
           </ul>
-        </div>
-
-        {/* Secondary Logos */}
-        <div className="flex items-center space-x-4">
-          <img
-            src={SecondaryLogo1}
-            alt="Secondary Logo 1"
-            className="h-8 md:h-10 lg:h-12"
-          />
-          <img
-            src={SecondaryLogo2}
-            alt="Secondary Logo 2"
-            className="h-8 md:h-10 lg:h-12"
-          />
         </div>
       </div>
     </nav>

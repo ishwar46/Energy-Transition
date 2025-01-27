@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import { Pagination, Stack } from "@mui/material";
 
 const AddSpeaker = () => {
-  useDocumentTitle("Add Speakers - International Youth Camp 2025");
+  useDocumentTitle("Add Speakers - Uranus Event Management");
 
   const [speakers, setSpeakers] = useState([]);
   const [collapsed, setCollapsed] = useState({});
@@ -191,8 +191,8 @@ const AddSpeaker = () => {
 
     let imageUrls = "";
     if (speaker?.image) {
-      imageUrls = `https://crownthevisionapi.onrender.com/${speaker?.image}`;
-      // imageUrls = `https://crownthevisionapi.onrender.com/${speaker?.image}`;
+      imageUrls = `https://energy-transition-api.onrender.com/${speaker?.image}`;
+      // imageUrls = `https://energy-transition-api.onrender.com/${speaker?.image}`;
     }
     setImagePreviews(imageUrls);
 
@@ -274,7 +274,7 @@ const AddSpeaker = () => {
 
     let imageUrls = "";
     if (user?.profilePicture?.fileName) {
-      // imageUrls = `https://crownthevisionapi.onrender.com/${user.profilePicture.fileName}`;
+      // imageUrls = `https://energy-transition-api.onrender.com/${user.profilePicture.fileName}`;
       imageUrls = `https://acsicnepal.com/${user.profilePicture.fileName}`;
     }
     setImagePreviews(imageUrls);
@@ -614,12 +614,12 @@ const AddSpeaker = () => {
                 <img
                   src={
                     speaker.image
-                      ? `https://crownthevisionapi.onrender.com/${speaker.image}`
+                      ? `https://energy-transition-api.onrender.com/${speaker.image}`
                       : "https://static.vecteezy.com/system/resources/previews/020/168/700/original/faceless-male-silhouette-empty-state-avatar-icon-businessman-editable-404-not-found-persona-for-ux-ui-design-cartoon-profile-picture-with-red-dot-colorful-website-mobile-error-user-badge-vector.jpg"
                   }
                   onClick={() =>
                     handleImageClick(
-                      `https://crownthevisionapi.onrender.com/${speaker.image}`
+                      `https://energy-transition-api.onrender.com/${speaker.image}`
                     )
                   }
                   alt="Speaker"

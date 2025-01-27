@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 import useDocumentTitle from "../../components/DocTitle";
 
 const PdfManagement = () => {
-  useDocumentTitle("Manage PDFs - International Youth Camp 2025");
+  useDocumentTitle("Manage PDFs - Uranus Event Management");
 
   const [pdfs, setPdfs] = useState([]);
   const [pdfFile, setPdfFile] = useState(null);
@@ -137,12 +137,9 @@ const PdfManagement = () => {
               <span className="text-gray-700 text-sm">{pdf}</span>
               <div className="flex space-x-4">
                 <a
-                  href={`https://crownthevisionapi.onrender.com/public/uploads/${
+                  href={`https://energy-transition-api.onrender.com/public/uploads/${
                     isExcursion ? "excursionPdfs" : "eventPdfs"
                   }/${pdf}`}
-                  // href={`https://crownthevisionapi.onrender.com/public/uploads/${
-                  //   isExcursion ? "excursionPdfs" : "eventPdfs"
-                  // }/${pdf}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600"

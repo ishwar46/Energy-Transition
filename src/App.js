@@ -1,10 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import CeoMessage from "./pages/CEOMessage/CeoMessage";
 import HomePage from "./pages/MainHome/HomePage";
 import Accomodation from "./pages/Accomodation/Accomodation";
-import Speakers from "./components/Spakers";
-import Schedule from "./pages/Schedule/Schedule";
-import GallerySection from "./pages/Gallery/GalleyPage";
 import { Toaster } from "react-hot-toast";
 import NotFoundPage from "./components/NotFound";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -13,30 +9,23 @@ import AdminRoutes from "./PrivateRoutes/AdminRoutes";
 import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
 import Registrations from "./pages/Registration/Registrations";
 import ScrollToTop from "./ScrollToTop";
-import UserRoutes from "./PrivateRoutes/UserRoutes";
-import UserDashboardPage from "./pages/UserDashboard/UserDashboardPage";
 import EditUser from "./pages/adminDashboard/EditUser.jsx";
-import ChangePassword from "./pages/Changepassword/ChangePassword.jsx";
 import ParticipantAttendance from "./pages/adminDashboard/Attendance.jsx";
-import UnderMaintenance from "./pages/UnderMaintainance/UnderMaintainance.jsx";
-import Notifications from "./pages/Notification/NotificationsPage.jsx";
-import Introduction from "./pages/Introduction/Introduction.jsx";
-import AboutUs from "./pages/AboutUs/AboutUs.jsx";
-import MeetOurTeam from "./pages/OurTeam/OurTeam.jsx";
-import ChiefGuest from "./pages/ChiefGuest/ChiefGuest.jsx";
 import Queries from "./pages/queries/Queries.jsx";
-import PrivacyPolicy from "./pages/PrivacyPolicy/PrivcyPolicyPage.jsx";
+import SessionDetails from "./pages/SessionDetails/SessionDetails.jsx";
+import QuestionsForm from "./components/QuestionForm.jsx";
+import LiveStreamPage from "./pages/LiveStream/LiveStream.jsx";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
     <Router>
-      <Toaster position="bottom-left" reverseOrder={false} /> <ScrollToTop />
+      <Toaster position="bottom-left" reverseOrder={false} /> <ScrollToTop /> <Analytics />
       <Routes>
-        <Route path="/" element={<Registrations />} />{" "}
+        <Route path="/" element={<HomePage />} />{" "}
         {/* <Route path="/homepage" element={<HomePage />} />{" "}
         <Route path="/event" element={<Schedule />} />{" "}
         <Route path="/ceomessage" element={<CeoMessage />} />{" "}
-        <Route path="/accomodation" element={<Accomodation />} />{" "}
         <Route path="/speakers" element={<Speakers />} />{" "}
         <Route path="/schedulenew" element={<Schedule />} />{" "}
         <Route path="/gallery" element={<GallerySection />} />{" "}
@@ -46,6 +35,10 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />{" "} */}
         <Route path="/register" element={<Registrations />} />{" "}
         <Route path="/login" element={<LoginPage />} />{" "}
+        <Route path="/sessions" element={<SessionDetails />} />{" "}
+        <Route path="/questions-form" element={<QuestionsForm />} />{" "}
+        <Route path="/live-stream" element={<LiveStreamPage />} />{" "}
+        <Route path="/accomodation" element={<Accomodation />} />{" "}
         {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} />{" "} */}
         <Route path="/ishwarrrrr" element={<Queries />} />{" "}
         {/* <Route path="/changepassword" element={<ChangePassword />} /> {""}{" "} */}
@@ -72,6 +65,7 @@ function App() {
         <Route path="*" element={<NotFoundPage />} />{" "}
       </Routes>{" "}
     </Router>
+
   );
 }
 

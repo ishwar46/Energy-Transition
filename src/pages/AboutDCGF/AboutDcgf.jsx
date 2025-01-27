@@ -9,7 +9,7 @@ import useDocumentTitle from "../../components/DocTitle";
 import logo from "../../assets/acsic.png";
 
 const AboutDcgf = () => {
-  useDocumentTitle("About DCGF - International Youth Camp 2025");
+  useDocumentTitle("About DCGF - Uranus Event Management");
 
   return (
     <>

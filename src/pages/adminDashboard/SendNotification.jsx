@@ -7,7 +7,7 @@ import {
 import useDocumentTitle from "../../components/DocTitle";
 
 const SendNotifications = () => {
-  useDocumentTitle("Send Notification - International Youth Camp 2025");
+  useDocumentTitle("Send Notification - Uranus Event Management");
   const [formData, setFormData] = useState({
     title: "",
     message: "",

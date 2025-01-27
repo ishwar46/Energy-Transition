@@ -6,7 +6,7 @@ import Members from "../../components/Members";
 import useDocumentTitle from "../../components/DocTitle";
 
 const AcsicMembers = () => {
-  useDocumentTitle("ACISC Members - International Youth Camp 2025");
+  useDocumentTitle("Uranus Event Management");
 
   const members = [
     {

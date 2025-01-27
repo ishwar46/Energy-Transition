@@ -22,7 +22,7 @@ const formatDate = (date) => {
 };
 
 const CheckIn = () => {
-  useDocumentTitle("Manage Check-ins - International Youth Camp 2025");
+  useDocumentTitle("Manage Check-ins - Uranus Event Management");
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -149,7 +149,7 @@ const CheckIn = () => {
       "SN",
       "Name",
       "Institution",
-      "Accompanying Person",
+      // "Accompanying Person",
       "Participant Check-in",
       "Check-in Date",
     ];
@@ -216,7 +216,7 @@ const CheckIn = () => {
       );
 
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit 2025",
         14,
         doc.internal.pageSize.height - 10
       );
@@ -251,7 +251,7 @@ const CheckIn = () => {
             <div className="mb-4">
               <input
                 type="text"
-                placeholder="Search by name, accompanying person, or institution"
+                placeholder="Search by name or institution"
                 value={searchTerm}
                 onChange={handleSearchChange}
                 className="w-full p-3 border border-gray-300 text-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-green-500 focus:border-green-500"
@@ -264,7 +264,7 @@ const CheckIn = () => {
                     <th className="py-3 px-6 text-left">SN</th>
                     <th className="py-3 px-6 text-left">Name</th>
                     <th className="py-3 px-6 text-left">Institution</th>
-                    <th className="py-3 px-6 text-left">Accompanying Person</th>
+                    <th className="py-3 px-6 text-left">Signature</th>
                     <th className="py-3 px-6 text-left">Check-in</th>
                     <th className="py-3 px-6 text-center">Actions</th>
                   </tr>

@@ -5,7 +5,7 @@ import Footer from "../../components/Footer";
 import useDocumentTitle from "../../components/DocTitle";
 
 const AboutAcsic = () => {
-  useDocumentTitle("About ACSIC - International Youth Camp 2025");
+  useDocumentTitle("Uranus Event Management");
 
   return (
     <>

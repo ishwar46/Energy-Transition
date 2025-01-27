@@ -386,7 +386,7 @@ const AddWagon = () => {
         doc.internal.pageSize.height - 10
       );
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit 2025",
         14,
         doc.internal.pageSize.height - 10
       );

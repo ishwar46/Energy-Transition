@@ -12,7 +12,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import useDocumentTitle from "../../components/DocTitle";
 
 const EventManager = () => {
-  useDocumentTitle("Manage Event - International Youth Camp 2025");
+  useDocumentTitle("Manage Event - Uranus Event Management");
 
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");

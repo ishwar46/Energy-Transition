@@ -73,7 +73,7 @@ const MainDashboard = () => {
               {/* User Group Icon */}
               <UserGroupIcon className="w-10 h-10 text-blue-600 bg-blue-100 p-2 rounded transition-transform transform hover:scale-105" />
               <div className="text-lg text-gray-800 font-semibold">
-                Total Registered
+                Total Applications
               </div>
             </div>
             <div className="text-3xl font-bold text-gray-700 mt-3">
@@ -87,7 +87,7 @@ const MainDashboard = () => {
               {/* Clock Icon */}
               <ClockIcon className="w-10 h-10 text-yellow-600 bg-yellow-100 p-2 rounded transition-transform transform hover:scale-105" />
               <div className="text-lg text-gray-800 font-semibold">
-                Pending Requests
+                Pending Applications
               </div>
             </div>
             <div className="text-3xl font-bold text-gray-700 mt-3">

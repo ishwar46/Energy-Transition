@@ -10,7 +10,7 @@ import {
   verifyUserByAdminApi,
   resetUserPasswordApi,
 } from "../../apis/Api";
-import acsisclogo from "../../assets/images/leologo.png";
+import acsisclogo from "../../assets/images/uranuslogo.png";
 import { QRCodeSVG } from "qrcode.react";
 import toast from "react-hot-toast";
 import Pagination from "@mui/material/Pagination";
@@ -403,7 +403,7 @@ const AllParticipants = () => {
         doc.internal.pageSize.height - 10
       );
       doc.text(
-        "International Youth Camp 2025",
+        "Uranus Event Management",
         14,
         doc.internal.pageSize.height - 10
       );
@@ -631,7 +631,7 @@ const AllParticipants = () => {
                   <img
                     src={excelIcon}
                     alt="Export to Excel"
-                    className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5"
+                    className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lgx:h-5"
                   />
                 </button>
                 {/* Export to PDF */}
@@ -653,7 +653,7 @@ const AllParticipants = () => {
                 {/* Unified search input */}
                 <input
                   type="text"
-                  placeholder="Search by name, email or What's App Number..."
+                  placeholder="Search by name, email or Number..."
                   value={searchFilter}
                   onChange={(e) => setSearchFilter(e.target.value)}
                   className="p-2 border rounded w-full sm:w-full text-black mb-2 sm:mb-0 text-sm sm:text-base"
@@ -867,13 +867,13 @@ const AllParticipants = () => {
                     {currentUser?.personalInformation?.profilePicture
                       ?.fileName && (
                       <img
-                        src={`https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        src={`https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
                         // src={`http://localhost:5000/${currentUser.personalInformation?.profilePicture.fileName}`}
                         alt="Profile"
                         className="w-20 h-20 rounded-full cursor-pointer"
                         onClick={() =>
                           handleImageClick(
-                            `https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
+                            `https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
                             // `https://api.acsicnepal.com/${currentUser.personalInformation.profilePicture.fileName}`
                           )
                         }

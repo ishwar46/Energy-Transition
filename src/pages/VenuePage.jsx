@@ -51,7 +51,7 @@ const VenuePage = () => {
               fontWeight: "bold",
             }}
           >
-            International Youth Camp 2025
+            Uranus Event Management
           </Typography>
 
           <Card

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import logo from "../../assets/images/leologo.png";
+import logo from "../../assets/images/uranuslogo.png";
 import Navbar from "../../components/Navbar";
 import useDocumentTitle from "../../components/DocTitle";
 import { getUserByIdApi, updateProfileApi } from "../../apis/Api";
@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import AlertDialog from "../../components/AlertDialog";
 
 const UserDashboardPage = () => {
-  useDocumentTitle("User Profile - International Youth Camp 2025");
+  useDocumentTitle("User Profile - Uranus Event Management");
 
   const [user, setUser] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);
@@ -249,7 +249,7 @@ const UserDashboardPage = () => {
           <div className="flex flex-col items-center mb-8">
             {user?.personalInformation?.profilePicture?.fileName ? (
               <img
-                src={`https://crownthevisionapi.onrender.com/${user.personalInformation.profilePicture.fileName}`}
+                src={`https://energy-transition-api.onrender.com/${user.personalInformation.profilePicture.fileName}`}
                 alt="Profile"
                 className="w-40 h-40 rounded-full shadow-lg object-cover"
               />

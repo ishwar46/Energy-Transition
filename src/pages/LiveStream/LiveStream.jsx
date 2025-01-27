@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import loadingAnimation from "../../assets/animations/loading.json";
 import "../../css/liveStreamPage.css";
-import brandLogo from "../../assets/acsic.png";
+import brandLogo from "../../assets/images/nepal.png";
 
 const LiveStreamPage = () => {
   const [liveStreamUrl, setLiveStreamUrl] = useState(null);
@@ -36,14 +36,14 @@ const LiveStreamPage = () => {
         />
 
         <h1 className="text-4xl font-bold conference-title mb-2">
-          The 36th ACSIC Conference Nepal
+          Energy Transition for Resilient and Low Carbon Economy Summit 2025
         </h1>
         <p className="text-xl font-medium live-from">
           We Are Live from Kathmandu, Nepal
         </p>
         {/* Slogan */}
         <p className="text-lg font-semibold text-gray-200 italic">
-          Financing Innovations for Economic Growth: "Shaping Innovative Future"
+          Organized By: Alternative Energy Promotion Center
         </p>
       </div>
 

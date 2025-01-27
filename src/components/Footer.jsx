@@ -52,31 +52,32 @@ const Footer = () => {
 
   return (
     <>
-      <div className="bg-[#001942] p-10 w-full mt-5">
+      {" "}
+      <div className="bg-[#0060df] p-10 w-full mt-5">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 justify-between items-start">
           {/* Column 1: Event Details */}
           <div className="space-y-4">
             <h3 className="text-white text-2xl font-bold">
-              International Youth Camp 2025
+              Energy Transition for Resilient and Low Carbon Economy Summit 2025
             </h3>
-            <p className="text-white font-semibold">3rd to 5th Jan, 2025</p>
-            <p className="text-white font-semibold">Chitwan, Nepal</p>
+            <p className="text-white font-semibold">28th Jan, 2025</p>
+            <p className="text-white font-semibold">Kathmandu, Nepal</p>
             <div className="flex gap-2 items-center text-white">
               <img src={Wasapp} alt="WhatsApp" className="h-8" />
               <div>
-                <span className="text-green-500 cursor-pointer">
-                  +977-9840174852
+                <span className="text-white font-semibold cursor-pointer">
+                  +977-9851129926
                 </span>{" "}
                 <span>feel free to message for queries. (Chat Only)</span>
               </div>
             </div>
             <a
-              href="www.uranus-technepal.com"
+              href="https://www.aepc.gov.np/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 py-2 px-4 bg-green-700 text-white rounded hover:bg-blue-500 transition-colors"
+              className="inline-block mt-4 py-2 px-4 bg-teal-500 text-white rounded hover:bg-teal-600 transition-colors"
             >
-              Know more about CROWN THE VISION
+              Know more about Alternative Energy Promotion Center
             </a>
           </div>
 
@@ -91,24 +92,24 @@ const Footer = () => {
                 value={fullname}
                 onChange={handleFullnameChange}
                 placeholder="Enter your Full Name"
-                className="w-full p-3 rounded-lg text-sm text-green-700 border border-transparent focus:border-white focus:ring-0"
+                className="w-full p-3 rounded-lg text-sm text-gray-700 bg-white border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-500"
               />
               <input
                 type="email"
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="Enter Your Email"
-                className="w-full p-3 rounded-lg text-sm text-green-700 border border-transparent focus:border-white focus:ring-0"
+                className="w-full p-3 rounded-lg text-sm text-gray-700 bg-white border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-500"
               />
               <textarea
                 value={message}
                 onChange={handleMessageChange}
                 placeholder="Enter your message"
-                className="w-full p-3 min-h-[100px] rounded-lg text-sm text-green-700 border border-transparent focus:border-white focus:ring-0"
+                className="w-full p-3 min-h-[100px] rounded-lg text-sm text-gray-700 bg-white border border-gray-300 focus:border-teal-500 focus:ring-2 focus:ring-teal-500"
               ></textarea>
               <button
                 type="submit"
-                className="h-10 px-5 text-white bg-green-700 w-full rounded-xl hover:bg-blue-500"
+                className="h-10 px-5 text-white bg-teal-500 w-full rounded-xl hover:bg-teal-600 transition-colors"
               >
                 Submit
               </button>
@@ -117,12 +118,12 @@ const Footer = () => {
         </div>
         <hr className="mt-10 border-gray-400" />
         <div className="text-center text-white mt-5">
-          © Leo 2025 International Youth Camp, All rights reserved. |{" "}
+          © Alternative Energy Promotion Center, All rights reserved. |{" "}
           <a
             href="https://uranus-tech.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:underline"
+            className="text-teal-100 hover:underline"
           >
             Designed and Developed by Uranus Tech Nepal Pvt. Ltd.
           </a>

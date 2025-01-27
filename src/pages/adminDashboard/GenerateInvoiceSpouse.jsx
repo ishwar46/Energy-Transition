@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Input, initTWE } from "tw-elements";
 import institutions from "../../data/institution";
-import dcgfimg from "../../assets/images/dcgffullogo.jpg";
+import dcgfimg from "../../assets/images/uranuslogo.png";
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import "../../css/invoice.css";
@@ -10,7 +10,7 @@ import useDocumentTitle from "../../components/DocTitle";
 initTWE({ Input });
 
 const GenerateInvoiceSpouse = () => {
-  useDocumentTitle("Generate Invoice Spouse - International Youth Camp 2025");
+  useDocumentTitle("Generate Invoice Spouse - Uranus Event Management");
   const [selectedInstitution, setSelectedInstitution] = useState("");
   const [participantName, setParticipantName] = useState("");
   const [accompanyPersonName, setAccompanyPersonName] = useState("");

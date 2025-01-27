@@ -14,7 +14,7 @@ import "react-vertical-timeline-component/style.min.css";
 import useDocumentTitle from "../../components/DocTitle";
 
 const UserLocation = () => {
-  useDocumentTitle("Track Journey- International Youth Camp 2025");
+  useDocumentTitle("Track Journey- Uranus Event Management");
 
   const [allUserLocation, setAllUserLocation] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

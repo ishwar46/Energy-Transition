@@ -22,7 +22,7 @@ const EditUser = () => {
       gender: {
         male: false,
         feMale: false,
-        others: ""
+        others: "",
       },
       nationality: "",
       dateOfBirth: "",
@@ -92,9 +92,8 @@ const EditUser = () => {
             },
           }));
           // setPreview(
-          //   `https://crownthevisionapi.onrender.com/${response.data.profilePicture.fileName}`
+          //   `https://energy-transition-api.onrender.com/${response.data.profilePicture.fileName}`
           // );
-
         } else {
           toast.error("Failed to fetch user data.");
         }
@@ -311,7 +310,9 @@ const EditUser = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-600">Highest Education Level</label>
+              <label className="block text-gray-600">
+                Highest Education Level
+              </label>
               <input
                 type="text"
                 name="highestEducationLevel"
@@ -333,17 +334,23 @@ const EditUser = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
             <div>
-              <label className="block text-gray-600">Leo Multiple District And ClubName</label>
+              <label className="block text-gray-600">
+                Leo Multiple District And ClubName
+              </label>
               <input
                 type="text"
                 name="leoMultipleDistrictAndClubName"
-                value={formData.personalInformation.leoMultipleDistrictAndClubName}
+                value={
+                  formData.personalInformation.leoMultipleDistrictAndClubName
+                }
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
             </div>
             <div>
-              <label className="block text-gray-600">Position in District</label>
+              <label className="block text-gray-600">
+                Position in District
+              </label>
               <input
                 type="text"
                 name="positionInDistrict"
@@ -368,7 +375,7 @@ const EditUser = () => {
               ) : (
                 formData.profilePicture.fileName && (
                   <img
-                    src={`https://crownthevisionapi.onrender.com/${formData.profilePicture.fileName}`}
+                    src={`https://energy-transition-api.onrender.com/${formData.profilePicture.fileName}`}
                     alt="Profile"
                     className="mt-4 w-24 h-24 object-cover rounded-full border-2 border-green-500"
                   />
@@ -388,11 +395,15 @@ const EditUser = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-600">Intl Occupation Passport Num</label>
+              <label className="block text-gray-600">
+                Intl Occupation Passport Num
+              </label>
               <input
                 type="text"
                 name="intlOccupationPassportNumber"
-                value={formData.personalInformation.intlOccupationPassportNumber}
+                value={
+                  formData.personalInformation.intlOccupationPassportNumber
+                }
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
               />
@@ -410,7 +421,9 @@ const EditUser = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
             <div>
-              <label className="block text-gray-600">Emergency Contact Num</label>
+              <label className="block text-gray-600">
+                Emergency Contact Num
+              </label>
               <input
                 type="text"
                 name="emergencyContactNum"
@@ -426,7 +439,9 @@ const EditUser = () => {
               <input
                 type="checkbox"
                 name="vegetarian"
-                checked={formData.personalInformation.dietaryRequirements.vegetarian}
+                checked={
+                  formData.personalInformation.dietaryRequirements.vegetarian
+                }
                 onChange={handleDietaryChange}
               />
               <label className="text-gray-700 mr-4 ml-2">Vegetarian</label>
@@ -434,7 +449,9 @@ const EditUser = () => {
               <input
                 type="checkbox"
                 name="nonveg"
-                checked={formData.personalInformation.dietaryRequirements.nonveg}
+                checked={
+                  formData.personalInformation.dietaryRequirements.nonveg
+                }
                 onChange={handleDietaryChange}
               />
               <label className="text-gray-700 mr-4 ml-2">Non-Veg</label>

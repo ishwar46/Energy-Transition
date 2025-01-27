@@ -11,7 +11,7 @@ import {
   resetUserPasswordApi,
 } from "../../apis/Api";
 import { useReactToPrint } from "react-to-print";
-import logo from "../../assets/images/uranuslogo.png";
+import logo from "../../assets/images/nepal.png";
 import { QRCodeSVG } from "qrcode.react";
 import toast from "react-hot-toast";
 import Pagination from "@mui/material/Pagination";
@@ -166,7 +166,7 @@ const UserTable = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   //Role
   const [genderFilter, setGenderFilter] = useState("");
-
+  const [statusFilter, setStatusFilter] = useState("");
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(10);
@@ -181,6 +181,8 @@ const UserTable = () => {
 
   // const biography = currentUser?.biography || "";
   // const truncatedBiography = truncateText(biography, 50);
+
+  const [participantTypeFilter, setParticipantTypeFilter] = useState("");
 
   const handleImageClick = (imageUrl) => {
     setImageToPreview(imageUrl);
@@ -270,34 +272,13 @@ const UserTable = () => {
         "First Name": user.personalInformation?.fullName?.firstName || "N/A",
         "Middle Name": user.personalInformation?.fullName?.middleName || "",
         "Last Name": user.personalInformation?.fullName?.lastName || "N/A",
-        "Date Of Birth": user.personalInformation?.dateOfBirth
-          ? new Date(user.personalInformation?.dateOfBirth).toLocaleDateString(
-              "en-US",
-              {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }
-            )
-          : "N/A",
         Email: user.personalInformation?.emailAddress || "N/A",
         Status: user.adminVerification?.status || "N/A",
-        Occupation: user.personalInformation?.occupation || "N/A",
+        Organization: user.personalInformation?.nameOfInstitution || "N/A",
+        Occupation: user.personalInformation?.jobPosition || "N/A",
         "Phone Number": user.personalInformation?.mobileNumber || "N/A",
-        Gender: user.personalInformation?.gender?.male
-          ? "Male"
-          : user.personalInformation?.gender?.feMale
-          ? "Female"
-          : user.personalInformation?.gender?.others
-          ? "Others"
-          : "N/A",
-        Meal: user?.personalInformation?.dietaryRequirements?.vegetarian
-          ? "Vegetarian"
-          : user?.personalInformation?.dietaryRequirements?.nonveg
-          ? "Nonveg"
-          : user?.personalInformation?.dietaryRequirements?.other
-          ? "Other"
-          : "N/A",
+        Gender: user.personalInformation?.gender || "N/A",
+        "Participant Type": user.personalInformation?.participantType || "N/A", // New Column
       }))
     );
 
@@ -306,25 +287,13 @@ const UserTable = () => {
       { wch: 20 }, // First Name
       { wch: 20 }, // Middle Name
       { wch: 20 }, // Last Name
-      { wch: 20 }, // Date of Birth
       { wch: 30 }, // Email
-      { wch: 30 }, // Current Address
-      { wch: 30 }, // Highest Education Level
-      { wch: 40 }, // Leo Multiple District And Club Name
-      { wch: 30 }, // Position in District
       { wch: 15 }, // Status
-      { wch: 30 }, // Occupation
-      { wch: 40 }, // INTL Occupation Passport Number
-      { wch: 20 }, // WhatsApp Number
-      { wch: 20 }, // Emergency Contact Number
+      { wch: 25 }, // Organization
+      { wch: 25 }, // Occupation
+      { wch: 20 }, // Phone Number
       { wch: 10 }, // Gender
-      { wch: 70 }, // Why Attend
-      { wch: 50 }, // What Makes You Unique
-      { wch: 50 }, // Achievements
-      { wch: 50 }, // Special Skills
-      { wch: 30 }, // Social Media
-      { wch: 90 }, // Health Description
-      { wch: 90 }, // Notable Things
+      { wch: 30 }, // Participant Type
     ];
 
     const wb = XLSX.utils.book_new();
@@ -335,7 +304,7 @@ const UserTable = () => {
       "Energy_Transition_for_Resilient_and_Low_Carbon_Economy_Summit.xlsx"
     );
   };
-
+  // Export to PDF
   const exportToPDF = () => {
     const doc = new jsPDF("landscape");
     const currentDate = new Date().toLocaleDateString("en-US", {
@@ -365,8 +334,8 @@ const UserTable = () => {
       "Name",
       "Email",
       "Phone Number",
-      "Gender",
-      "Meal",
+      "Organization",
+      "Participant Type",
     ];
 
     const tableRows = filteredUsers.map((user, index) => {
@@ -381,24 +350,8 @@ const UserTable = () => {
         userName,
         user.personalInformation?.emailAddress || "N/A",
         user.personalInformation?.mobileNumber || "N/A",
-        user.personalInformation?.occupation || "N/A",
-        // accompanyingPersonInfo,
-        user.personalInformation?.currentAddress || "N/A",
-        user.personalInformation?.highestEducationLevel || "N/A",
-        user.personalInformation?.gender?.male
-          ? "Male"
-          : user.personalInformation?.gender?.feMale
-          ? "Female"
-          : user.personalInformation?.gender?.others
-          ? "Others"
-          : "N/A",
-        user?.personalInformation?.dietaryRequirements?.vegetarian
-          ? "Vegetarian"
-          : user?.personalInformation?.dietaryRequirements?.nonveg
-          ? "Nonveg"
-          : user?.personalInformation?.dietaryRequirements?.other
-          ? "Other"
-          : "N/A",
+        user.personalInformation?.nameOfInstitution || "N/A",
+        user.personalInformation?.participantType || "N/A",
       ];
     });
 
@@ -492,6 +445,7 @@ const UserTable = () => {
     }
   };
 
+  //Filters
   const filteredUsers = users.filter((user) => {
     const matchesSearch =
       user.personalInformation?.fullName?.firstName
@@ -503,21 +457,21 @@ const UserTable = () => {
       user.personalInformation?.emailAddress
         ?.toLowerCase()
         .includes(searchFilter.toLowerCase()) ||
-      user.personalInformation?.whatsAppNumber
+      user.personalInformation?.mobileNumber
         ?.trim()
         .includes(searchFilter.trim());
-    console.log(searchFilter);
 
-    const matchRole =
-      !genderFilter ||
-      (genderFilter === "Male" &&
-        user.personalInformation.gender?.male === true) ||
-      (genderFilter === "Female" &&
-        user.personalInformation.gender?.feMale === true) ||
-      (genderFilter === "Others" &&
-        user.personalInformation.gender?.others === true);
+    const matchGender =
+      !genderFilter || user.personalInformation?.gender === genderFilter;
 
-    return matchesSearch && matchRole;
+    const matchParticipantType =
+      !participantTypeFilter ||
+      user.personalInformation?.participantType === participantTypeFilter;
+
+    const matchStatus =
+      !statusFilter || user.adminVerification?.status === statusFilter;
+
+    return matchesSearch && matchGender && matchParticipantType && matchStatus;
   });
 
   // Get current users for pagination
@@ -574,30 +528,57 @@ const UserTable = () => {
 
             <div className="mb-5 flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-4 justify-between items-center">
               <div className="flex flex-col sm:flex-row sm:space-x-4 w-full">
-                {/* Unified search input */}
+                {/* search input */}
                 <input
                   type="text"
-                  placeholder="Search by name, email or What's App Number..."
+                  placeholder="Search by name, email or number..."
                   value={searchFilter}
                   onChange={(e) => setSearchFilter(e.target.value)}
-                  className="p-2 border rounded w-full sm:w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
+                  className="p-2 border rounded sm:w-1/2 w-full text-black mb-2 sm:mb-0 text-sm sm:text-base h-11"
                 />
-
-                <div className="flex flex-col sm:flex-row sm:space-x-4 w-full text-black mb-4 h-11">
+                <div className="flex flex-col sm:flex-row sm:space-x-4 w-full text-gray-700">
+                  {/* Status Filter */}
                   <select
-                    className="border rounded focus:ring focus:ring-gray-200 w-full text-center"
+                    className="border rounded focus:ring focus:ring-gray-200 sm:w-1/3 w-full text-center"
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                  >
+                    <option value="">All Status</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="pending">Pending</option>
+                    <option value="rejected">Rejected</option>
+                  </select>
+                  {/* Participant Type Filter */}
+                  <select
+                    className="border rounded focus:ring focus:ring-gray-200 sm:w-1/3 w-full text-center"
+                    value={participantTypeFilter}
+                    onChange={(e) => setParticipantTypeFilter(e.target.value)}
+                  >
+                    <option value="">All Participant Types</option>
+                    <option value="Session Chair">Session Chair</option>
+                    <option value="Moderator">Moderator</option>
+                    <option value="Presenter">Presenter</option>
+                    <option value="General Participant">
+                      General Participant
+                    </option>
+                    <option value="VIP Guest">VIP Guest</option>
+                    <option value="Media">Media</option>
+                    <option value="Keynote Speaker">Keynote Speaker</option>
+                  </select>
+                  {/* Gender Filter */}
+                  <select
+                    className="border rounded focus:ring focus:ring-gray-200 sm:w-1/3 w-full text-center"
                     value={genderFilter}
                     onChange={(e) => setGenderFilter(e.target.value)}
                   >
                     <option value="">All Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Others">Others</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
                   </select>
                 </div>
               </div>
             </div>
-
             <table className="min-w-full leading-normal bg-transparent shadow-md">
               <thead>
                 <tr>
@@ -614,7 +595,7 @@ const UserTable = () => {
                     Number
                   </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                    Occupation
+                    Organization
                   </th>
                   <th className="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                     Status
@@ -630,7 +611,7 @@ const UserTable = () => {
                     key={user._id}
                     className={
                       duplicateUserIds && duplicateUserIds.includes(user._id)
-                        ? "bg-yellow-100"
+                        ? "bg-yellow-100 bg-opacity-50"
                         : ""
                     }
                   >
@@ -639,19 +620,16 @@ const UserTable = () => {
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
                       {user.personalInformation?.fullName?.firstName || "N/A"}{" "}
-                      {user.personalInformation?.fullName?.lastName || "N/A"}{" "}
-                      {user.chiefDelegateOrSpeaker?.chiefDelegate && (
-                        <span title="Chief Delegate">⭐</span>
-                      )}
+                      {user.personalInformation?.fullName?.lastName || "N/A"}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
                       {user.personalInformation?.emailAddress || "N/A"}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
-                      {user.personalInformation?.whatsAppNumber || "N/A"}
+                      {user.personalInformation?.mobileNumber || "N/A"}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-600">
-                      {user.personalInformation?.occupation || "N/A"}
+                      {user.personalInformation?.nameOfInstitution || "N/A"}
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm">
                       <span
@@ -753,10 +731,10 @@ const UserTable = () => {
                         "N/A"
                       }`}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong className="font-medium">Nationality:</strong>{" "}
                       {currentUser?.personalInformation?.nationality || "N/A"}
-                    </p>
+                    </p> */}
                     <p>
                       <strong className="font-medium">Gender:</strong>{" "}
                       {currentUser?.personalInformation?.gender || "N/A"}
@@ -793,13 +771,20 @@ const UserTable = () => {
                       <strong className="font-medium">Mobile Number:</strong>{" "}
                       {currentUser?.personalInformation?.mobileNumber || "N/A"}
                     </p>
-                    {/* <p>
-                      <strong className="font-medium">
-                        Emergency Contact:
-                      </strong>{" "}
-                      {currentUser?.personalInformation?.emergencyContactNum ||
+                    <p>
+                      <strong className="font-medium">Designation:</strong>{" "}
+                      {currentUser?.personalInformation?.jobPosition || "N/A"}
+                    </p>
+                    <p>
+                      <strong className="font-medium">Organization:</strong>{" "}
+                      {currentUser?.personalInformation?.nameOfInstitution ||
                         "N/A"}
-                    </p> */}
+                    </p>
+                    <p>
+                      <strong className="font-medium">Participant Type:</strong>{" "}
+                      {currentUser?.personalInformation?.participantType ||
+                        "N/A"}
+                    </p>
 
                     {/* Dietary Preferences */}
                     {(dietaryRequirements?.vegetarian ||
@@ -827,13 +812,13 @@ const UserTable = () => {
                     {currentUser?.personalInformation?.profilePicture
                       ?.fileName && (
                       <img
-                        src={`https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        src={`https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
                         alt="Profile"
                         className="w-24 h-24 rounded-full object-cover border border-gray-300 shadow-sm cursor-pointer
                            hover:shadow-md transition-shadow"
                         onClick={() =>
                           handleImageClick(
-                            `https://crownthevisionapi.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
+                            `https://energy-transition-api.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
                           )
                         }
                       />

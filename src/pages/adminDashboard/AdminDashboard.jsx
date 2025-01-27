@@ -27,6 +27,7 @@ import {
   IdentificationIcon,
   VideoCameraIcon,
   SpeakerWaveIcon,
+  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 
 import MainDashboard from "./MainDashboard";
@@ -60,6 +61,7 @@ import PdfWithTitle from "./PdfWithTitle";
 import VolunteerRegister from "./VolunteerRegister";
 import AllSpeakers from "./AllSpeakers";
 import { MdVolunteerActivism } from "react-icons/md";
+import Queries from "../queries/Queries";
 
 const AdminDashboard = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -248,9 +250,9 @@ const AdminDashboard = () => {
                     </li>
                     <li>
                       <button
-                        onClick={() => handleContainerChange("queries")}
+                        onClick={() => handleContainerChange("viewsession")}
                         className={`w-[100%] flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-blue-200 group ${
-                          activeContainer === "queries"
+                          activeContainer === "viewsession"
                             ? "bg-blue-200 text-[#3051A0] border-l-4 border-[#3051A0]"
                             : ""
                         }`}
@@ -423,6 +425,21 @@ const AdminDashboard = () => {
                         <span className="ml-3">Attendance</span>
                       </button>
                     </li>
+                    {/* Queries */}
+                    <li>
+                      <button
+                        onClick={() => handleContainerChange("queries")}
+                        className={`w-full flex items-center p-2 text-gray-900 rounded-r-lg hover:bg-blue-200 ${
+                          activeContainer === "queries"
+                            ? "bg-blue-200 text-[#3051A0] border-l-4 border-[#3051A0]"
+                            : ""
+                        }`}
+                      >
+                        <QuestionMarkCircleIcon className="w-5 h-5 text-gray-500 transition group-hover:text-[#3051A0]" />
+                        <span className="ml-3">Queries</span>
+                      </button>
+                    </li>
+
                     <li>
                       <button
                         onClick={() => handleContainerChange("allparticipants")}
@@ -730,7 +747,7 @@ const AdminDashboard = () => {
           {activeContainer === "attendance" && <ParticipantAttendance />}
           {activeContainer === "notification" && <SendNotifications />}
           {activeContainer === "speaker" && <AddSpeaker />}
-          {activeContainer === "queries" && <ViewSessions />}
+          {activeContainer === "viewsession" && <ViewSessions />}
           {activeContainer === "agendaadmin" && <AgendaAdmin />}
           {activeContainer === "generateidcard" && <GenerateIdCard />}
           {activeContainer === "eventmanager" && <EventManager />}
@@ -748,6 +765,7 @@ const AdminDashboard = () => {
           {activeContainer === "pdfwithtitle" && <PdfWithTitle />}
           {activeContainer === "volunteer" && <VolunteerRegister />}
           {activeContainer === "allspeakers" && <AllSpeakers />}
+          {activeContainer === "queries" && <Queries />}
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import institutions from "../../data/institution";
-import dcgfimg from "../../assets/images/dcgffullogo.jpg";
+import dcgfimg from "../../assets/images/uranuslogo.png";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { getNamesbyInstitutionApi } from "../../apis/Api";

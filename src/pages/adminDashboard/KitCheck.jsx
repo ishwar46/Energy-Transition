@@ -11,7 +11,7 @@ import autoTable from "jspdf-autotable";
 import useDocumentTitle from "../../components/DocTitle";
 
 const KitCheck = () => {
-  useDocumentTitle("Manage Conference Kit - International Youth Camp 2025");
+  useDocumentTitle("Manage Conference Kit - Uranus Event Management");
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -166,7 +166,7 @@ const KitCheck = () => {
       );
 
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit 2025",
         14,
         doc.internal.pageSize.height - 10
       );

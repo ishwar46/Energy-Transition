@@ -9,7 +9,7 @@ import GalleryConfirmationModel from "../../components/GalleryConfirmationModel"
 import useDocumentTitle from "../../components/DocTitle";
 
 const Gallery = () => {
-  useDocumentTitle("Gallery - International Youth Camp 2025");
+  useDocumentTitle("Gallery - Uranus Event Management");
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -216,12 +216,12 @@ const Gallery = () => {
                 <img
                   // src={
                   //   image.image
-                  //     ? `https://crownthevisionapi.onrender.com/${image.image}`
+                  //     ? `https://energy-transition-api.onrender.com/${image.image}`
                   //     : "https://via.placeholder.com/100"
                   // }
                   src={
                     image.image
-                      ? `https://crownthevisionapi.onrender.com/${image.image}`
+                      ? `https://energy-transition-api.onrender.com/${image.image}`
                       : "https://via.placeholder.com/100"
                   }
                   alt="Gallery"

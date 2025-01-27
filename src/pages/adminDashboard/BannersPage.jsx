@@ -9,7 +9,7 @@ import GalleryConfirmationModel from "../../components/GalleryConfirmationModel"
 import useDocumentTitle from "../../components/DocTitle";
 
 const BannerManager = () => {
-  useDocumentTitle("Add Banner - International Youth Camp 2025");
+  useDocumentTitle("Add Banner - Uranus Event Management");
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -201,7 +201,7 @@ const BannerManager = () => {
                 <img
                   src={
                     banner.url
-                      ? `https://crownthevisionapi.onrender.com/${banner.url.replace(
+                      ? `https://energy-transition-api.onrender.com/${banner.url.replace(
                           /\\/g,
                           "/"
                         )}`

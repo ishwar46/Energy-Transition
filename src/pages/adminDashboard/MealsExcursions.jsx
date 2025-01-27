@@ -20,9 +20,7 @@ import useDocumentTitle from "../../components/DocTitle";
 import DatePicker from "react-datepicker";
 
 const MealsExcursionsAdmin = () => {
-  useDocumentTitle(
-    "Manage Meals and Excursions - International Youth Camp 2025"
-  );
+  useDocumentTitle("Manage Meals and Excursions - Uranus Event Management");
 
   const [participants, setParticipants] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -249,7 +247,7 @@ const MealsExcursionsAdmin = () => {
       );
 
       doc.text(
-        "The 36th ACSIC Conference Nepal",
+        "Energy Transition for Resilient and Low Carbon Economy Summit 2025",
         14,
         doc.internal.pageSize.height - 10
       );
