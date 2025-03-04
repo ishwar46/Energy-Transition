@@ -25,7 +25,7 @@
 
 //     fetchNotifications();
 
-//     const socket = io("https://energy-transition-api.onrender.com");
+//     const socket = io("https://energy-transition-api-eg0r.onrender.com");
 
 //     // Listen for live notifications
 //     socket.on("receiveNotification", (newNotification) => {

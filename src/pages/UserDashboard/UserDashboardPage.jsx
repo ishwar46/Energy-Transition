@@ -249,7 +249,7 @@ const UserDashboardPage = () => {
           <div className="flex flex-col items-center mb-8">
             {user?.personalInformation?.profilePicture?.fileName ? (
               <img
-                src={`https://energy-transition-api.onrender.com/${user.personalInformation.profilePicture.fileName}`}
+                src={`https://energy-transition-api-eg0r.onrender.com/${user.personalInformation.profilePicture.fileName}`}
                 alt="Profile"
                 className="w-40 h-40 rounded-full shadow-lg object-cover"
               />

@@ -134,7 +134,7 @@ const SessionDetails = () => {
                 <div className="flex space-x-4">
                   {/* Download PDF Button */}
                   <a
-                    href={`https://energy-transition-api.onrender.com/public/uploads/eventPdfs/${pdf}`}
+                    href={`https://energy-transition-api-eg0r.onrender.com/public/uploads/eventPdfs/${pdf}`}
                     download
                     className="px-3 py-1 bg-green-500 text-white text-sm font-semibold rounded-lg hover:bg-green-600"
                   >

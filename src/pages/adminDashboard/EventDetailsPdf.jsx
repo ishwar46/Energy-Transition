@@ -137,7 +137,7 @@ const PdfManagement = () => {
               <span className="text-gray-700 text-sm">{pdf}</span>
               <div className="flex space-x-4">
                 <a
-                  href={`https://energy-transition-api.onrender.com/public/uploads/${
+                  href={`https://energy-transition-api-eg0r.onrender.com/public/uploads/${
                     isExcursion ? "excursionPdfs" : "eventPdfs"
                   }/${pdf}`}
                   target="_blank"

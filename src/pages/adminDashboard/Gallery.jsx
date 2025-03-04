@@ -216,12 +216,12 @@ const Gallery = () => {
                 <img
                   // src={
                   //   image.image
-                  //     ? `https://energy-transition-api.onrender.com/${image.image}`
+                  //     ? `https://energy-transition-api-eg0r.onrender.com/${image.image}`
                   //     : "https://via.placeholder.com/100"
                   // }
                   src={
                     image.image
-                      ? `https://energy-transition-api.onrender.com/${image.image}`
+                      ? `https://energy-transition-api-eg0r.onrender.com/${image.image}`
                       : "https://via.placeholder.com/100"
                   }
                   alt="Gallery"

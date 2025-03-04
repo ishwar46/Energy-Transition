@@ -3,7 +3,7 @@ import axios from "axios";
 // Axios instance configuration
 const Api = axios.create({
   // baseURL: "http://localhost:5500",
-  baseURL: "https://energy-transition-api.onrender.com",
+  baseURL: "https://energy-transition-api-eg0r.onrender.com",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -18,8 +18,8 @@ const config = {
 };
 
 //API Calls For Energy Transition for Resilient and Low Carbon Economy Summit
-export const energyRegisterApi = (formData) => Api.post("/api/energy/register", formData, config);
-
+export const energyRegisterApi = (formData) =>
+  Api.post("/api/energy/register", formData, config);
 
 // API calls for queries and users
 export const addSubscriberApi = (data) =>

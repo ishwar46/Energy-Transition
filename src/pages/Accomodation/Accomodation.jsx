@@ -53,7 +53,7 @@ const Accomodation = () => {
                   {venue.venueimage.map((image, imgIndex) => (
                     <img
                       key={imgIndex}
-                      src={`https://energy-transition-api.onrender.com/${image}`}
+                      src={`https://energy-transition-api-eg0r.onrender.com/${image}`}
                       alt={`Venue ${imgIndex + 1}`}
                       className="mx-auto rounded-lg"
                       style={{
