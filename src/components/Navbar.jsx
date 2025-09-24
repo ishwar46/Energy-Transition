@@ -46,7 +46,7 @@ const Navbar = () => {
   };
 
   const handleLoginClick = () => {
-    navigate("/");
+    navigate("/admin");
   };
 
   const handleLogout = () => {
