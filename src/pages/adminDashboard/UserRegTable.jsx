@@ -16,7 +16,6 @@ import { QRCodeSVG } from "qrcode.react";
 import toast from "react-hot-toast";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../components/DeleteConfirmationModal";
 import EditUserModal from "../../components/EditUserModal";
 import Lottie from "lottie-react";
@@ -155,7 +154,6 @@ const getUserDetailsForQR = (currentUser) => {
 };
 
 const UserTable = () => {
-  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [duplicateUserIds, setDuplicateUserIds] = useState([]);
   const [searchFilter, setSearchFilter] = useState("");
@@ -501,7 +499,7 @@ const UserTable = () => {
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   // Change page
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (_, value) => {
     setCurrentPage(value);
   };
 

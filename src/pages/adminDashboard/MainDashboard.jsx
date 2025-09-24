@@ -66,46 +66,49 @@ const MainDashboard = () => {
         Dashboard
       </div>
       <div className="pt-5">
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
           {/* Total Registered */}
-          <div className="border rounded-xl p-5 bg-white shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
-            <div className="flex items-center gap-3">
-              {/* User Group Icon */}
-              <UserGroupIcon className="w-10 h-10 text-blue-600 bg-blue-100 p-2 rounded transition-transform transform hover:scale-105" />
-              <div className="text-lg text-gray-800 font-semibold">
-                Total Applications
+          <div className="border rounded-lg p-6 bg-white shadow hover:shadow-md transition-shadow duration-300 ease-in-out">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <UserGroupIcon className="w-8 h-8 text-blue-600" />
+                <div className="text-lg text-gray-700 font-medium">
+                  Total Applications
+                </div>
               </div>
-            </div>
-            <div className="text-3xl font-bold text-gray-700 mt-3">
-              {userCount}
+              <div className="text-2xl font-bold text-blue-600">
+                {userCount}
+              </div>
             </div>
           </div>
 
           {/* Pending Requests */}
-          <div className="border rounded-xl p-5 bg-white shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
-            <div className="flex items-center gap-3">
-              {/* Clock Icon */}
-              <ClockIcon className="w-10 h-10 text-yellow-600 bg-yellow-100 p-2 rounded transition-transform transform hover:scale-105" />
-              <div className="text-lg text-gray-800 font-semibold">
-                Pending Applications
+          <div className="border rounded-lg p-6 bg-white shadow hover:shadow-md transition-shadow duration-300 ease-in-out">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <ClockIcon className="w-8 h-8 text-yellow-600" />
+                <div className="text-lg text-gray-700 font-medium">
+                  Pending Applications
+                </div>
               </div>
-            </div>
-            <div className="text-3xl font-bold text-gray-700 mt-3">
-              {pendingUserCount}
+              <div className="text-2xl font-bold text-yellow-600">
+                {pendingUserCount}
+              </div>
             </div>
           </div>
 
           {/* Notification Sent */}
-          <div className="border rounded-xl p-5 bg-white shadow hover:shadow-lg transition-shadow duration-300 ease-in-out">
-            <div className="flex items-center gap-3">
-              {/* Bell Icon */}
-              <BellIcon className="w-10 h-10 text-green-600 bg-green-100 p-2 rounded transition-transform transform hover:scale-105" />
-              <div className="text-lg text-gray-800 font-semibold">
-                Notification Sent
+          <div className="border rounded-lg p-6 bg-white shadow hover:shadow-md transition-shadow duration-300 ease-in-out">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <BellIcon className="w-8 h-8 text-green-600" />
+                <div className="text-lg text-gray-700 font-medium">
+                  Notification Sent
+                </div>
               </div>
-            </div>
-            <div className="text-3xl font-bold text-gray-700 mt-3">
-              {notificationCount}
+              <div className="text-2xl font-bold text-green-600">
+                {notificationCount}
+              </div>
             </div>
           </div>
         </div>

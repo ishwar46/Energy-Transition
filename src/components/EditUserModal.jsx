@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { getUserByIdApi, updateUserApi } from "../apis/Api";
 import toast from "react-hot-toast";
 
@@ -148,13 +148,7 @@ const EditUserModal = ({ isOpen, onClose, userId, onUserUpdated }) => {
     }
   };
 
-  useEffect(() => {
-    if (isOpen && userId) {
-      fetchUser();
-    }
-  }, [isOpen, userId]);
-
-  const fetchUser = async () => {
+  const fetchUser = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await getUserByIdApi(userId);
@@ -198,7 +192,13 @@ const EditUserModal = ({ isOpen, onClose, userId, onUserUpdated }) => {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [userId]);
+
+  useEffect(() => {
+    if (isOpen && userId) {
+      fetchUser();
+    }
+  }, [isOpen, userId, fetchUser]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
