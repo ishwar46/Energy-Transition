@@ -4,6 +4,7 @@ import { adminLoginApi } from "../../apis/Api";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import useDocumentTitle from "../../components/DocTitle";
+import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
 
 const AdminLogin = () => {
   useDocumentTitle("Admin Login - Uranus Event Management");
@@ -21,117 +22,164 @@ const AdminLogin = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+
     const data = { email, password };
 
-    adminLoginApi(data)
-      .then((res) => {
-        if (res.data.success) {
-          toast.success(res.data.message);
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("user", JSON.stringify(res.data.admin));
-          if (res.data.admin.isAdmin) {
-            navigate("/admindashboard");
-          }
-        } else {
-          toast.error(res.data.message);
+    try {
+      const res = await adminLoginApi(data);
+      if (res.data.success) {
+        toast.success(res.data.message);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.admin));
+        if (res.data.admin.isAdmin) {
+          navigate("/admindashboard");
         }
-      })
-      .catch((err) => {
-        let errorMessage = "Internal server error";
-        if (err.response?.data?.message) {
-          errorMessage = err.response.data.message;
-        } else if (err.message) {
-          errorMessage = err.message;
-        }
-        toast.error(errorMessage);
-      });
+      } else {
+        toast.error(res.data.message);
+      }
+    } catch (err) {
+      let errorMessage = "Internal server error";
+      if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      toast.error(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-green-300 via-blue-500 to-purple-600 flex items-center justify-center overflow-hidden">
-      {/* Background Blobs */}
-      <div className="absolute top-0 left-0 w-40 h-40 md:w-64 md:h-64 bg-white opacity-20 rounded-full blur-2xl"></div>
-      <div className="absolute bottom-10 right-10 w-60 h-60 md:w-96 md:h-96 bg-white opacity-30 rounded-full blur-3xl"></div>
-      <div className="absolute top-20 right-20 w-48 h-48 md:w-64 md:h-64 bg-green-300 opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-20 w-64 h-64 md:w-80 md:h-80 bg-yellow-300 opacity-20 rounded-full blur-2xl"></div>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
 
       {/* Login Card */}
-      <div className="relative z-10 w-11/12 sm:w-3/4 md:w-full max-w-md bg-white bg-opacity-90 shadow-2xl rounded-2xl p-6 sm:p-8 backdrop-blur-md">
-        <div className="text-center mb-6">
-          <img
-            src={Logo}
-            alt="LEO Logo"
-            className="h-16 sm:h-20 mx-auto mb-4 opacity-90 rounded-lg"
-          />
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8 border border-gray-200">
+        <div className="text-center mb-8">
+          <div className="mb-6 flex justify-center">
+            <img
+              src={Logo}
+              alt="Logo"
+              className="h-20 shadow-lg"
+            />
+          </div>
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Welcome Back
           </h1>
-          <p className="text-sm text-gray-500">
-            Log in to manage the conference
+          <p className="text-gray-600">
+            Sign in to manage your dashboard
           </p>
         </div>
+
         <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="relative">
+          {/* Email Field */}
+          <div className="space-y-2">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-semibold text-gray-700"
             >
               Email Address
             </label>
-            <div className="relative mt-1">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                </svg>
+              </div>
               <input
                 type="email"
                 id="email"
                 name="email"
+                value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2 sm:px-10 sm:py-2.5 border border-gray-300 text-black rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 focus:outline-none"
-                placeholder="Enter your email"
+                className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+                placeholder="admin@example.com"
                 required
+                disabled={isLoading}
               />
-              <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <i className="fas fa-envelope"></i>
-              </span>
             </div>
           </div>
-          <div className="relative">
+
+          {/* Password Field */}
+          <div className="space-y-2">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-semibold text-gray-700"
             >
               Password
             </label>
-            <div className="relative mt-1">
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 sm:px-10 sm:py-2.5 border text-black border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 focus:outline-none"
+                className="block w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-400 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                 placeholder="Enter your password"
                 required
+                disabled={isLoading}
               />
-              <span className="absolute inset-y-0 left-3 flex items-center text-gray-400">
-                <i className="fas fa-lock"></i>
-              </span>
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center hover:text-gray-600 transition duration-200"
+                disabled={isLoading}
+              >
+                {showPassword ? (
+                  <EyeSlashIcon className="h-5 w-5 text-gray-400" />
+                ) : (
+                  <EyeIcon className="h-5 w-5 text-gray-400" />
+                )}
+              </button>
             </div>
           </div>
+
+          {/* Submit Button */}
           <button
             type="submit"
-            className="w-full py-2 bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-lg shadow-md hover:from-blue-500 hover:to-green-500 hover:shadow-lg transition duration-300 sm:py-2.5"
+            disabled={isLoading}
+            className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition duration-200"
           >
-            Sign in
+            {isLoading ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Signing in...
+              </>
+            ) : (
+              "Sign in to Dashboard"
+            )}
           </button>
         </form>
-        <p className="mt-4 text-sm text-center text-gray-500">
-          Forgot your password?{" "}
-          <a href="/reset-password" className="text-green-600 hover:underline">
-            Reset it here
-          </a>
-        </p>
+
+        {/* Footer */}
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-500">
+            Need help?{" "}
+            <a href="/support" className="font-medium text-blue-600 hover:text-blue-500 transition duration-200">
+              Contact Support
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
