@@ -775,83 +775,141 @@ const AllParticipants = () => {
           currentUser={currentUser}
         >
           <div className="text-gray-800">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-xl font-semibold text-green-800">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
+              <h2 className="text-lg font-semibold text-green-800 leading-tight">
                 Energy Transition for Resilient and Low Carbon Economy Summit
-                (Participant Details)
+                <span className="block text-sm font-medium text-gray-600 mt-1">
+                  Participant Details
+                </span>
               </h2>
-              <img src={acsisclogo} alt="Logo" className="w-12 h-15" />
+              <img
+                src={acsisclogo}
+                alt="Logo"
+                className="w-10 h-12 flex-shrink-0"
+              />
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              {/* Personal Information */}
-              <div className="col-span-2 border border-gray-500 p-4 rounded-lg">
-                <h3 className="text-sm font-semibold text-blue-800 mb-2">
-                  Personal Information
-                </h3>
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <p className="text-sm">
-                      <strong>Title:</strong>{" "}
-                      {currentUser?.personalInformation?.title || "N/A"}
-                    </p>
-                    <p className="text-sm">
-                      <strong>Full Name:</strong>{" "}
-                      {`${
-                        currentUser?.personalInformation?.fullName?.firstName ||
-                        "N/A"
-                      } ${
-                        currentUser?.personalInformation?.fullName
-                          ?.middleName || ""
-                      } ${
-                        currentUser?.personalInformation?.fullName?.lastName ||
-                        "N/A"
-                      }`}
-                    </p>
-                    <p className="text-sm">
-                      <strong>Nationality:</strong>{" "}
-                      {currentUser?.personalInformation?.nationality || "N/A"}
-                    </p>
-                    <p className="text-sm">
-                      <strong>Date of Birth:</strong>{" "}
-                      {currentUser?.personalInformation?.dateOfBirth
-                        ? new Date(
-                            currentUser.personalInformation.dateOfBirth
-                          ).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })
-                        : "N/A"}
-                    </p>
-                    <p className="text-sm">
-                      <strong>Current Address:</strong>{" "}
+
+            <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 sm:p-6">
+              <h3 className="text-base font-semibold text-blue-800 mb-4 border-b border-blue-200 pb-2">
+                Personal Information
+              </h3>
+              <div className="flex flex-col lg:flex-row gap-6">
+                <div className="flex-1 space-y-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Title
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser?.personalInformation?.title || "N/A"}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Full Name
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {`${
+                          currentUser?.personalInformation?.fullName
+                            ?.firstName || "N/A"
+                        } ${
+                          currentUser?.personalInformation?.fullName
+                            ?.middleName || ""
+                        } ${
+                          currentUser?.personalInformation?.fullName
+                            ?.lastName || "N/A"
+                        }`}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Nationality
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser?.personalInformation?.nationality || "N/A"}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Date of Birth
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser?.personalInformation?.dateOfBirth
+                          ? new Date(
+                              currentUser.personalInformation.dateOfBirth
+                            ).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                      Current Address
+                    </span>
+                    <p className="text-sm text-gray-800 mt-1">
                       {currentUser?.personalInformation?.currentAddress ||
                         "N/A"}
                     </p>
-                    <p className="text-sm">
-                      <strong>Highest Education Level:</strong>{" "}
+                  </div>
+
+                  <div>
+                    <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                      Highest Education Level
+                    </span>
+                    <p className="text-sm text-gray-800 mt-1">
                       {currentUser?.personalInformation
                         ?.highestEducationLevel || "N/A"}
                     </p>
-                    <p className="text-sm">
-                      <strong>Email Address:</strong>{" "}
-                      {currentUser?.personalInformation?.emailAddress || "N/A"}
-                    </p>
-                    <p className="text-sm">
-                      <strong>Phone Number:</strong>{" "}
-                      {currentUser?.personalInformation?.mobileNumber || "N/A"}
-                    </p>
-                    <p className="text-sm">
-                      <strong>Emergency Contact Number:</strong>{" "}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Email Address
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1 break-all">
+                        {currentUser?.personalInformation?.emailAddress ||
+                          "N/A"}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Phone Number
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser?.personalInformation?.mobileNumber ||
+                          "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                      Emergency Contact Number
+                    </span>
+                    <p className="text-sm text-gray-800 mt-1">
                       {currentUser?.personalInformation?.emergencyContactNum ||
                         "N/A"}
                     </p>
-                    {(dietaryRequirements?.vegetarian ||
-                      dietaryRequirements?.halal ||
-                      dietaryRequirements?.nonveg ||
-                      showOther) && (
-                      <p className="text-sm">
-                        <strong>Dietary Preferences:</strong>{" "}
+                  </div>
+
+                  {(dietaryRequirements?.vegetarian ||
+                    dietaryRequirements?.halal ||
+                    dietaryRequirements?.nonveg ||
+                    showOther) && (
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Dietary Preferences
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
                         {[
                           dietaryRequirements?.vegetarian && "Vegetarian",
                           dietaryRequirements?.halal && "Halal",
@@ -861,49 +919,57 @@ const AllParticipants = () => {
                           .filter(Boolean)
                           .join(", ")}
                       </p>
-                    )}
-                  </div>
-                  <div className="flex flex-col items-center ml-4">
-                    {currentUser?.personalInformation?.profilePicture
-                      ?.fileName && (
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-col items-center lg:items-start space-y-4 lg:ml-6">
+                  {currentUser?.personalInformation?.profilePicture
+                    ?.fileName && (
+                    <div className="text-center">
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">
+                        Profile Picture
+                      </span>
                       <img
-                        src={`https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
-                        // src={`http://localhost:5000/${currentUser.personalInformation?.profilePicture.fileName}`}
+                        src={`http://localhost:5000/${currentUser.personalInformation?.profilePicture.fileName}`}
                         alt="Profile"
-                        className="w-20 h-20 rounded-full cursor-pointer"
+                        className="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-gray-400 transition-colors"
                         onClick={() =>
                           handleImageClick(
-                            `https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
-                            // `https://api.acsicnepal.com/${currentUser.personalInformation.profilePicture.fileName}`
+                            `https://api.acsicnepal.com/${currentUser.personalInformation.profilePicture.fileName}`
                           )
                         }
                       />
-                    )}
-                    {currentUser && currentUser.personalInformation && (
-                      <div className="mt-4">
+                    </div>
+                  )}
+                  {currentUser && currentUser.personalInformation && (
+                    <div className="text-center">
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">
+                        QR Code
+                      </span>
+                      <div className="p-2 bg-white rounded border">
                         <QRCodeSVG
                           fgColor="green"
                           value={getUserDetailsForQR(currentUser)}
+                          size={80}
                         />
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <button
-            onClick={() => participantExportToPdf(currentUser)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center"
-            aria-label="Print details"
-          >
-            <img
-              src={pdfIcon}
-              alt="Export to PDF"
-              className="w-5 h-5 sm:w-6 sm:h-6 lg:w-5 lg:h-5 mr-3"
-            />
-            Download PDF
-          </button>
+          <div className="mt-6 pt-4 border-t border-gray-200">
+            <button
+              onClick={() => participantExportToPdf(currentUser)}
+              className="w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white font-medium py-2.5 px-4 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 flex items-center justify-center"
+              aria-label="Download PDF"
+            >
+              <img src={pdfIcon} alt="Export to PDF" className="w-4 h-4 mr-2" />
+              Download PDF
+            </button>
+          </div>
         </Modal>
 
         <DeleteConfirmationModal

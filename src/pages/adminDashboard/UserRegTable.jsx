@@ -18,6 +18,7 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { useNavigate } from "react-router-dom";
 import DeleteConfirmationModal from "../../components/DeleteConfirmationModal";
+import EditUserModal from "../../components/EditUserModal";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../assets/animations/loading.json";
 import jsPDF from "jspdf";
@@ -69,7 +70,7 @@ const Modal = ({
           style={{ maxHeight: "80vh" }}
         >
           <div className="flex justify-between items-center border-b pb-3 mb-4">
-            <h2 className="text-sm font-semibold text-gray-900">
+            <h2 className="text-md font-semibold text-gray-900">
               Participant Details
             </h2>
             <button
@@ -164,6 +165,8 @@ const UserTable = () => {
   const [imageToPreview, setImageToPreview] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [editUserId, setEditUserId] = useState(null);
   //Role
   const [genderFilter, setGenderFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
@@ -205,7 +208,15 @@ const UserTable = () => {
 
   // Edit User
   const handleEditUser = (userId) => {
-    navigate(`/edituser/${userId}`);
+    setEditUserId(userId);
+    setIsEditModalOpen(true);
+  };
+
+  // Handle user updated from modal
+  const handleUserUpdated = (updatedUser) => {
+    setUsers(
+      users.map((user) => (user._id === updatedUser._id ? updatedUser : user))
+    );
   };
 
   // Fetch users and extract institutions
@@ -726,146 +737,169 @@ const UserTable = () => {
           handleAdminResetPassword={handleAdminResetPassword}
           currentUser={currentUser}
         >
-          {/* Main Container */}
-          <div className="p-6 bg-white rounded-md shadow-lg relative text-gray-900">
-            {/* Header Row: Title & Logo */}
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-green-700">
+          <div className="text-gray-800">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
+              <h2 className="text-lg font-semibold text-green-800 leading-tight">
                 Energy Transition for Resilient and Low Carbon Economy Summit
               </h2>
               <img
                 src={logo}
                 alt="Logo"
-                className="w-12 h-12 object-cover rounded-full shadow-sm"
+                className="w-10 h-12 object-cover rounded-lg flex-shrink-0"
               />
             </div>
 
-            {/* Grid Container */}
-            <div className="space-y-6">
-              {/* Personal Info Section */}
-              <div className="border border-gray-200 rounded-md p-4 bg-gray-50">
-                <h3 className="text-lg font-semibold text-blue-700 mb-3 tracking-wide">
+            <div className="space-y-4">
+              {/* Personal Information Section */}
+              <div className="bg-gray-50 border border-gray-300 rounded-lg p-4 sm:p-6">
+                <h3 className="text-sm font-semibold text-blue-800 mb-4 border-b border-blue-200 pb-2">
                   Personal Information
                 </h3>
+                <div className="flex flex-col lg:flex-row gap-6">
+                  <div className="flex-1 space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Title
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {currentUser?.personalInformation?.title || "N/A"}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Full Name
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {`${
+                            currentUser?.personalInformation?.fullName
+                              ?.firstName || "N/A"
+                          } ${
+                            currentUser?.personalInformation?.fullName
+                              ?.middleName || ""
+                          } ${
+                            currentUser?.personalInformation?.fullName
+                              ?.lastName || "N/A"
+                          }`}
+                        </p>
+                      </div>
+                    </div>
 
-                <div className="flex items-start justify-between">
-                  {/* Textual Details */}
-                  <div className="flex-1 text-sm space-y-1 leading-relaxed">
-                    <p>
-                      <strong className="font-medium">Title:</strong>{" "}
-                      {currentUser?.personalInformation?.title || "N/A"}
-                    </p>
-                    <p>
-                      <strong className="font-medium">Full Name:</strong>{" "}
-                      {`${
-                        currentUser?.personalInformation?.fullName?.firstName ||
-                        "N/A"
-                      } ${
-                        currentUser?.personalInformation?.fullName
-                          ?.middleName || ""
-                      } ${
-                        currentUser?.personalInformation?.fullName?.lastName ||
-                        "N/A"
-                      }`}
-                    </p>
-                    {/* <p>
-                      <strong className="font-medium">Nationality:</strong>{" "}
-                      {currentUser?.personalInformation?.nationality || "N/A"}
-                    </p> */}
-                    <p>
-                      <strong className="font-medium">Gender:</strong>{" "}
-                      {currentUser?.personalInformation?.gender || "N/A"}
-                    </p>
-                    {/* <p>
-                      <strong className="font-medium">Date of Birth:</strong>{" "}
-                      {currentUser?.personalInformation?.dateOfBirth
-                        ? new Date(
-                            currentUser.personalInformation.dateOfBirth
-                          ).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })
-                        : "N/A"}
-                    </p> */}
-                    {/* <p>
-                      <strong className="font-medium">Current Address:</strong>{" "}
-                      {currentUser?.personalInformation?.currentAddress ||
-                        "N/A"}
-                    </p> */}
-                    {/* <p>
-                      <strong className="font-medium">
-                        Highest Education Level:
-                      </strong>{" "}
-                      {currentUser?.personalInformation
-                        ?.highestEducationLevel || "N/A"}
-                    </p> */}
-                    <p>
-                      <strong className="font-medium">Email Address:</strong>{" "}
-                      {currentUser?.personalInformation?.emailAddress || "N/A"}
-                    </p>
-                    <p>
-                      <strong className="font-medium">Mobile Number:</strong>{" "}
-                      {currentUser?.personalInformation?.mobileNumber || "N/A"}
-                    </p>
-                    <p>
-                      <strong className="font-medium">Designation:</strong>{" "}
-                      {currentUser?.personalInformation?.jobPosition || "N/A"}
-                    </p>
-                    <p>
-                      <strong className="font-medium">Organization:</strong>{" "}
-                      {currentUser?.personalInformation?.nameOfInstitution ||
-                        "N/A"}
-                    </p>
-                    <p>
-                      <strong className="font-medium">Participant Type:</strong>{" "}
-                      {currentUser?.personalInformation?.participantType ||
-                        "N/A"}
-                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Gender
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {currentUser?.personalInformation?.gender || "N/A"}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Email Address
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1 break-all">
+                          {currentUser?.personalInformation?.emailAddress ||
+                            "N/A"}
+                        </p>
+                      </div>
+                    </div>
 
-                    {/* Dietary Preferences */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Mobile Number
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {currentUser?.personalInformation?.mobileNumber ||
+                            "N/A"}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Designation
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {currentUser?.personalInformation?.jobPosition ||
+                            "N/A"}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Organization
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {currentUser?.personalInformation
+                            ?.nameOfInstitution || "N/A"}
+                        </p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Participant Type
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {currentUser?.personalInformation?.participantType ||
+                            "N/A"}
+                        </p>
+                      </div>
+                    </div>
+
                     {(dietaryRequirements?.vegetarian ||
                       dietaryRequirements?.halal ||
                       dietaryRequirements?.nonveg ||
                       showOther) && (
-                      <p>
-                        <strong className="font-medium">
-                          Dietary Preferences:
-                        </strong>{" "}
-                        {[
-                          dietaryRequirements?.vegetarian && "Vegetarian",
-                          dietaryRequirements?.halal && "Halal",
-                          dietaryRequirements?.nonveg && "Non-Veg",
-                          showOther && dietaryRequirements?.other,
-                        ]
-                          .filter(Boolean)
-                          .join(", ")}
-                      </p>
+                      <div>
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                          Dietary Preferences
+                        </span>
+                        <p className="text-sm text-gray-800 mt-1">
+                          {[
+                            dietaryRequirements?.vegetarian && "Vegetarian",
+                            dietaryRequirements?.halal && "Halal",
+                            dietaryRequirements?.nonveg && "Non-Veg",
+                            showOther && dietaryRequirements?.other,
+                          ]
+                            .filter(Boolean)
+                            .join(", ")}
+                        </p>
+                      </div>
                     )}
                   </div>
 
-                  {/* Profile Picture + QR */}
-                  <div className="flex flex-col items-center ml-6">
+                  <div className="flex flex-col items-center lg:items-start space-y-4 lg:ml-6">
                     {currentUser?.personalInformation?.profilePicture
                       ?.fileName && (
-                      <img
-                        src={`https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
-                        alt="Profile"
-                        className="w-24 h-24 rounded-full object-cover border border-gray-300 shadow-sm cursor-pointer
-                           hover:shadow-md transition-shadow"
-                        onClick={() =>
-                          handleImageClick(
-                            `https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
-                          )
-                        }
-                      />
+                      <div className="text-center">
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">
+                          Profile Picture
+                        </span>
+                        <img
+                          src={`https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
+                          alt="Profile"
+                          className="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                          onClick={() =>
+                            handleImageClick(
+                              `https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
+                            )
+                          }
+                        />
+                      </div>
                     )}
                     {currentUser?.personalInformation && (
-                      <div className="mt-4 bg-white p-1 shadow-sm hover:shadow-md rounded transition-shadow">
-                        <QRCodeSVG
-                          fgColor="green"
-                          value={getUserDetailsForQR(currentUser)}
-                        />
+                      <div className="text-center">
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">
+                          QR Code
+                        </span>
+                        <div className="p-2 bg-white rounded border">
+                          <QRCodeSVG
+                            fgColor="green"
+                            value={getUserDetailsForQR(currentUser)}
+                            size={80}
+                          />
+                        </div>
                       </div>
                     )}
                   </div>
@@ -873,48 +907,59 @@ const UserTable = () => {
               </div>
 
               {/* Admin Verification Section */}
-              <div className="border border-gray-200 rounded-md p-4 bg-gray-50 no-print">
-                <h3 className="text-lg font-semibold text-blue-700 mb-3 tracking-wide">
+              <div className="bg-blue-50 border border-blue-300 rounded-lg p-4 sm:p-6 no-print">
+                <h3 className="text-sm font-semibold text-blue-800 mb-4 border-b border-blue-200 pb-2">
                   Admin Verification
                 </h3>
-                <div className="text-sm space-y-1 leading-relaxed">
-                  <div className="flex">
-                    <span className="font-medium w-32">Status:</span>
-                    <span className="ml-2 font-semibold">
-                      {currentUser?.adminVerification?.status || "N/A"}
-                    </span>
+                <div className="space-y-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Status
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1 font-semibold">
+                        {currentUser?.adminVerification?.status || "N/A"}
+                      </p>
+                    </div>
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Verified Date
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser?.adminVerification?.verifiedDate
+                          ? new Date(
+                              currentUser.adminVerification.verifiedDate
+                            ).toLocaleDateString()
+                          : "N/A"}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Request Date
+                      </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser?.adminVerification?.verificationRequestDate
+                          ? new Date(
+                              currentUser.adminVerification.verificationRequestDate
+                            ).toLocaleDateString()
+                          : "N/A"}
+                      </p>
+                    </div>
                   </div>
 
                   {currentUser?.adminVerification?.adminRemarks && (
-                    <div className="flex">
-                      <span className="font-medium w-32">Admin Remarks:</span>
-                      <span className="ml-2">
-                        {currentUser.adminVerification.adminRemarks}
+                    <div>
+                      <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+                        Admin Remarks
                       </span>
+                      <p className="text-sm text-gray-800 mt-1">
+                        {currentUser.adminVerification.adminRemarks}
+                      </p>
                     </div>
                   )}
-
-                  <div className="flex">
-                    <span className="font-medium w-32">Verified Date:</span>
-                    <span className="ml-2">
-                      {currentUser?.adminVerification?.verifiedDate
-                        ? new Date(
-                            currentUser.adminVerification.verifiedDate
-                          ).toLocaleDateString()
-                        : "N/A"}
-                    </span>
-                  </div>
-
-                  <div className="flex">
-                    <span className="font-medium w-32">Request Date:</span>
-                    <span className="ml-2">
-                      {currentUser?.adminVerification?.verificationRequestDate
-                        ? new Date(
-                            currentUser.adminVerification.verificationRequestDate
-                          ).toLocaleDateString()
-                        : "N/A"}
-                    </span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -926,6 +971,13 @@ const UserTable = () => {
           setOpen={setIsDeleteModalOpen}
           user={currentUser}
           onConfirm={() => handleDeleteUser(currentUser._id)}
+        />
+
+        <EditUserModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          userId={editUserId}
+          onUserUpdated={handleUserUpdated}
         />
 
         <ImagePreviewModal

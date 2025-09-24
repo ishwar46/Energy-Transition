@@ -81,6 +81,14 @@ const EditUser = () => {
           setFormData((prevData) => ({
             ...prevData,
             ...response.data,
+            personalInformation: {
+              ...prevData.personalInformation,
+              ...response.data.personalInformation,
+              dietaryRequirements: {
+                ...prevData.personalInformation.dietaryRequirements,
+                ...response.data.personalInformation?.dietaryRequirements,
+              },
+            },
             accompanyingPerson: {
               ...prevData.accompanyingPerson,
               ...response.data.accompanyingPerson,
