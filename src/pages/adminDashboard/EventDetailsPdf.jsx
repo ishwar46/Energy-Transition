@@ -126,36 +126,57 @@ const PdfManagement = () => {
         </form>
       </div>
 
-      <div className="mt-10 bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">List of PDFs</h2>
-        <div className="space-y-6">
-          {pdfs.map((pdf) => (
-            <div
-              key={pdf}
-              className="bg-gray-50 border border-gray-100 p-6 rounded-lg shadow-lg flex justify-between items-center"
-            >
-              <span className="text-gray-700 text-sm">{pdf}</span>
-              <div className="flex space-x-4">
-                <a
-                  href={`https://energy-transition-api-eg0r.onrender.com/public/uploads/${
-                    isExcursion ? "excursionPdfs" : "eventPdfs"
-                  }/${pdf}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 bg-blue-500 text-white text-sm font-semibold rounded-lg hover:bg-blue-600"
-                >
-                  View PDF
-                </a>
-                <button
-                  onClick={() => handleDelete(pdf)}
-                  className="px-3 py-1 bg-red-500 text-white text-sm font-semibold rounded-lg hover:bg-red-600"
-                >
-                  Delete
-                </button>
+      <div className="mt-6 bg-white p-4 rounded-lg border">
+        <h2 className="text-base font-medium text-gray-900 mb-3">
+          List of PDFs
+        </h2>
+        {pdfs.length > 0 ? (
+          <div className="space-y-2">
+            {pdfs.map((pdf, index) => (
+              <div
+                key={pdf}
+                className="bg-gray-50 border border-gray-200 p-3 rounded flex justify-between items-center hover:bg-gray-100 transition-colors"
+              >
+                <div className="flex items-center space-x-3">
+                  <div className="flex-shrink-0">
+                    <i className="fas fa-file-pdf text-red-500 text-lg"></i>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-gray-800 font-medium truncate">
+                      {pdf}
+                    </p>
+                    <p className="text-xs text-gray-500">
+                      PDF Document #{index + 1}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex space-x-2">
+                  <a
+                    href={`https://api-energy.onrender.com/public/uploads/${
+                      isExcursion ? "excursionPdfs" : "eventPdfs"
+                    }/${pdf}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 transition-colors"
+                  >
+                    View
+                  </a>
+                  <button
+                    onClick={() => handleDelete(pdf)}
+                    className="px-2 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600 transition-colors"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-6">
+            <i className="fas fa-file-pdf text-gray-400 text-4xl mb-3"></i>
+            <p className="text-gray-500 text-sm">No PDFs uploaded yet</p>
+          </div>
+        )}
       </div>
 
       <div className="mt-4 flex justify-end">

@@ -82,7 +82,7 @@
 //                   onClick={
 //                     () =>
 //                       openPdf(
-//                         `https://energy-transition-api-eg0r.onrender.com/${pdf.pdf}`
+//                         `https://api-energy.onrender.com/${pdf.pdf}`
 //                       )
 //                     // openPdf(`http://localhost:5000/${pdf.pdf}`)
 //                   }

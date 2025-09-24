@@ -61,17 +61,17 @@ const SessionCard = ({
   const cardColor = (status) => {
     switch (status) {
       case "in_progress":
-        return "bg-green-50 border-green-500";
+        return "bg-white border-l-green-400 shadow-sm";
       case "scheduled":
-        return "bg-blue-50 border-blue-500";
+        return "bg-white border-l-blue-400 shadow-sm";
       case "completed":
-        return "bg-gray-50 border-gray-500";
+        return "bg-gray-50 border-l-gray-400 shadow-sm";
       case "cancelled":
-        return "bg-red-50 border-red-500";
+        return "bg-white border-l-red-400 shadow-sm";
       case "expired":
-        return "bg-yellow-50 border-yellow-500";
+        return "bg-white border-l-orange-400 shadow-sm";
       default:
-        return "bg-gray-50 border-gray-500";
+        return "bg-white border-l-gray-400 shadow-sm";
     }
   };
 
@@ -81,37 +81,37 @@ const SessionCard = ({
     switch (status) {
       case "in_progress":
         return (
-          <span className="inline-block px-2 py-1 text-xs font-semibold text-green-800 bg-green-200 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded">
             {text}
           </span>
         );
       case "scheduled":
         return (
-          <span className="inline-block px-2 py-1 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs font-medium text-blue-700 bg-blue-100 rounded">
             {text}
           </span>
         );
       case "completed":
         return (
-          <span className="inline-block px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-200 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded">
             {text}
           </span>
         );
       case "cancelled":
         return (
-          <span className="inline-block px-2 py-1 text-xs font-semibold text-red-800 bg-red-200 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs font-medium text-red-700 bg-red-100 rounded">
             {text}
           </span>
         );
       case "expired":
         return (
-          <span className="inline-block px-2 py-1 text-xs font-semibold text-yellow-800 bg-yellow-200 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs font-medium text-orange-700 bg-orange-100 rounded">
             {text}
           </span>
         );
       default:
         return (
-          <span className="inline-block px-2 py-1 text-xs font-semibold text-gray-800 bg-gray-200 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded">
             {text}
           </span>
         );
@@ -332,156 +332,138 @@ const SessionCard = ({
   return (
     <>
       {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
         {updatedSessions.map((session, index) => (
           <div
             key={index}
             className={`
-              rounded-lg shadow-lg p-4 border-l-4
+              rounded-lg p-3 border
               ${cardColor(session.status)}
-              transition transform hover:-translate-y-1 hover:shadow-xl
+              transition-shadow hover:shadow-md
             `}
           >
-            {/* Session Title */}
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-bold text-blue-800">
+            {/* Session Title and Status */}
+            <div className="flex items-start justify-between mb-2">
+              <h3 className="text-sm font-medium text-gray-800 leading-tight">
                 {session.title}
               </h3>
-              {/* Status Badge */}
               {statusBadge(session.status)}
             </div>
 
-            <p className="text-gray-700 text-sm">
-              <strong>Speaker:</strong>{" "}
-              {session.speakers && session.speakers.length > 0 ? (
-                session.speakers.map((speaker, i) => (
-                  <span key={i}>
-                    {speaker.fullName}
-                    {i < session.speakers.length - 1 ? ", " : ""}
-                  </span>
-                ))
-              ) : (
-                <span>N/A</span>
-              )}
-            </p>
-
-            <p className="text-gray-700 text-sm">
-              <strong>Start Time:</strong>{" "}
-              {moment(session.startTime)
-                .tz("Asia/Kathmandu")
-                .format("MMMM Do YYYY, h:mm a")}{" "}
-              {isDelayed(session) && (
-                <span className="ml-1 text-red-500 text-xs">(Delayed)</span>
-              )}
-            </p>
-
-            <p className="text-gray-700 text-sm">
-              <strong>End Time:</strong>{" "}
-              {moment(session.endTime)
-                .tz("Asia/Kathmandu")
-                .format("MMMM Do YYYY, h:mm a")}{" "}
-              {hasExceeded(session) && (
-                <span className="ml-1 text-red-500 text-xs">(Exceeded)</span>
-              )}
-            </p>
-
-            {/* If session is scheduled and not expired, show time until start */}
-            {session.status === "scheduled" && !isExpired(session) && (
-              <p className="text-gray-700 text-sm">
-                <strong>Time Until Start:</strong>{" "}
-                <span className="text-blue-500">
-                  {getTimeUntilStart(session.startTime)}
-                </span>
-              </p>
-            )}
-
-            {/* If session is in_progress, show elapsed time */}
-            {session.status === "in_progress" && (
-              <div className="text-sm mt-2 text-green-700">
-                <strong>Elapsed Time: </strong>
-                {getElapsedTime(session.startTime, session.actualStartTime)}
-              </div>
-            )}
-
-            {/* Actual Start/End Times */}
-            {session.actualStartTime && (
-              <p className="text-gray-700 text-sm mt-2">
-                <strong>Actual Start Time:</strong>{" "}
-                {moment(session.actualStartTime)
-                  .tz("Asia/Kathmandu")
-                  .format("MMMM Do YYYY, h:mm a")}
-              </p>
-            )}
-            {session.actualEndTime && (
-              <p className="text-gray-700 text-sm mt-2">
-                <strong>Actual End Time:</strong>{" "}
-                {moment(session.actualEndTime)
-                  .tz("Asia/Kathmandu")
-                  .format("MMMM Do YYYY, h:mm a")}
-              </p>
-            )}
-
-            {/* Buttons: Details & Attendees */}
-            <div className="mt-3 flex items-center space-x-4">
-              <button
-                className="text-blue-500 hover:text-blue-700 text-sm font-medium underline"
-                onClick={() => openModal(session)}
-              >
-                View Details
-              </button>
-              <button
-                className="text-blue-500 hover:text-blue-700 text-sm font-medium underline"
-                onClick={() => openAttendanceModal(session)}
-              >
-                View Attendees
-              </button>
+            {/* Speaker Info */}
+            <div className="text-xs text-gray-600 mb-2">
+              <span className="font-medium">Speaker:</span>{" "}
+              {session.speakers && session.speakers.length > 0
+                ? session.speakers.map((s) => s.fullName).join(", ")
+                : "N/A"}
             </div>
 
-            {/* Action Buttons (Start/Cancel/End) */}
+            {/* Time Info */}
+            <div className="text-xs text-gray-600 space-y-0.5 mb-2">
+              <div>
+                <span className="font-medium">Start:</span>{" "}
+                {moment(session.startTime).tz("Asia/Kathmandu").format("MMM Do, h:mm a")}
+                {isDelayed(session) && (
+                  <span className="ml-1 text-red-500 text-xs">(Delayed)</span>
+                )}
+              </div>
+              <div>
+                <span className="font-medium">End:</span>{" "}
+                {moment(session.endTime).tz("Asia/Kathmandu").format("MMM Do, h:mm a")}
+                {hasExceeded(session) && (
+                  <span className="ml-1 text-red-500 text-xs">(Exceeded)</span>
+                )}
+              </div>
+            </div>
+
+            {/* Dynamic Status Info */}
             {session.status === "scheduled" && !isExpired(session) && (
-              <div className="flex flex-col sm:flex-row justify-between mt-4 gap-4">
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-xs"
-                  onClick={() => onStartSession(session)}
-                >
-                  Start Session
-                </button>
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded text-xs"
-                  onClick={() => onCancelSession(session)}
-                >
-                  Cancel Session
-                </button>
+              <div className="text-xs text-blue-600 mb-2">
+                <span className="font-medium">Starts in:</span> {getTimeUntilStart(session.startTime)}
               </div>
             )}
+
             {session.status === "in_progress" && (
-              <div className="flex justify-between mt-4">
+              <div className="text-xs text-green-600 mb-2">
+                <span className="font-medium">Running:</span> {getElapsedTime(session.startTime, session.actualStartTime)}
+              </div>
+            )}
+
+            {/* Actual Times */}
+            {session.actualStartTime && (
+              <div className="text-xs text-gray-500 mb-1">
+                <span className="font-medium">Started:</span> {moment(session.actualStartTime).tz("Asia/Kathmandu").format("h:mm a")}
+              </div>
+            )}
+            {session.actualEndTime && (
+              <div className="text-xs text-gray-500 mb-1">
+                <span className="font-medium">Ended:</span> {moment(session.actualEndTime).tz("Asia/Kathmandu").format("h:mm a")}
+              </div>
+            )}
+
+            {/* Status Messages */}
+            {session.status === "expired" && (
+              <div className="text-xs text-yellow-700 font-medium mb-2 bg-yellow-50 px-2 py-1 rounded">
+                Expired
+              </div>
+            )}
+            {session.status === "completed" && (
+              <div className="text-xs text-gray-600 font-medium mb-2">
+                Completed
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="space-y-1.5 mt-3">
+              {/* View Buttons */}
+              <div className="flex gap-1">
                 <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded text-xs"
+                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs py-1.5 px-2 rounded transition-colors"
+                  onClick={() => openModal(session)}
+                >
+                  Details
+                </button>
+                <button
+                  className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs py-1.5 px-2 rounded transition-colors"
+                  onClick={() => openAttendanceModal(session)}
+                >
+                  Attendees
+                </button>
+              </div>
+
+              {/* Primary Actions */}
+              {session.status === "scheduled" && !isExpired(session) && (
+                <div className="flex gap-1">
+                  <button
+                    className="flex-1 bg-blue-500 hover:bg-blue-600 text-white text-xs py-1.5 px-2 rounded transition-colors"
+                    onClick={() => onStartSession(session)}
+                  >
+                    Start
+                  </button>
+                  <button
+                    className="flex-1 bg-red-500 hover:bg-red-600 text-white text-xs py-1.5 px-2 rounded transition-colors"
+                    onClick={() => onCancelSession(session)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              )}
+
+              {session.status === "in_progress" && (
+                <button
+                  className="w-full bg-red-500 hover:bg-red-600 text-white text-xs py-1.5 px-2 rounded transition-colors"
                   onClick={() => onEndSession(session)}
                 >
                   End Session
                 </button>
-              </div>
-            )}
-            {session.status === "expired" && (
-              <div className="text-sm mt-2 text-yellow-700 font-semibold">
-                Session Expired
-              </div>
-            )}
-            {session.status === "completed" && (
-              <div className="text-sm mt-2 text-gray-600 font-semibold">
-                Session Completed
-              </div>
-            )}
+              )}
 
-            {/* Edit Session Button */}
-            <div className="mt-4">
+              {/* Edit Button */}
               <button
-                className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded text-xs"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white text-xs py-1.5 px-2 rounded transition-colors"
                 onClick={() => openEditModal(session)}
               >
-                Edit Session
+                Edit
               </button>
             </div>
           </div>

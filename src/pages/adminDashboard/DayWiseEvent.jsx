@@ -93,12 +93,12 @@ const DayWiseEvent = () => {
   // const getSelectedPDF = (pdfUrl) => {
   //   // if (pdfUrl) {
   //   //     window.open(
-  //   //         `https://energy-transition-api-eg0r.onrender.com/${pdfUrl}`,
+  //   //         `https://api-energy.onrender.com/${pdfUrl}`,
   //   //         "_blank"
   //   //     );
   //   // }
   //   if (pdfUrl) {
-  //     window.open(`https://energy-transition-api-eg0r.onrender.com/${pdfUrl}`, "_blank");
+  //     window.open(`https://api-energy.onrender.com/${pdfUrl}`, "_blank");
   //   }
   // };
 

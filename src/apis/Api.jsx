@@ -2,8 +2,8 @@ import axios from "axios";
 
 // Axios instance configuration
 const Api = axios.create({
-  baseURL: "http://localhost:5500",
-  // baseURL: "https://energy-transition-api-eg0r.onrender.com",
+  baseURL: "https://api-energy.onrender.com",
+  // baseURL: "https://api-energy.onrender.com",
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
@@ -141,6 +141,12 @@ export const updateUserApi = (userId, data) => {
       authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   };
+
+  // If data is FormData, don't set Content-Type (let browser set it with boundary)
+  if (!(data instanceof FormData)) {
+    config.headers["Content-Type"] = "application/json";
+  }
+
   return Api.put(`/api/users/${userId}`, data, config);
 };
 

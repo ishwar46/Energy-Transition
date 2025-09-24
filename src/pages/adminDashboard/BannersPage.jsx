@@ -201,7 +201,7 @@ const BannerManager = () => {
                 <img
                   src={
                     banner.url
-                      ? `https://energy-transition-api-eg0r.onrender.com/${banner.url.replace(
+                      ? `https://api-energy.onrender.com/${banner.url.replace(
                           /\\/g,
                           "/"
                         )}`

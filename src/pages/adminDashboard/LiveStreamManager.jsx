@@ -15,7 +15,11 @@ const LiveStreamManager = () => {
       const response = await getLiveStreamUrlApi();
       setSavedUrls([response.data.liveStream]);
     } catch (error) {
-      toast.error("Error fetching live stream URLs.");
+      if (error.response?.status === 404 && error.response?.data?.error === "No live stream URL found.") {
+        setSavedUrls([]);
+      } else {
+        toast.error("Error fetching live stream URLs.");
+      }
     }
   };
 

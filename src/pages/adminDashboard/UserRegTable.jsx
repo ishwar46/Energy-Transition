@@ -870,24 +870,24 @@ const UserTable = () => {
                   </div>
 
                   <div className="flex flex-col items-center lg:items-start space-y-4 lg:ml-6">
-                    {currentUser?.personalInformation?.profilePicture
-                      ?.fileName && (
-                      <div className="text-center">
-                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">
-                          Profile Picture
-                        </span>
-                        <img
-                          src={`https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`}
-                          alt="Profile"
-                          className="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-gray-400 transition-colors"
-                          onClick={() =>
-                            handleImageClick(
-                              `https://energy-transition-api-eg0r.onrender.com/${currentUser.personalInformation?.profilePicture.fileName}`
-                            )
-                          }
-                        />
-                      </div>
-                    )}
+                    {currentUser?.profilePicture?.fileName &&
+                      currentUser.profilePicture.fileName !== "false" && (
+                        <div className="text-center">
+                          <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">
+                            Profile Picture
+                          </span>
+                          <img
+                            src={`https://api-energy.onrender.com/public/uploads/userimage/${currentUser.profilePicture.fileName}`}
+                            alt="Profile"
+                            className="w-24 h-24 rounded-lg object-cover cursor-pointer border-2 border-gray-300 hover:border-gray-400 transition-colors"
+                            onClick={() =>
+                              handleImageClick(
+                                `https://api-energy.onrender.com/public/uploads/userimage/${currentUser.profilePicture.fileName}`
+                              )
+                            }
+                          />
+                        </div>
+                      )}
                     {currentUser?.personalInformation && (
                       <div className="text-center">
                         <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-2">

@@ -68,6 +68,85 @@ const EditUserModal = ({ isOpen, onClose, userId, onUserUpdated }) => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+
+  // Image resize function
+  const resizeImage = (file, maxWidth = 600, maxHeight = 600) => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      const img = new Image();
+
+      img.onload = () => {
+        // Calculate new dimensions
+        let { width, height } = img;
+
+        if (width > height) {
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxHeight) {
+            width = (width * maxHeight) / height;
+            height = maxHeight;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw and resize image
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Use quality 1.0 (no compression) - just resize
+        canvas.toBlob(resolve, "image/jpeg", 1.0);
+      };
+
+      img.src = URL.createObjectURL(file);
+    });
+  };
+
+  // Handle image upload
+  const handleImageChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please select an image file.");
+      return;
+    }
+
+    // Check initial file size - reject immediately if over 500KB
+    if (file.size > 500 * 1024) {
+      toast.error("Image is too large. Please select an image under 500KB.");
+      // Clear the input
+      e.target.value = "";
+      return;
+    }
+
+    try {
+      // Resize image to 600x600 (no compression)
+      const resizedImage = await resizeImage(file);
+
+      // Check if resized image is over 500KB
+      if (resizedImage.size > 500 * 1024) {
+        toast.error(
+          "Image is too large even after resizing. Please choose a smaller image or different format."
+        );
+        return;
+      }
+
+      setProfileImage(resizedImage);
+      // Create preview URL for resized image
+      const previewUrl = URL.createObjectURL(resizedImage);
+      setImagePreview(previewUrl);
+    } catch (error) {
+      toast.error("Error processing image. Please try again.");
+    }
+  };
 
   useEffect(() => {
     if (isOpen && userId) {
@@ -101,6 +180,16 @@ const EditUserModal = ({ isOpen, onClose, userId, onUserUpdated }) => {
             },
           },
         }));
+
+        // Set existing profile image preview if exists
+        if (
+          response.data.profilePicture?.fileName &&
+          response.data.profilePicture.fileName !== "false"
+        ) {
+          setImagePreview(
+            `https://api-energy.onrender.com/public/uploads/userimage/${response.data.profilePicture.fileName}`
+          );
+        }
       } else {
         toast.error("Failed to fetch user data.");
       }
@@ -174,7 +263,89 @@ const EditUserModal = ({ isOpen, onClose, userId, onUserUpdated }) => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await updateUserApi(userId, formData);
+      let dataToSend;
+
+      // If there's a new profile image, use FormData
+      if (profileImage) {
+        dataToSend = new FormData();
+
+        // Add personal information fields directly (not nested)
+        dataToSend.append("title", formData.personalInformation.title || "");
+        dataToSend.append(
+          "firstName",
+          formData.personalInformation.fullName.firstName || ""
+        );
+        dataToSend.append(
+          "middleName",
+          formData.personalInformation.fullName.middleName || ""
+        );
+        dataToSend.append(
+          "lastName",
+          formData.personalInformation.fullName.lastName || ""
+        );
+        dataToSend.append(
+          "emailAddress",
+          formData.personalInformation.emailAddress || ""
+        );
+        dataToSend.append(
+          "mobileNumber",
+          formData.personalInformation.mobileNumber || ""
+        );
+        dataToSend.append(
+          "whatsAppNumber",
+          formData.personalInformation.whatsAppNumber || ""
+        );
+        dataToSend.append(
+          "emergencyContactNum",
+          formData.personalInformation.emergencyContactNum || ""
+        );
+        dataToSend.append(
+          "nationality",
+          formData.personalInformation.nationality || ""
+        );
+        dataToSend.append(
+          "dateOfBirth",
+          formData.personalInformation.dateOfBirth || ""
+        );
+        dataToSend.append(
+          "currentAddress",
+          formData.personalInformation.currentAddress || ""
+        );
+        dataToSend.append(
+          "highestEducationLevel",
+          formData.personalInformation.highestEducationLevel || ""
+        );
+        dataToSend.append(
+          "occupation",
+          formData.personalInformation.occupation || ""
+        );
+        dataToSend.append(
+          "positionInDistrict",
+          formData.personalInformation.positionInDistrict || ""
+        );
+
+        // Add dietary requirements
+        if (formData.personalInformation.dietaryRequirements.vegetarian) {
+          dataToSend.append("vegetarian", "true");
+        }
+        if (formData.personalInformation.dietaryRequirements.nonveg) {
+          dataToSend.append("nonveg", "true");
+        }
+        if (formData.personalInformation.dietaryRequirements.other) {
+          dataToSend.append(
+            "dietaryOther",
+            formData.personalInformation.dietaryRequirements.other
+          );
+        }
+
+        // Add the image file directly (profileImage is already a File/Blob)
+        dataToSend.append("userimage", profileImage, "profile-image.jpg");
+      } else {
+        // No new image, send JSON data
+        dataToSend = formData;
+      }
+
+      const response = await updateUserApi(userId, dataToSend);
       if (response && response.data) {
         toast.success("User updated successfully!");
         onUserUpdated && onUserUpdated(response.data);
@@ -450,6 +621,44 @@ const EditUserModal = ({ isOpen, onClose, userId, onUserUpdated }) => {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Profile Image Upload */}
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-600 mb-2">
+                  Profile Image
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-green-500 text-sm"
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  Max size: 500KB. Image will be automatically resized to
+                  600x600px.
+                </p>
+                {imagePreview && (
+                  <div className="mt-3 flex justify-center">
+                    <div className="relative">
+                      <img
+                        src={imagePreview}
+                        alt="Profile preview"
+                        className="w-24 h-24 object-cover rounded-lg border-2 border-gray-300"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setProfileImage(null);
+                          setImagePreview(null);
+                        }}
+                        className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             </>
           )}

@@ -62,7 +62,18 @@ const VolunteerRegister = () => {
         setAllVolunteer(res.data.allVolunteer);
       }
     } catch (error) {
-      toast.error(`Unable to Fetch All Voluntter ${error}`);
+      if (
+        error.response?.status === 404 &&
+        error.response?.data?.message === "No Volunteer Users Found"
+      ) {
+        setAllVolunteer([]);
+      } else {
+        toast.error(
+          `Unable to Fetch All Volunteer: ${
+            error.response?.data?.message || error.message
+          }`
+        );
+      }
     }
   };
 
@@ -313,8 +324,8 @@ const VolunteerRegister = () => {
                   <td className="px-5 py-5 border-b border-gray-200 bg-transparent text-sm text-gray-700">
                     {volunteer.volunteerimage && (
                       <img
-                        // src={`https://energy-transition-api-eg0r.onrender.com/${volunteer.volunteerimage}`}
-                        src={`https://energy-transition-api-eg0r.onrender.com/${volunteer.volunteerimage}`}
+                        // src={`https://api-energy.onrender.com/${volunteer.volunteerimage}`}
+                        src={`https://api-energy.onrender.com/${volunteer.volunteerimage}`}
                         alt={`Volunteer ${volunteer.fullName}`}
                         className="w-16 h-16 object-cover mr-2 mb-2 rounded-full"
                       />

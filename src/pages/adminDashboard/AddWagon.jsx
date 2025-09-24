@@ -123,11 +123,23 @@ const AddWagon = () => {
         toast.error(res.data?.message || "Failed to fetch volunteers");
       }
     } catch (error) {
-      toast.error(`Error fetching volunteers: ${error.message}`);
+      if (
+        error.response?.status === 404 &&
+        error.response?.data?.message === "No Volunteer Users Found"
+      ) {
+        setAllVolunteers([]);
+      } else {
+        toast.error(
+          `Error fetching volunteers: ${
+            error.response?.data?.message || error.message
+          }`
+        );
+      }
     }
   };
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (e, id) => {
+    e.stopPropagation();
     try {
       const res = await deleteBus(id);
       if (res.status === 200 || res.status === 201) {
@@ -533,8 +545,8 @@ const AddWagon = () => {
               </div>
               <div className="absolute top-0 right-0 mt-2 flex flex-row cursor-pointer">
                 <MdDelete
-                  onClick={() => handleDelete(wagon._id)}
-                  className="text-red-700 h-10 w-8 "
+                  onClick={(e) => handleDelete(e, wagon._id)}
+                  className="text-white h-10 w-8 "
                 />
               </div>
             </div>

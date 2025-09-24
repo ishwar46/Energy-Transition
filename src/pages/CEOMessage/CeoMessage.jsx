@@ -77,7 +77,7 @@
 //                               )}
 //                               {message.author1.author1image && (
 //                                 <img
-//                                   src={`https://energy-transition-api-eg0r.onrender.com/${message.author1.author1image}`}
+//                                   src={`https://api-energy.onrender.com/${message.author1.author1image}`}
 //                                   alt={
 //                                     message.author1.author1fullName || "Author"
 //                                   }
@@ -98,7 +98,7 @@
 //                               )}
 //                               {message.author2.author2image && (
 //                                 <img
-//                                   src={`https://energy-transition-api-eg0r.onrender.com/${message.author2.author2image}`}
+//                                   src={`https://api-energy.onrender.com/${message.author2.author2image}`}
 //                                   alt={
 //                                     message.author2.author2fullName || "Author"
 //                                   }

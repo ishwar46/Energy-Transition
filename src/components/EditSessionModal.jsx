@@ -136,159 +136,191 @@ const EditSessionModal = ({ isOpen, closeModal, session, onUpdate }) => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="inline-block align-middle text-gray-900 bg-white rounded-lg px-4 pt-5 pb-4 text-left shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
-              <Dialog.Title
-                as="h3"
-                className="text-lg font-medium leading-6 text-gray-900 mb-4"
-              >
-                Edit Session
-              </Dialog.Title>
-              <form onSubmit={handleSubmit}>
-                {/* Title */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="title"
-                    className="block text-sm font-medium text-gray-700"
+            <div className="inline-block align-middle bg-white rounded-lg shadow-lg transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full">
+              {/* Header */}
+              <div className="bg-gray-50 px-4 py-3 border-b border-gray-200 rounded-t-lg">
+                <div className="flex items-center justify-between">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-base font-medium text-gray-900"
                   >
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    id="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                {/* Description */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="description"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    id="description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    rows="3"
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                  ></textarea>
-                </div>
-
-                {/* Speakers */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="speakers"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Speakers
-                  </label>
-                  <select
-                    name="speakers"
-                    id="speakers"
-                    multiple
-                    value={formData.speakers}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                  >
-                    {speakersList.length > 0 ? (
-                      speakersList.map((speaker) => (
-                        <option key={speaker._id} value={speaker._id}>
-                          {speaker.fullName}
-                        </option>
-                      ))
-                    ) : (
-                      <option disabled>No speakers available</option>
-                    )}
-                  </select>
-                  <p className="text-xs text-gray-500 mt-1">
-                    Hold down the Ctrl (windows) or Command (Mac) button to
-                    select multiple options.
-                  </p>
-                </div>
-
-                {/* Start Time */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="startTime"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Start Time
-                  </label>
-                  <input
-                    type="datetime-local"
-                    name="startTime"
-                    id="startTime"
-                    value={formData.startTime}
-                    onChange={handleChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                {/* End Time */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="endTime"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    End Time
-                  </label>
-                  <input
-                    type="datetime-local"
-                    name="endTime"
-                    id="endTime"
-                    value={formData.endTime}
-                    onChange={handleChange}
-                    required
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                {/* Remarks */}
-                <div className="mb-4">
-                  <label
-                    htmlFor="remarks"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Remarks
-                  </label>
-                  <input
-                    type="text"
-                    name="remarks"
-                    id="remarks"
-                    value={formData.remarks}
-                    onChange={handleChange}
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-
-                {/* Submit and Cancel Buttons */}
-                <div className="mt-6 flex justify-end space-x-4">
+                    Edit Session
+                  </Dialog.Title>
                   <button
-                    type="button"
                     onClick={closeModal}
-                    className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                    className="text-gray-400 hover:text-gray-600 transition-colors"
                   >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 ${
-                      isSubmitting ? "opacity-50 cursor-not-allowed" : ""
-                    }`}
-                  >
-                    {isSubmitting ? "Saving..." : "Save Changes"}
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
                   </button>
                 </div>
-              </form>
+              </div>
+
+              {/* Body */}
+              <div className="px-4 py-4">
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  {/* Title */}
+                  <div>
+                    <label
+                      htmlFor="title"
+                      className="block text-left text-xs font-medium text-gray-700 mb-1"
+                    >
+                      Title
+                    </label>
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      value={formData.title}
+                      onChange={handleChange}
+                      required
+                      className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+
+                  {/* Description */}
+                  <div>
+                    <label
+                      htmlFor="description"
+                      className="block text-left text-xs font-medium text-gray-700 mb-1"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      name="description"
+                      id="description"
+                      value={formData.description}
+                      onChange={handleChange}
+                      rows="2"
+                      className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500 focus:border-blue-500 resize-none"
+                    ></textarea>
+                  </div>
+
+                  {/* Speakers */}
+                  <div>
+                    <label
+                      htmlFor="speakers"
+                      className="block text-left text-xs font-medium text-gray-700 mb-1"
+                    >
+                      Speakers
+                    </label>
+                    <select
+                      name="speakers"
+                      id="speakers"
+                      multiple
+                      value={formData.speakers}
+                      onChange={handleChange}
+                      size="3"
+                      className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    >
+                      {speakersList.length > 0 ? (
+                        speakersList.map((speaker) => (
+                          <option
+                            key={speaker._id}
+                            value={speaker._id}
+                            className="py-1 text-gray-900"
+                          >
+                            {speaker.fullName}
+                          </option>
+                        ))
+                      ) : (
+                        <option disabled>No speakers available</option>
+                      )}
+                    </select>
+                    <p className="text-xs text-gray-500 mt-1 text-left">
+                      Hold Ctrl/Cmd to select multiple
+                    </p>
+                  </div>
+
+                  {/* Time Fields */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label
+                        htmlFor="startTime"
+                        className="block text-left text-xs font-medium text-gray-700 mb-1"
+                      >
+                        Start Time
+                      </label>
+                      <input
+                        type="datetime-local"
+                        name="startTime"
+                        id="startTime"
+                        value={formData.startTime}
+                        onChange={handleChange}
+                        required
+                        className="w-full text-xs text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="endTime"
+                        className="block text-left text-xs font-medium text-gray-700 mb-1"
+                      >
+                        End Time
+                      </label>
+                      <input
+                        type="datetime-local"
+                        name="endTime"
+                        id="endTime"
+                        value={formData.endTime}
+                        onChange={handleChange}
+                        required
+                        className="w-full text-xs text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Remarks */}
+                  <div>
+                    <label
+                      htmlFor="remarks"
+                      className="block text-left text-xs font-medium text-gray-700 mb-1"
+                    >
+                      Remarks
+                    </label>
+                    <input
+                      type="text"
+                      name="remarks"
+                      id="remarks"
+                      value={formData.remarks}
+                      onChange={handleChange}
+                      className="w-full text-sm text-gray-900 bg-white border border-gray-300 rounded px-2 py-1.5 focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                  </div>
+                </form>
+              </div>
+
+              {/* Footer */}
+              <div className="bg-gray-50 px-4 py-3 border-t border-gray-200 rounded-b-lg flex justify-end space-x-2">
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="px-3 py-1.5 text-sm bg-white border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  onClick={handleSubmit}
+                  disabled={isSubmitting}
+                  className={`px-3 py-1.5 text-sm bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors ${
+                    isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {isSubmitting ? "Saving..." : "Save"}
+                </button>
+              </div>
             </div>
           </Transition.Child>
         </div>

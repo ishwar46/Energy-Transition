@@ -100,7 +100,7 @@ const EditUser = () => {
             },
           }));
           // setPreview(
-          //   `https://energy-transition-api-eg0r.onrender.com/${response.data.profilePicture.fileName}`
+          //   `https://api-energy.onrender.com/${response.data.profilePicture.fileName}`
           // );
         } else {
           toast.error("Failed to fetch user data.");
@@ -383,7 +383,7 @@ const EditUser = () => {
               ) : (
                 formData.profilePicture.fileName && (
                   <img
-                    src={`https://energy-transition-api-eg0r.onrender.com/${formData.profilePicture.fileName}`}
+                    src={`https://api-energy.onrender.com/${formData.profilePicture.fileName}`}
                     alt="Profile"
                     className="mt-4 w-24 h-24 object-cover rounded-full border-2 border-green-500"
                   />
